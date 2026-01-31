@@ -17,6 +17,7 @@ Views:
 import streamlit as st
 import polars as pl
 import plotly.graph_objects as go
+import plotly.io as pio
 from pathlib import Path
 
 # Configuration - use relative path for deployment
@@ -54,11 +55,54 @@ POSITION_COLORS = {
 # Trajectory pattern icons for consistent display
 PATTERN_ICONS = {
     'ACCELERATING': '🚀',
+    'CONSOLIDATING': '📊',
     'RECOVERING': '📈',
     'STEADY': '➡️',
+    'STABILISING': '⏸️',
     'DECELERATING': '📉',
+    'DECLINING': '⬇️',
     'RAPID_RETREAT': '🚨',
 }
+
+# Bloc context interpretation labels and descriptions
+# These describe UK's position relative to the three major science blocs
+INTERPRETATION_LABELS = {
+    'uk_lagging_blocs': 'UK lagging bloc growth',
+    'structural_shift': 'Structural shift (multiple blocs declining)',
+    'european_pattern': 'Following European pattern',
+    'china_consolidating': 'China consolidating (growing while others flat)',
+    'shared_growth': 'Shared growth (UK growing with blocs)',
+    'competing_with_china': 'Competing with China (both growing)',
+    'counter_trend_growth': 'Counter-trend (UK growing, blocs declining)',
+    'mixed': 'Mixed pattern',
+}
+
+INTERPRETATION_DESCRIPTIONS = {
+    'uk_lagging_blocs': "UK's recent growth rate is below the threshold for 'GROWING' while Europe/USA are not declining. UK may still be growing - just not as fast as peers. This is about absolute recent growth rate, separate from trajectory (which compares to UK's own history).",
+    'structural_shift': "Multiple major blocs are declining together - suggests field-level contraction, not UK-specific issue.",
+    'european_pattern': "UK trend matches broader European pattern.",
+    'china_consolidating': "China is growing its share while other blocs are flat or declining.",
+    'shared_growth': "UK is growing along with other major blocs.",
+    'competing_with_china': "Both UK and China are growing - active competitive space.",
+    'counter_trend_growth': "UK is growing while multiple other blocs are declining.",
+    'mixed': "Complex pattern not fitting other categories.",
+}
+
+# Set Plotly default font to Roboto Mono
+# Note: Plotly font doesn't support 'weight' directly - use CSS font string instead
+PLOTLY_FONT = dict(family="Roboto Mono, monospace", size=12)
+PLOTLY_TITLE_FONT = dict(family="Roboto Mono, monospace", size=16)
+
+pio.templates["roboto_mono"] = go.layout.Template(
+    layout=go.Layout(
+        font=PLOTLY_FONT,
+        title_font=PLOTLY_TITLE_FONT,
+        xaxis=dict(tickfont=PLOTLY_FONT, title_font=PLOTLY_FONT),
+        yaxis=dict(tickfont=PLOTLY_FONT, title_font=PLOTLY_FONT),
+        legend=dict(font=PLOTLY_FONT),
+    )
+)
+pio.templates.default = "plotly+roboto_mono"
 
 
 @st.cache_data
@@ -180,14 +224,30 @@ def topic_browser(data):
         selected_field = st.selectbox("Field", fields)
 
     with col2:
-        # Interpretation filter (bloc-based context)
-        interpretations = ["All Contexts"] + sorted([i for i in df["interpretation"].unique().to_list() if i is not None])
-        selected_interp = st.selectbox("Context", interpretations,
-                                       help="Bloc-based interpretation of UK position")
+        # Interpretation filter (bloc-based context) with friendly labels
+        raw_interps = sorted([i for i in df["interpretation"].unique().to_list() if i is not None])
+        interp_options = {INTERPRETATION_LABELS.get(i, i): i for i in raw_interps}
+        interp_display = ["All Contexts"] + list(interp_options.keys())
+        selected_interp_display = st.selectbox(
+            "Bloc Context", interp_display,
+            help="How UK's recent trend compares to Europe, USA, and China. Note: this is about absolute recent growth, separate from trajectory pattern (which compares recent vs historical)."
+        )
+        selected_interp = interp_options.get(selected_interp_display, None)
 
     with col3:
-        patterns = ["All Patterns"] + sorted([p for p in df["trajectory_pattern"].unique().to_list() if p is not None])
-        selected_pattern = st.selectbox("UK Momentum", patterns)
+        # Define pattern order and display labels
+        pattern_order = ['ACCELERATING', 'CONSOLIDATING', 'RECOVERING', 'STEADY',
+                        'STABILISING', 'DECELERATING', 'DECLINING', 'RAPID_RETREAT']
+        raw_patterns = [p for p in df["trajectory_pattern"].unique().to_list() if p is not None]
+        # Filter to patterns that exist in data, maintaining order
+        ordered_patterns = [p for p in pattern_order if p in raw_patterns]
+        # Map raw to display labels
+        pattern_display = {p: p.replace('_', ' ').title() for p in ordered_patterns}
+        pattern_options = ["All Patterns"] + [pattern_display[p] for p in ordered_patterns]
+        selected_pattern_display = st.selectbox("UK Momentum", pattern_options)
+        # Map back to raw value for filtering
+        display_to_raw = {v: k for k, v in pattern_display.items()}
+        selected_pattern = display_to_raw.get(selected_pattern_display, None)
 
     with col4:
         search = st.text_input("Search topics", "")
@@ -198,10 +258,10 @@ def topic_browser(data):
     if selected_field != "All Fields":
         filtered = filtered.filter(pl.col("field_name") == selected_field)
 
-    if selected_interp != "All Contexts":
+    if selected_interp_display != "All Contexts" and selected_interp:
         filtered = filtered.filter(pl.col("interpretation") == selected_interp)
 
-    if selected_pattern != "All Patterns":
+    if selected_pattern_display != "All Patterns" and selected_pattern:
         filtered = filtered.filter(pl.col("trajectory_pattern") == selected_pattern)
 
     if search:
@@ -233,9 +293,7 @@ def topic_browser(data):
     def format_pattern(p):
         if p is None:
             return "N/A"
-        icons = {'ACCELERATING': '🚀', 'RECOVERING': '📈', 'STEADY': '➡️',
-                 'DECELERATING': '📉', 'RAPID_RETREAT': '🚨'}
-        return f"{icons.get(p, '?')} {p.replace('_', ' ').title()}"
+        return f"{PATTERN_ICONS.get(p, '?')} {p.replace('_', ' ').title()}"
 
     pandas_df["trajectory_pattern"] = pandas_df["trajectory_pattern"].apply(format_pattern)
 
@@ -301,10 +359,7 @@ def topic_browser(data):
         with col2:
             if st.button("View Details →", type="primary"):
                 st.session_state['selected_topic'] = selected_topic
-                st.session_state['navigate_to'] = "Topic Detail"
-                # Clear radio widget state so it picks up the new index
-                if 'view_selector' in st.session_state:
-                    del st.session_state['view_selector']
+                st.session_state['_navigate_to'] = "Topic Detail"
                 st.rerun()
     else:
         st.caption("Click a row above to select a topic, then navigate to details.")
@@ -316,26 +371,19 @@ def topic_browser(data):
 
 # Pattern interpretations for policy guidance
 PATTERN_INTERPRETATIONS = {
-    'RAPID_RETREAT': {
-        'icon': '🚨',
-        'summary': 'Rapid Retreat',
-        'description': 'UK share was stable or growing historically but is now actively declining.',
-        'guidance': 'Investigate urgently — this was a UK strength that is now eroding.',
-        'color': '#C62828',
+    'ACCELERATING': {
+        'icon': '🚀',
+        'summary': 'Accelerating',
+        'description': 'UK share is rising faster recently than historically.',
+        'guidance': 'Success in progress — UK is gaining momentum.',
+        'color': '#2E7D32',
     },
-    'DECELERATING': {
-        'icon': '⚠️',
-        'summary': 'Decelerating',
-        'description': 'UK share growth is slowing — momentum is fading.',
-        'guidance': 'Watch closely — early warning sign that may require attention.',
-        'color': '#F57C00',
-    },
-    'STEADY': {
-        'icon': 'ℹ️',
-        'summary': 'Steady',
-        'description': 'UK share trajectory is consistent over time.',
-        'guidance': 'Evaluate strategically — predictable trajectory.',
-        'color': '#9E9E9E',
+    'CONSOLIDATING': {
+        'icon': '📊',
+        'summary': 'Consolidating',
+        'description': 'UK share has sustained positive growth across both periods.',
+        'guidance': 'Established strength — continued investment is paying off.',
+        'color': '#1976D2',
     },
     'RECOVERING': {
         'icon': '📈',
@@ -344,12 +392,40 @@ PATTERN_INTERPRETATIONS = {
         'guidance': 'Monitor positively — turnaround in progress.',
         'color': '#4CAF50',
     },
-    'ACCELERATING': {
-        'icon': '✅',
-        'summary': 'Accelerating',
-        'description': 'UK share is rising faster recently than historically.',
-        'guidance': 'Success in progress — UK is gaining momentum.',
-        'color': '#2E7D32',
+    'STEADY': {
+        'icon': '➡️',
+        'summary': 'Steady',
+        'description': 'UK share trajectory is flat over time.',
+        'guidance': 'Evaluate strategically — stable but not growing.',
+        'color': '#9E9E9E',
+    },
+    'STABILISING': {
+        'icon': '⏸️',
+        'summary': 'Stabilising',
+        'description': 'UK share was declining but has now levelled off.',
+        'guidance': 'Bleeding stopped — may need intervention to restore growth.',
+        'color': '#78909C',
+    },
+    'DECELERATING': {
+        'icon': '📉',
+        'summary': 'Decelerating',
+        'description': 'UK share growth is slowing — momentum is fading.',
+        'guidance': 'Watch closely — early warning sign that may require attention.',
+        'color': '#F57C00',
+    },
+    'DECLINING': {
+        'icon': '⬇️',
+        'summary': 'Declining',
+        'description': 'UK share has sustained negative growth across both periods.',
+        'guidance': 'Long-term erosion — may need strategic decision on whether to invest or exit.',
+        'color': '#E65100',
+    },
+    'RAPID_RETREAT': {
+        'icon': '🚨',
+        'summary': 'Rapid Retreat',
+        'description': 'UK share was stable or growing historically but is now actively declining.',
+        'guidance': 'Investigate urgently — this was a UK strength that is now eroding.',
+        'color': '#C62828',
     },
 }
 
@@ -374,7 +450,10 @@ def topic_detail(data):
         except ValueError:
             pass
 
-    selected_topic = st.selectbox("Select Topic", topic_names, index=default_idx)
+    selected_topic = st.selectbox("Select Topic", topic_names, index=default_idx, key="topic_detail_selector")
+
+    # Update session state when selection changes
+    st.session_state['selected_topic'] = selected_topic
 
     # Get topic data
     topic_row = df.filter(pl.col("topic_name") == selected_topic).row(0, named=True)
@@ -419,11 +498,6 @@ def topic_detail(data):
         trend_icons = {'GROWING': '↑', 'STABLE': '→', 'DECLINING': '↓'}
         trend_colors = {'GROWING': '#4CAF50', 'STABLE': '#9E9E9E', 'DECLINING': '#FF9800'}
 
-        st.markdown("""
-        <div style="background-color: #f5f5f5; padding: 8px; border-radius: 5px; margin-top: 8px;">
-            <div style="font-size: 0.75em; color: #666; margin-bottom: 4px;">Recent trends (2016-24):</div>
-        """, unsafe_allow_html=True)
-
         bloc_html = []
         for bloc_name, bloc_label in [('europe', '🇪🇺 EU+'), ('usa', '🇺🇸 USA'), ('china', '🇨🇳 China'), ('global', '🌍 Global')]:
             trend = bloc_trends.get(bloc_name, {}).get('trend', 'STABLE')
@@ -432,7 +506,9 @@ def topic_detail(data):
             bloc_html.append(f'<span style="color: {color}; font-weight: bold;">{bloc_label} {icon}</span>')
 
         st.markdown(f"""
-            <div style="display: flex; justify-content: space-between; font-size: 0.85em;">
+        <div style="background-color: #f5f5f5; padding: 12px; border-radius: 5px; margin-top: 10px;">
+            <div style="font-size: 0.8em; color: #666; margin-bottom: 8px;">Recent bloc trends:</div>
+            <div style="display: flex; justify-content: space-around; font-size: 1.1em;">
                 {''.join(f'<span>{b}</span>' for b in bloc_html)}
             </div>
         </div>
@@ -912,13 +988,13 @@ def country_comparison(data):
     interp_counts = bloc_trends.group_by("interpretation").len().sort("len", descending=True)
 
     interp_labels = {
-        'structural_shift': '🌍 Structural Shift (all blocs declining)',
-        'european_pattern': '🇪🇺 European Pattern (following EU trend)',
-        'china_consolidating': '🇨🇳 China Consolidating (China growing, others not)',
-        'uk_specific_decline': '🚨 UK-Specific (UK underperforming peers)',
-        'shared_growth': '📈 Shared Growth (UK growing with others)',
-        'competing_with_china': '🏁 Competing with China (UK & China both growing)',
-        'counter_trend_growth': '💪 Counter-Trend (UK growing against tide)',
+        'structural_shift': '🌍 Structural Shift',
+        'european_pattern': '🇪🇺 European Pattern',
+        'china_consolidating': '🇨🇳 China Consolidating',
+        'uk_lagging_blocs': '📊 UK Lagging Bloc Growth',
+        'shared_growth': '📈 Shared Growth',
+        'competing_with_china': '🏁 Competing with China',
+        'counter_trend_growth': '💪 Counter-Trend Growth',
         'mixed': '❓ Mixed Pattern',
     }
 
@@ -1020,23 +1096,53 @@ def uk_strengths_dashboard(data):
 
     with m2:
         st.metric(
+            "📊 Consolidating",
+            f"{pattern_dict.get('CONSOLIDATING', 0):,}",
+            help="Sustained positive growth across both periods"
+        )
+
+    with m3:
+        st.metric(
             "📈 Recovering",
             f"{pattern_dict.get('RECOVERING', 0):,}",
             help="UK share was declining, now growing"
         )
 
-    with m3:
+    with m4:
+        st.metric(
+            "➡️ Steady",
+            f"{pattern_dict.get('STEADY', 0):,}",
+            help="UK share flat over time"
+        )
+
+    n1, n2, n3, n4 = st.columns(4)
+
+    with n1:
+        st.metric(
+            "⏸️ Stabilising",
+            f"{pattern_dict.get('STABILISING', 0):,}",
+            help="UK share was declining, now levelled off"
+        )
+
+    with n2:
         st.metric(
             "📉 Decelerating",
             f"{pattern_dict.get('DECELERATING', 0):,}",
             help="UK share growth is slowing"
         )
 
-    with m4:
+    with n3:
+        st.metric(
+            "⬇️ Declining",
+            f"{pattern_dict.get('DECLINING', 0):,}",
+            help="Sustained negative growth across both periods"
+        )
+
+    with n4:
         st.metric(
             "🚨 Rapid Retreat",
             f"{pattern_dict.get('RAPID_RETREAT', 0):,}",
-            help="UK share actively declining"
+            help="UK share actively declining from previous strength"
         )
 
     # Accelerating topics by bloc context
@@ -1241,9 +1347,12 @@ def country_analysis(data):
     # Calculate country summaries from trajectory data
     country_summary = country_traj.group_by("country_code").agg([
         pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "ACCELERATING").len().alias("accelerating"),
+        pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "CONSOLIDATING").len().alias("consolidating"),
         pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "RECOVERING").len().alias("recovering"),
         pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "STEADY").len().alias("steady"),
+        pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "STABILISING").len().alias("stabilising"),
         pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "DECELERATING").len().alias("decelerating"),
+        pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "DECLINING").len().alias("declining"),
         pl.col("trajectory_pattern").filter(pl.col("trajectory_pattern") == "RAPID_RETREAT").len().alias("rapid_retreat"),
         pl.col("current_papers").sum().alias("total_papers"),
         pl.col("recent_slope").mean().alias("avg_recent_slope"),
@@ -1256,14 +1365,14 @@ def country_analysis(data):
         how="left"
     )
 
-    # Calculate momentum score (growing - declining patterns) - cast to signed int
+    # Calculate momentum score (positive - negative patterns) - cast to signed int
     country_summary = country_summary.with_columns([
-        (pl.col("accelerating").cast(pl.Int64) + pl.col("recovering").cast(pl.Int64)
-         - pl.col("decelerating").cast(pl.Int64) - pl.col("rapid_retreat").cast(pl.Int64)).alias("momentum_score"),
-        (pl.col("accelerating") + pl.col("recovering")).alias("growing_topics"),
-        (pl.col("decelerating") + pl.col("rapid_retreat")).alias("declining_topics"),
-        (pl.col("accelerating") + pl.col("recovering") + pl.col("steady")
-         + pl.col("decelerating") + pl.col("rapid_retreat")).alias("total_topics"),
+        (pl.col("accelerating").cast(pl.Int64) + pl.col("consolidating").cast(pl.Int64) + pl.col("recovering").cast(pl.Int64)
+         - pl.col("decelerating").cast(pl.Int64) - pl.col("declining").cast(pl.Int64) - pl.col("rapid_retreat").cast(pl.Int64)).alias("momentum_score"),
+        (pl.col("accelerating") + pl.col("consolidating") + pl.col("recovering")).alias("growing_topics"),
+        (pl.col("decelerating") + pl.col("declining") + pl.col("rapid_retreat")).alias("declining_topics"),
+        (pl.col("accelerating") + pl.col("consolidating") + pl.col("recovering") + pl.col("steady")
+         + pl.col("stabilising") + pl.col("decelerating") + pl.col("declining") + pl.col("rapid_retreat")).alias("total_topics"),
     ])
 
     # Overview table
@@ -1278,14 +1387,17 @@ def country_analysis(data):
         "country_name",
         "total_topics",
         "accelerating",
+        "consolidating",
         "recovering",
         "steady",
+        "stabilising",
         "decelerating",
+        "declining",
         "rapid_retreat",
         "momentum_score",
     ]).to_pandas()
 
-    display_df.columns = ["Country", "Topics", "Accelerating", "Recovering", "Steady", "Decelerating", "Rapid Retreat", "Net Score"]
+    display_df.columns = ["Country", "Topics", "🚀", "📊", "📈", "➡️", "⏸️", "📉", "⬇️", "🚨", "Net"]
 
     # Highlight UK row
     def highlight_uk(row):
@@ -1298,14 +1410,17 @@ def country_analysis(data):
         height=500,
         hide_index=True,
         column_config={
-            "Country": st.column_config.TextColumn(width=150),
-            "Topics": st.column_config.NumberColumn(format="%d", width=70, help="Total topics this country is active in"),
-            "Accelerating": st.column_config.NumberColumn(format="%d", width=95, help="Topics where country share is growing faster recently"),
-            "Recovering": st.column_config.NumberColumn(format="%d", width=85, help="Topics where decline reversed to growth"),
-            "Steady": st.column_config.NumberColumn(format="%d", width=70, help="Topics with stable trajectory"),
-            "Decelerating": st.column_config.NumberColumn(format="%d", width=95, help="Topics where growth is slowing"),
-            "Rapid Retreat": st.column_config.NumberColumn(format="%d", width=100, help="Topics where share is actively declining"),
-            "Net Score": st.column_config.NumberColumn(format="%+d", width=80, help="(Accelerating + Recovering) - (Decelerating + Rapid Retreat)"),
+            "Country": st.column_config.TextColumn(width=140),
+            "Topics": st.column_config.NumberColumn(format="%d", width=60, help="Total topics this country is active in"),
+            "🚀": st.column_config.NumberColumn(format="%d", width=50, help="Accelerating: growing faster recently than historically"),
+            "📊": st.column_config.NumberColumn(format="%d", width=50, help="Consolidating: sustained positive growth"),
+            "📈": st.column_config.NumberColumn(format="%d", width=50, help="Recovering: was declining, now growing"),
+            "➡️": st.column_config.NumberColumn(format="%d", width=50, help="Steady: flat trajectory"),
+            "⏸️": st.column_config.NumberColumn(format="%d", width=50, help="Stabilising: was declining, now levelled off"),
+            "📉": st.column_config.NumberColumn(format="%d", width=50, help="Decelerating: growth is slowing"),
+            "⬇️": st.column_config.NumberColumn(format="%d", width=50, help="Declining: sustained negative growth"),
+            "🚨": st.column_config.NumberColumn(format="%d", width=50, help="Rapid Retreat: actively declining from strength"),
+            "Net": st.column_config.NumberColumn(format="%+d", width=60, help="(Accelerating + Consolidating + Recovering) − (Decelerating + Declining + Rapid Retreat)"),
         }
     )
 
@@ -1313,7 +1428,7 @@ def country_analysis(data):
     st.markdown("---")
     st.markdown("### Momentum Ranking")
     st.markdown("""
-    **Net score** = (topics accelerating + recovering) − (topics decelerating + in rapid retreat)
+    **Net score** = (accelerating + consolidating + recovering) − (decelerating + declining + rapid retreat)
 
     Positive = more topics gaining momentum than losing it. Negative = more topics losing momentum.
     """)
@@ -1365,12 +1480,15 @@ def country_analysis(data):
 
         selected_data = country_summary.filter(pl.col("country_code").is_in(selected_codes))
 
-        # Calculate percentages for fair comparison
+        # Calculate percentages for fair comparison (all 8 trajectory patterns)
         selected_data = selected_data.with_columns([
             (pl.col("accelerating") * 100.0 / pl.col("total_topics")).alias("pct_accelerating"),
+            (pl.col("consolidating") * 100.0 / pl.col("total_topics")).alias("pct_consolidating"),
             (pl.col("recovering") * 100.0 / pl.col("total_topics")).alias("pct_recovering"),
             (pl.col("steady") * 100.0 / pl.col("total_topics")).alias("pct_steady"),
+            (pl.col("stabilising") * 100.0 / pl.col("total_topics")).alias("pct_stabilising"),
             (pl.col("decelerating") * 100.0 / pl.col("total_topics")).alias("pct_decelerating"),
+            (pl.col("declining") * 100.0 / pl.col("total_topics")).alias("pct_declining"),
             (pl.col("rapid_retreat") * 100.0 / pl.col("total_topics")).alias("pct_rapid_retreat"),
         ])
 
@@ -1380,11 +1498,15 @@ def country_analysis(data):
         fig2 = go.Figure()
 
         countries = selected_data.sort("momentum_score", descending=True)['country_name'].to_list()
+        # Order: positive patterns (green) -> neutral (gray) -> negative patterns (orange/red)
         patterns = [
             ('pct_accelerating', 'Accelerating', '#2E7D32'),
+            ('pct_consolidating', 'Consolidating', '#66BB6A'),
             ('pct_recovering', 'Recovering', '#4CAF50'),
             ('pct_steady', 'Steady', '#9E9E9E'),
+            ('pct_stabilising', 'Stabilising', '#78909C'),
             ('pct_decelerating', 'Decelerating', '#FF9800'),
+            ('pct_declining', 'Declining', '#EF5350'),
             ('pct_rapid_retreat', 'Rapid Retreat', '#C62828'),
         ]
 
@@ -1480,26 +1602,52 @@ def main():
         initial_sidebar_state="expanded"
     )
 
-    # Handle navigation requests (from buttons that want to switch views)
-    views = ["Topic Browser", "Topic Detail", "Bloc Comparison", "Country Analysis", "UK Strengths Dashboard"]
+    # Custom CSS (fonts handled by .streamlit/config.toml)
+    st.markdown("""
+    <style>
+        .block-container {padding-top: 2rem;}
+        section[data-testid="stSidebar"] .block-container {padding-top: 0.5rem;}
 
-    default_idx = 0
-    if 'navigate_to' in st.session_state:
-        try:
-            default_idx = views.index(st.session_state['navigate_to'])
-        except ValueError:
-            default_idx = 0
-        del st.session_state['navigate_to']
+        /* Reduce sidebar header space */
+        section[data-testid="stSidebar"] [data-testid="stSidebarHeader"] {
+            height: auto;
+            min-height: 0;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Reduce heading padding in sidebar */
+        section[data-testid="stSidebar"] .stHeading {
+            padding-top: 0;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Smaller text in sidebar */
+        section[data-testid="stSidebar"] .stMarkdown p {
+            font-size: 0.85rem;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Scroll to top on navigation
+    from streamlit_scroll_to_top import scroll_to_here
+    scroll_to_here(0, key='scroll_top')
+
+    # View options
+    views = ["Topic Browser", "Topic Detail", "Bloc Comparison", "Country-by-Country Analysis", "UK Strengths Dashboard"]
+
+    # Handle navigation requests (must happen before widget is created)
+    # Setting session state directly before widget creation works
+    if '_navigate_to' in st.session_state:
+        st.session_state['view_selector'] = st.session_state.pop('_navigate_to')
 
     # Sidebar navigation
-    st.sidebar.title("🔬 UK Research Explorer")
+    st.sidebar.title("UK Research Explorer")
     st.sidebar.markdown("Explore UK research positioning across 4,516 topics.")
 
     # View selector
     view = st.sidebar.radio(
         "Select View",
         views,
-        index=default_idx,
         key="view_selector"
     )
 
@@ -1528,7 +1676,8 @@ def main():
     """)
 
     st.sidebar.markdown("---")
-    st.sidebar.markdown("*UK Research Position Study*")
+    st.sidebar.caption("Compiled by Ben Johnson, University of Strathclyde.")
+    st.sidebar.caption("Feedback welcome: ben.johnson \\[at\\] strath.ac.uk")
 
     # Load data
     with st.spinner("Loading data..."):
@@ -1541,7 +1690,7 @@ def main():
         topic_detail(data)
     elif view == "Bloc Comparison":
         country_comparison(data)
-    elif view == "Country Analysis":
+    elif view == "Country-by-Country Analysis":
         country_analysis(data)
     elif view == "UK Strengths Dashboard":
         uk_strengths_dashboard(data)
