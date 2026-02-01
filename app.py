@@ -89,9 +89,8 @@ INTERPRETATION_DESCRIPTIONS = {
 }
 
 # Set Plotly default font to Roboto Mono
-# Note: Plotly font doesn't support 'weight' directly - use CSS font string instead
-PLOTLY_FONT = dict(family="Roboto Mono, monospace", size=12)
-PLOTLY_TITLE_FONT = dict(family="Roboto Mono, monospace", size=16)
+PLOTLY_FONT = dict(family="Roboto Mono, monospace", size=12, weight=200)
+PLOTLY_TITLE_FONT = dict(family="Roboto Mono, monospace", size=16, weight=400)
 
 pio.templates["roboto_mono"] = go.layout.Template(
     layout=go.Layout(

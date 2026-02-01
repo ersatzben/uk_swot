@@ -5,12 +5,12 @@ secondaryBackgroundColor = "#F5F5F5"
 textColor = "#212121"
 
 # Typography - Roboto Mono throughout
-font = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap"
-headingFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap"
-codeFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&display=swap"
+font = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap"
+headingFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap"
+codeFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap"
 
-# Font weights - 100 for body, 400 for headings
-baseFontWeight = 100
+# Font weights - 200 for body, 400 for headings
+baseFontWeight = 200
 headingFontWeights = [400, 400, 400, 400, 400, 400]
 
 [server]
