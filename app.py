@@ -4,24 +4,42 @@ UK Research Position Interactive Explorer
 
 A Streamlit app for exploring UK research positioning across 4,516 topics.
 
-Deployed version for Streamlit Community Cloud.
+Usage:
+    Deployed version for Streamlit Community Cloud.
 
 Views:
     1. Topic Browser - Filterable table with search
     2. Topic Detail - Deep dive with trajectory chart + country comparison
-    3. Bloc Comparison - Three blocs analysis
-    4. Country Analysis - 46 country comparison
-    5. UK Strengths Dashboard - Momentum summary
+    3. Country Comparison - Side-by-side analysis
+    4. UK Strengths Dashboard - Advantages summary
 """
 
+import json
+import numpy as np
 import streamlit as st
 import polars as pl
 import plotly.graph_objects as go
 import plotly.io as pio
 from pathlib import Path
 
-# Configuration - use relative path for deployment
+# Configuration
 OUTPUT_DIR = Path(__file__).parent / "data"
+IND_STRAT_DIR = Path(__file__).parent / "data" / "ind_strat"
+
+# Set Plotly default font to Roboto Mono
+PLOTLY_FONT = dict(family="Roboto Mono, monospace", size=12, weight=200)
+PLOTLY_TITLE_FONT = dict(family="Roboto Mono, monospace", size=16, weight=400)
+
+pio.templates["roboto_mono"] = go.layout.Template(
+    layout=go.Layout(
+        font=PLOTLY_FONT,
+        title_font=PLOTLY_TITLE_FONT,
+        xaxis=dict(tickfont=PLOTLY_FONT, title_font=PLOTLY_FONT),
+        yaxis=dict(tickfont=PLOTLY_FONT, title_font=PLOTLY_FONT),
+        legend=dict(font=PLOTLY_FONT),
+    )
+)
+pio.templates.default = "plotly+roboto_mono"
 
 # Color palette (matching static visualizations)
 COLORS = {
@@ -64,22 +82,23 @@ PATTERN_ICONS = {
     'RAPID_RETREAT': '🚨',
 }
 
-# Bloc context interpretation labels and descriptions
-# These describe UK's position relative to the three major science blocs
+# Bloc context interpretation labels (user-friendly names)
+# These describe how UK's *recent* bloc trend compares to other blocs
+# Note: this is separate from trajectory pattern (which compares recent vs historical)
 INTERPRETATION_LABELS = {
     'uk_lagging_blocs': 'UK lagging bloc growth',
     'structural_shift': 'Structural shift (multiple blocs declining)',
     'european_pattern': 'Following European pattern',
-    'china_consolidating': 'China consolidating (growing while others flat)',
-    'shared_growth': 'Shared growth (UK growing with blocs)',
-    'competing_with_china': 'Competing with China (both growing)',
+    'china_consolidating': 'China consolidating',
+    'shared_growth': 'Shared growth',
+    'competing_with_china': 'Competing with China',
     'counter_trend_growth': 'Counter-trend (UK growing, blocs declining)',
     'mixed': 'Mixed pattern',
 }
 
 INTERPRETATION_DESCRIPTIONS = {
     'uk_lagging_blocs': "UK's recent growth rate is below the threshold for 'GROWING' while Europe/USA are not declining. UK may still be growing - just not as fast as peers. This is about absolute recent growth rate, separate from trajectory (which compares to UK's own history).",
-    'structural_shift': "Multiple major blocs are declining together - suggests field-level contraction, not UK-specific issue.",
+    'structural_shift': "Multiple major blocs are declining together - suggests field-level contraction, not UK-specific.",
     'european_pattern': "UK trend matches broader European pattern.",
     'china_consolidating': "China is growing its share while other blocs are flat or declining.",
     'shared_growth': "UK is growing along with other major blocs.",
@@ -88,20 +107,35 @@ INTERPRETATION_DESCRIPTIONS = {
     'mixed': "Complex pattern not fitting other categories.",
 }
 
-# Set Plotly default font to Roboto Mono
-PLOTLY_FONT = dict(family="Roboto Mono, monospace", size=12, weight=200)
-PLOTLY_TITLE_FONT = dict(family="Roboto Mono, monospace", size=16, weight=400)
+# Industrial Strategy sector colors
+SECTOR_COLORS = {
+    'Life Sciences': '#4CAF50',
+    'Cross-cutting': '#2196F3',
+    'Financial Services': '#9C27B0',
+    'Defence': '#607D8B',
+    'Professional and Business Services': '#FF9800',
+    'Creative Industries': '#E91E63',
+    'Advanced Manufacturing': '#795548',
+    'Digital and Technologies': '#00BCD4',
+    'Clean Energy Industries': '#8BC34A',
+}
 
-pio.templates["roboto_mono"] = go.layout.Template(
-    layout=go.Layout(
-        font=PLOTLY_FONT,
-        title_font=PLOTLY_TITLE_FONT,
-        xaxis=dict(tickfont=PLOTLY_FONT, title_font=PLOTLY_FONT),
-        yaxis=dict(tickfont=PLOTLY_FONT, title_font=PLOTLY_FONT),
-        legend=dict(font=PLOTLY_FONT),
-    )
-)
-pio.templates.default = "plotly+roboto_mono"
+# Alignment status colors and labels
+ALIGNMENT_COLORS = {
+    'strong_alignment': '#2E7D32',
+    'moderate_alignment': '#81C784',
+    'uk_strength_declining_field': '#FFCA28',
+    'growing_field_uk_weakness': '#FF9800',
+    'strategic_concern': '#C62828',
+}
+
+ALIGNMENT_LABELS = {
+    'strong_alignment': 'Strong Alignment',
+    'moderate_alignment': 'Moderate Alignment',
+    'uk_strength_declining_field': 'UK Strength (Declining Field)',
+    'growing_field_uk_weakness': 'Growing Field (UK Weakness)',
+    'strategic_concern': 'Strategic Concern',
+}
 
 
 @st.cache_data
@@ -127,6 +161,18 @@ def load_data():
 
     # Phase 3 peer comparison
     data['peer_comparison'] = pl.read_parquet(OUTPUT_DIR / "phase3_peer_comparison.parquet")
+
+    # Industrial Strategy mapping data
+    data['ind_strat_sectors'] = pl.read_parquet(IND_STRAT_DIR / "analysis" / "sector_summary.parquet")
+    data['ind_strat_priorities'] = pl.read_parquet(IND_STRAT_DIR / "analysis" / "priority_alignment.parquet")
+    data['ind_strat_mappings'] = pl.read_parquet(IND_STRAT_DIR / "analysis" / "core_mappings_detail.parquet")
+
+    # Load priority descriptions from JSON
+    with open(IND_STRAT_DIR / "extracted" / "priorities.json") as f:
+        priorities_json = json.load(f)
+    data['ind_strat_priority_details'] = {
+        p['priority_id']: p for p in priorities_json['priorities']
+    }
 
     return data
 
@@ -209,14 +255,38 @@ def topic_browser(data):
 
     df = data['trajectories']
     bloc_trends = data['bloc_trends']
+    ind_strat_mappings = data['ind_strat_mappings']
+    priority_details = data['ind_strat_priority_details']
 
     # Join bloc trends to trajectories
     df = df.join(bloc_trends.select([
         "topic_id", "europe_trend", "usa_trend", "china_trend", "global_trend", "interpretation"
     ]), on="topic_id", how="left")
 
-    # Filters
-    col1, col2, col3, col4 = st.columns(4)
+    # Create topic-to-sector mapping (a topic can map to multiple sectors, take first)
+    topic_sectors = ind_strat_mappings.select(['topic_id', 'priority_id', 'strategic_concern']).join(
+        pl.DataFrame([
+            {'priority_id': pid, 'parent_sector': pdata.get('parent_sector', 'Unknown')}
+            for pid, pdata in priority_details.items()
+        ]),
+        on='priority_id',
+        how='left'
+    ).group_by('topic_id').agg([
+        pl.col('parent_sector').first().alias('ind_strat_sector'),
+        pl.col('strategic_concern').max().alias('is_strategic_concern')  # True if any mapping is concern
+    ])
+
+    # Join sector info to main df
+    df = df.join(topic_sectors, on='topic_id', how='left')
+
+    # Fill nulls for unmapped topics
+    df = df.with_columns([
+        pl.col('ind_strat_sector').fill_null('Not Mapped'),
+        pl.col('is_strategic_concern').fill_null(False)
+    ])
+
+    # Filters - now 5 columns
+    col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:
         fields = ["All Fields"] + sorted([f for f in df["field_name"].unique().to_list() if f is not None])
@@ -229,7 +299,7 @@ def topic_browser(data):
         interp_display = ["All Contexts"] + list(interp_options.keys())
         selected_interp_display = st.selectbox(
             "Bloc Context", interp_display,
-            help="How UK's recent trend compares to Europe, USA, and China. Note: this is about absolute recent growth, separate from trajectory pattern (which compares recent vs historical)."
+            help="How UK's recent share trend compares to Europe, USA, and China. This is about absolute recent growth rate, separate from trajectory pattern (which compares recent vs historical UK performance)."
         )
         selected_interp = interp_options.get(selected_interp_display, None)
 
@@ -249,6 +319,22 @@ def topic_browser(data):
         selected_pattern = display_to_raw.get(selected_pattern_display, None)
 
     with col4:
+        # Industrial Strategy sector filter
+        sector_order = ['Life Sciences', 'Cross-cutting', 'Financial Services', 'Defence',
+                       'Professional and Business Services', 'Creative Industries',
+                       'Advanced Manufacturing', 'Digital and Technologies', 'Clean Energy Industries']
+        raw_sectors = [s for s in df["ind_strat_sector"].unique().to_list() if s is not None]
+        ordered_sectors = [s for s in sector_order if s in raw_sectors]
+        # Add 'Not Mapped' at the end if present
+        if 'Not Mapped' in raw_sectors:
+            ordered_sectors.append('Not Mapped')
+        sector_options = ["All Sectors"] + ordered_sectors + ["Strategic Concerns Only"]
+        selected_sector = st.selectbox(
+            "Ind. Strategy Sector", sector_options,
+            help="Filter by Industrial Strategy sector mapping. 'Strategic Concerns Only' shows topics where UK is losing ground in declining fields."
+        )
+
+    with col5:
         search = st.text_input("Search topics", "")
 
     # Apply filters
@@ -262,6 +348,11 @@ def topic_browser(data):
 
     if selected_pattern_display != "All Patterns" and selected_pattern:
         filtered = filtered.filter(pl.col("trajectory_pattern") == selected_pattern)
+
+    if selected_sector == "Strategic Concerns Only":
+        filtered = filtered.filter(pl.col("is_strategic_concern") == True)
+    elif selected_sector != "All Sectors":
+        filtered = filtered.filter(pl.col("ind_strat_sector") == selected_sector)
 
     if search:
         filtered = filtered.filter(
@@ -279,6 +370,8 @@ def topic_browser(data):
         "current_uk_papers",
         "current_uk_share",
         "trajectory_pattern",
+        "ind_strat_sector",
+        "is_strategic_concern",
         "europe_trend",
         "usa_trend",
         "china_trend",
@@ -296,6 +389,18 @@ def topic_browser(data):
 
     pandas_df["trajectory_pattern"] = pandas_df["trajectory_pattern"].apply(format_pattern)
 
+    # Format sector with concern indicator
+    def format_sector(row):
+        sector = row['ind_strat_sector']
+        is_concern = row['is_strategic_concern']
+        if sector == 'Not Mapped':
+            return "—"
+        if is_concern:
+            return f"⚠️ {sector}"
+        return sector
+
+    pandas_df["Sector"] = pandas_df.apply(format_sector, axis=1)
+
     # Format bloc trends as arrow indicators
     def format_trend(t):
         if t is None:
@@ -308,8 +413,9 @@ def topic_browser(data):
     pandas_df["🇨🇳"] = pandas_df["china_trend"].apply(format_trend)
     pandas_df["🌍"] = pandas_df["global_trend"].apply(format_trend)
 
-    # Drop original trend columns and rename
-    pandas_df = pandas_df.drop(columns=["europe_trend", "usa_trend", "china_trend", "global_trend"])
+    # Drop original columns and rename
+    pandas_df = pandas_df.drop(columns=["europe_trend", "usa_trend", "china_trend", "global_trend",
+                                        "ind_strat_sector", "is_strategic_concern"])
     pandas_df = pandas_df.rename(columns={
         "topic_name": "Topic",
         "field_name": "Field",
@@ -319,7 +425,7 @@ def topic_browser(data):
     })
 
     # Reorder columns
-    pandas_df = pandas_df[["Topic", "Field", "UK Papers", "UK Share %", "🇬🇧 Momentum", "🇪🇺+", "🇺🇸", "🇨🇳", "🌍"]]
+    pandas_df = pandas_df[["Topic", "Field", "Sector", "UK Papers", "UK Share %", "🇬🇧 Momentum", "🇪🇺+", "🇺🇸", "🇨🇳", "🌍"]]
 
     # Clickable table
     event = st.dataframe(
@@ -327,15 +433,16 @@ def topic_browser(data):
         height=400,
         hide_index=True,
         column_config={
-            "Topic": st.column_config.TextColumn(width=280),
-            "Field": st.column_config.TextColumn(width=150),
-            "UK Papers": st.column_config.NumberColumn(format="%d", width=80),
-            "UK Share %": st.column_config.NumberColumn(format="%.2f%%", width=80),
-            "🇬🇧 Momentum": st.column_config.TextColumn(width=140),
-            "🇪🇺+": st.column_config.TextColumn(width=40),
-            "🇺🇸": st.column_config.TextColumn(width=40),
-            "🇨🇳": st.column_config.TextColumn(width=40),
-            "🌍": st.column_config.TextColumn(width=40),
+            "Topic": st.column_config.TextColumn(width=250),
+            "Field": st.column_config.TextColumn(width=130),
+            "Sector": st.column_config.TextColumn(width=160, help="Industrial Strategy sector (⚠️ = strategic concern)"),
+            "UK Papers": st.column_config.NumberColumn(format="%d", width=70),
+            "UK Share %": st.column_config.NumberColumn(format="%.2f%%", width=70),
+            "🇬🇧 Momentum": st.column_config.TextColumn(width=130),
+            "🇪🇺+": st.column_config.TextColumn(width=35),
+            "🇺🇸": st.column_config.TextColumn(width=35),
+            "🇨🇳": st.column_config.TextColumn(width=35),
+            "🌍": st.column_config.TextColumn(width=35),
         },
         selection_mode="single-row",
         on_select="rerun",
@@ -831,6 +938,47 @@ def topic_detail(data):
             ])
             st.caption(f"Peer momentum patterns: {pattern_text}")
 
+    # Industrial Strategy Alignment section
+    st.markdown("---")
+    st.markdown("### Industrial Strategy Alignment")
+
+    ind_strat_mappings = data['ind_strat_mappings']
+    priority_details = data['ind_strat_priority_details']
+
+    # Find all priorities this topic is mapped to
+    topic_mappings = ind_strat_mappings.filter(pl.col("topic_id") == topic_id)
+
+    if topic_mappings.height > 0:
+        # Check if any mapping is strategic concern
+        is_concern = topic_mappings.filter(pl.col("strategic_concern") == True).height > 0
+
+        if is_concern:
+            st.warning("**Strategic Concern**: This topic is flagged as a concern in at least one Industrial Strategy priority (declining momentum + UK losing ground).")
+
+        # Display mapped priorities
+        st.markdown(f"This topic maps to **{topic_mappings.height}** Industrial Strategy priorities:")
+
+        for row in topic_mappings.iter_rows(named=True):
+            priority_id = row['priority_id']
+            priority_name = row['priority_name']
+            relevance = row['relevance']
+            pdetail = priority_details.get(priority_id, {})
+            sector = pdetail.get('parent_sector', 'Unknown')
+            color = SECTOR_COLORS.get(sector, '#757575')
+
+            concern_badge = "⚠️ " if row.get('strategic_concern', False) else ""
+
+            st.markdown(f"""
+            <div style="margin: 0.5rem 0; padding: 0.5rem; border-left: 3px solid {color}; background: #f9f9f9;">
+                <strong>{concern_badge}{priority_name}</strong><br/>
+                <span style="font-size: 0.85rem; color: #666;">
+                    Sector: {sector} | Relevance: {relevance.title() if relevance else 'Core'}
+                </span>
+            </div>
+            """, unsafe_allow_html=True)
+    else:
+        st.info("This topic is not currently mapped to any Industrial Strategy priorities.")
+
 
 # =============================================================================
 # VIEW 3: Bloc Comparison (Three Blocs framing)
@@ -986,15 +1134,16 @@ def country_comparison(data):
 
     interp_counts = bloc_trends.group_by("interpretation").len().sort("len", descending=True)
 
+    # Use module-level labels with icons for display
     interp_labels = {
-        'structural_shift': '🌍 Structural Shift',
-        'european_pattern': '🇪🇺 European Pattern',
-        'china_consolidating': '🇨🇳 China Consolidating',
-        'uk_lagging_blocs': '📊 UK Lagging Bloc Growth',
-        'shared_growth': '📈 Shared Growth',
-        'competing_with_china': '🏁 Competing with China',
-        'counter_trend_growth': '💪 Counter-Trend Growth',
-        'mixed': '❓ Mixed Pattern',
+        'structural_shift': '🌍 ' + INTERPRETATION_LABELS['structural_shift'],
+        'european_pattern': '🇪🇺 ' + INTERPRETATION_LABELS['european_pattern'],
+        'china_consolidating': '🇨🇳 ' + INTERPRETATION_LABELS['china_consolidating'],
+        'uk_lagging_blocs': '📊 ' + INTERPRETATION_LABELS['uk_lagging_blocs'],
+        'shared_growth': '📈 ' + INTERPRETATION_LABELS['shared_growth'],
+        'competing_with_china': '🏁 ' + INTERPRETATION_LABELS['competing_with_china'],
+        'counter_trend_growth': '💪 ' + INTERPRETATION_LABELS['counter_trend_growth'],
+        'mixed': '❓ ' + INTERPRETATION_LABELS['mixed'],
     }
 
     interp_df = interp_counts.to_pandas()
@@ -1590,6 +1739,550 @@ def country_analysis(data):
 
 
 # =============================================================================
+# STRATEGIC ALIGNMENT VIEW
+# =============================================================================
+
+def strategic_alignment(data):
+    """Industrial Strategy alignment analysis."""
+    st.header("Strategic Alignment")
+    st.markdown("How UK research activity aligns with Industrial Strategy priorities.")
+
+    # Methodology note
+    with st.expander("How priorities were mapped", expanded=False):
+        st.markdown("""
+        **Source Documents**: 10 UK Industrial Strategy documents (main strategy + 8 sector plans)
+
+        **Priority Extraction**: An LLM extracted 209 unique policy priorities from the documents,
+        capturing priority names, descriptions, keywords, and source references.
+
+        **Topic Matching**: Each priority was matched to OpenAlex research topics using:
+        1. Text embeddings (all-MiniLM-L6-v2) of priorities and topics
+        2. Top-75 candidate topics selected per priority by cosine similarity
+        3. LLM validation classifying each candidate as Core, Peripheral, or Not Relevant
+
+        **Result**: 1,681 core topic mappings across 203 priorities, covering ~15% of the OpenAlex topic space.
+        """)
+
+    # Explanation of metrics
+    with st.expander("Understanding the metrics", expanded=False):
+        st.markdown("""
+        **Both metrics are UK-specific** — they measure different aspects of UK research performance.
+
+        **UK Momentum** measures whether UK's trajectory is improving or worsening:
+        - Compares UK's **recent** performance (2016-24) against its **early** performance (2010-17)
+        - Calculated as: (Accelerating + Consolidating topics) − (Declining + Rapid Retreat topics)
+        - **Positive values** (e.g., +10) mean UK is performing better recently than it was historically
+        - **Negative values** (e.g., −5) mean UK's trajectory has worsened — declining faster or growing slower than before
+        - ACCELERATING = UK improving faster recently; RAPID_RETREAT = UK declining faster recently
+
+        **UK Share Trend** measures the overall direction of UK's share:
+        - Calculated as: (Topics where UK share is increasing) − (Topics where UK share is declining)
+        - **Positive values** mean UK is gaining share in more topics than it's losing
+        - **Negative values** mean UK is losing share in more topics than it's gaining
+        - INCREASING/STABLE/DECLINING based on the slope of UK's share over time
+
+        **Strategic Concern** flags priorities where *both* metrics are negative — UK's trajectory is worsening *and* UK is losing share overall.
+        """)
+
+    sectors = data['ind_strat_sectors']
+    priorities = data['ind_strat_priorities'].unique(subset=['priority_id'])  # Deduplicate
+    mappings = data['ind_strat_mappings']
+    priority_details = data['ind_strat_priority_details']
+
+    # ---------------------------------------------------------------------
+    # SECTOR OVERVIEW - UK POSITION FOCUS
+    # ---------------------------------------------------------------------
+    st.subheader("Sector Overview: UK Position")
+    st.markdown("How is UK research share changing across Industrial Strategy sectors?")
+
+    # Sort sectors by UK position (most important for UK policy)
+    sectors_sorted = sectors.sort("avg_uk_position", descending=True)
+
+    # Create two columns: chart and metrics
+    col1, col2 = st.columns([2, 1])
+
+    with col1:
+        # Grouped bar chart: UK Share Trend and UK Momentum side by side
+        fig_sectors = go.Figure()
+
+        sector_names = sectors_sorted['parent_sector'].to_list()
+        uk_pos_vals = sectors_sorted['avg_uk_position'].to_list()
+        momentum_vals = sectors_sorted['avg_momentum'].to_list()
+
+        # Get sector colors (reversed to match bar order)
+        sector_colors = [SECTOR_COLORS.get(s, '#757575') for s in sector_names[::-1]]
+
+        # UK Share Trend bars (primary - overall direction) - full sector color
+        fig_sectors.add_trace(go.Bar(
+            y=sector_names[::-1],
+            x=uk_pos_vals[::-1],
+            orientation='h',
+            name='UK Share Trend',
+            marker_color=sector_colors,
+            text=[f"{v:+.1f}" for v in uk_pos_vals[::-1]],
+            textposition='outside'
+        ))
+
+        # UK Momentum bars (secondary - trajectory change) - lighter/transparent
+        fig_sectors.add_trace(go.Bar(
+            y=sector_names[::-1],
+            x=momentum_vals[::-1],
+            orientation='h',
+            name='UK Momentum',
+            marker_color=sector_colors,
+            marker_opacity=0.5,
+            text=[f"{v:+.1f}" for v in momentum_vals[::-1]],
+            textposition='outside'
+        ))
+
+        # Add vertical line at x=0
+        fig_sectors.add_vline(x=0, line_dash="dash", line_color="#757575")
+
+        fig_sectors.update_layout(
+            title=dict(
+                text="UK Share Trend vs UK Momentum by Sector<br><sup>Top bar: UK Momentum (faded) · Bottom bar: UK Share Trend (solid)</sup>",
+                font=dict(size=16)
+            ),
+            xaxis_title="Score (positive = improving, negative = worsening)",
+            yaxis_title="",
+            height=700,
+            margin=dict(l=200, r=80, t=80, b=50),
+            barmode='group',
+            showlegend=False
+        )
+
+        st.plotly_chart(fig_sectors, use_container_width=True)
+
+    with col2:
+        st.markdown("**Sector Summary**")
+        st.caption("Sorted by UK Share Trend (best to worst)")
+        # Display key metrics
+        for row in sectors_sorted.iter_rows(named=True):
+            sector = row['parent_sector']
+            momentum = row['avg_momentum']
+            uk_pos = row['avg_uk_position']
+            concerns = row['concern_count']
+            color = SECTOR_COLORS.get(sector, '#757575')
+
+            # Icon based on UK share trend
+            uk_icon = "🟢" if uk_pos > 0.5 else ("🟡" if uk_pos >= -0.5 else "🔴")
+            st.markdown(f"""
+            <div style="margin-bottom: 0.5rem; padding: 0.3rem; border-left: 3px solid {color}; padding-left: 0.5rem;">
+                <strong>{sector}</strong><br/>
+                <span style="font-size: 0.85rem;">
+                    {uk_icon} Share: {uk_pos:+.1f} | Momentum: {momentum:+.1f} | {concerns} concerns
+                </span>
+            </div>
+            """, unsafe_allow_html=True)
+
+    # ---------------------------------------------------------------------
+    # PREPARE PRIORITY DATA FOR VISUALIZATIONS
+    # ---------------------------------------------------------------------
+    # Prepare data for all charts
+    scatter_data = priorities.select([
+        'priority_id', 'priority_name', 'core_topic_count',
+        'total_uk_papers', 'avg_pattern_momentum', 'avg_uk_momentum'
+    ]).join(
+        # Get parent_sector from priority_details
+        pl.DataFrame([
+            {'priority_id': pid, 'parent_sector': pdata.get('parent_sector', 'Unknown')}
+            for pid, pdata in priority_details.items()
+        ]),
+        on='priority_id',
+        how='left'
+    )
+
+    # Calculate momentum_balance and uk_position for each priority
+    priority_metrics = priorities.select([
+        'priority_id',
+        'accelerating_count', 'consolidating_count',
+        'declining_count', 'rapid_retreat_count',
+        'uk_increasing_count', 'uk_declining_count'
+    ])
+
+    priority_metrics = priority_metrics.with_columns([
+        (pl.col('accelerating_count') + pl.col('consolidating_count') -
+         pl.col('declining_count') - pl.col('rapid_retreat_count')).alias('momentum_balance'),
+        (pl.col('uk_increasing_count') - pl.col('uk_declining_count')).alias('uk_position')
+    ])
+
+    scatter_data = scatter_data.join(
+        priority_metrics.select(['priority_id', 'momentum_balance', 'uk_position']),
+        on='priority_id',
+        how='left'
+    )
+
+    # ---------------------------------------------------------------------
+    # CHART 1: BUBBLE CHART WITH PAPER VOLUME
+    # ---------------------------------------------------------------------
+    st.markdown("---")
+    st.subheader("Priority Portfolio Map")
+    st.markdown("""
+    Each bubble is an Industrial Strategy priority. **Size = UK research volume** (papers).
+    Hover to see details. Larger bubbles represent priorities with more UK research activity.
+    """)
+
+    fig_bubble = go.Figure()
+
+    # Normalize bubble sizes (sqrt scale for area perception)
+    max_papers = scatter_data['total_uk_papers'].max()
+    min_size, max_size = 8, 50
+
+    for sector in SECTOR_COLORS.keys():
+        sector_df = scatter_data.filter(pl.col('parent_sector') == sector)
+        if sector_df.height == 0:
+            continue
+
+        papers = sector_df['total_uk_papers'].to_list()
+        sizes = [min_size + (max_size - min_size) * ((p / max_papers) ** 0.5) for p in papers]
+
+        fig_bubble.add_trace(go.Scatter(
+            x=sector_df['momentum_balance'].to_list(),
+            y=sector_df['uk_position'].to_list(),
+            mode='markers',
+            name=sector,
+            marker=dict(
+                size=sizes,
+                color=SECTOR_COLORS[sector],
+                opacity=0.6,
+                line=dict(width=1, color='white')
+            ),
+            text=sector_df['priority_name'].to_list(),
+            customdata=list(zip(papers, sector_df['core_topic_count'].to_list())),
+            hovertemplate="<b>%{text}</b><br>UK Momentum: %{x}<br>UK Share Trend: %{y}<br>UK Papers: %{customdata[0]:,}<br>Topics: %{customdata[1]}<extra></extra>"
+        ))
+
+    # Add quadrant lines
+    fig_bubble.add_hline(y=0, line_dash="dash", line_color="#757575", opacity=0.5)
+    fig_bubble.add_vline(x=0, line_dash="dash", line_color="#757575", opacity=0.5)
+
+    fig_bubble.update_layout(
+        xaxis_title="UK Momentum (positive = trajectory improving)",
+        yaxis_title="UK Share Trend (positive = share increasing)",
+        height=500,
+        margin=dict(l=50, r=50, t=30, b=50),
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="center", x=0.5)
+    )
+
+    st.plotly_chart(fig_bubble, use_container_width=True)
+
+    # ---------------------------------------------------------------------
+    # CHART 2: RESIDUALS - UK PERFORMANCE VS EXPECTED
+    # ---------------------------------------------------------------------
+    st.markdown("---")
+    st.subheader("UK Performance Anomalies")
+    st.markdown("""
+    Since Momentum and UK Position are correlated, this chart shows **anomalies** —
+    priorities where UK is doing better or worse than expected given the field's momentum.
+
+    - **Positive residual** (green): UK outperforming — gaining more share than typical for this momentum level
+    - **Negative residual** (red): UK underperforming — losing more share than typical for this momentum level
+    """)
+
+    # Calculate linear regression: uk_position = a * momentum + b
+    momentum_vals = scatter_data['momentum_balance'].to_numpy()
+    uk_pos_vals = scatter_data['uk_position'].to_numpy()
+
+    # Simple linear regression
+    n = len(momentum_vals)
+    sum_x = momentum_vals.sum()
+    sum_y = uk_pos_vals.sum()
+    sum_xy = (momentum_vals * uk_pos_vals).sum()
+    sum_x2 = (momentum_vals ** 2).sum()
+
+    slope = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x ** 2)
+    intercept = (sum_y - slope * sum_x) / n
+
+    # Calculate residuals (actual - expected)
+    expected_uk_pos = slope * momentum_vals + intercept
+    residuals = uk_pos_vals - expected_uk_pos
+
+    scatter_data = scatter_data.with_columns([
+        pl.Series('expected_uk_position', expected_uk_pos),
+        pl.Series('residual', residuals)
+    ])
+
+    # Get top outperformers and underperformers
+    top_outperformers = scatter_data.sort('residual', descending=True).head(10)
+    top_underperformers = scatter_data.sort('residual').head(10)
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("**UK Outperforming** (better than expected)")
+        fig_out = go.Figure()
+        fig_out.add_trace(go.Bar(
+            y=top_outperformers['priority_name'].to_list()[::-1],
+            x=top_outperformers['residual'].to_list()[::-1],
+            orientation='h',
+            marker_color='#4CAF50',
+            text=[f"+{r:.1f}" for r in top_outperformers['residual'].to_list()[::-1]],
+            textposition='outside'
+        ))
+        fig_out.update_layout(
+            xaxis_title="Residual (UK Position vs Expected)",
+            yaxis_title="",
+            height=400,
+            margin=dict(l=250, r=60, t=20, b=50)
+        )
+        st.plotly_chart(fig_out, use_container_width=True)
+
+    with col2:
+        st.markdown("**UK Underperforming** (worse than expected)")
+        fig_under = go.Figure()
+        fig_under.add_trace(go.Bar(
+            y=top_underperformers['priority_name'].to_list()[::-1],
+            x=top_underperformers['residual'].to_list()[::-1],
+            orientation='h',
+            marker_color='#C62828',
+            text=[f"{r:.1f}" for r in top_underperformers['residual'].to_list()[::-1]],
+            textposition='outside'
+        ))
+        fig_under.update_layout(
+            xaxis_title="Residual (UK Position vs Expected)",
+            yaxis_title="",
+            height=400,
+            margin=dict(l=250, r=60, t=20, b=50)
+        )
+        st.plotly_chart(fig_under, use_container_width=True)
+
+    st.caption(f"Regression: UK Share Trend ≈ {slope:.2f} × UK Momentum + {intercept:.2f}")
+
+    # ---------------------------------------------------------------------
+    # OPPORTUNITIES VS CONCERNS TABLES
+    # ---------------------------------------------------------------------
+    st.markdown("---")
+    st.subheader("Opportunities & Concerns")
+
+    # Opportunities
+    st.markdown("**Top Opportunities** — strongest positive UK momentum")
+    opportunities = scatter_data.filter(
+        pl.col('momentum_balance') > 0
+    ).sort('momentum_balance', descending=True).head(10)
+
+    if opportunities.height > 0:
+        opp_display = opportunities.select([
+            'priority_name', 'parent_sector', 'momentum_balance'
+        ]).rename({
+            'priority_name': 'Priority',
+            'parent_sector': 'Sector',
+            'momentum_balance': 'UK Momentum'
+        })
+        st.dataframe(
+            opp_display.to_pandas(),
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Priority": st.column_config.TextColumn(width="large"),
+                "Sector": st.column_config.TextColumn(width="medium"),
+                "UK Momentum": st.column_config.NumberColumn(format="%+d"),
+            }
+        )
+    else:
+        st.info("No opportunities identified.")
+
+    # Concerns
+    st.markdown("**Top Concerns** — strongest negative UK momentum")
+    concerns_chart = scatter_data.filter(
+        pl.col('momentum_balance') < 0
+    ).sort('momentum_balance').head(10)
+
+    if concerns_chart.height > 0:
+        concern_display = concerns_chart.select([
+            'priority_name', 'parent_sector', 'momentum_balance'
+        ]).rename({
+            'priority_name': 'Priority',
+            'parent_sector': 'Sector',
+            'momentum_balance': 'UK Momentum'
+        })
+        st.dataframe(
+            concern_display.to_pandas(),
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Priority": st.column_config.TextColumn(width="large"),
+                "Sector": st.column_config.TextColumn(width="medium"),
+                "UK Momentum": st.column_config.NumberColumn(format="%+d"),
+            }
+        )
+    else:
+        st.info("No concerns identified.")
+
+    # ---------------------------------------------------------------------
+    # STRATEGIC CONCERNS
+    # ---------------------------------------------------------------------
+    st.markdown("---")
+    st.subheader("Strategic Concerns")
+    st.markdown("Priorities where UK momentum **and** UK share trend are both negative.")
+
+    # Filter to strategic concerns (both negative), deduplicate by priority_name
+    concerns = scatter_data.filter(
+        (pl.col('momentum_balance') < 0) & (pl.col('uk_position') < 0)
+    ).unique(subset=['priority_name']).sort('momentum_balance')
+
+    if concerns.height > 0:
+        st.warning(f"**{concerns.height} priorities** identified as strategic concerns.")
+        st.caption("Sorted by UK momentum (most negative first). These priorities may require intervention or managed exit.")
+
+        # Display as table
+        concerns_display = concerns.select([
+            'priority_name', 'parent_sector', 'momentum_balance', 'core_topic_count'
+        ]).rename({
+            'priority_name': 'Priority',
+            'parent_sector': 'Sector',
+            'momentum_balance': 'UK Momentum',
+            'core_topic_count': 'Topics'
+        })
+
+        st.dataframe(
+            concerns_display.to_pandas(),
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Priority": st.column_config.TextColumn(width="large"),
+                "Sector": st.column_config.TextColumn(width="medium"),
+                "UK Momentum": st.column_config.NumberColumn(format="%+d", help="UK trajectory: recent vs early"),
+                "Topics": st.column_config.NumberColumn(format="%d"),
+            }
+        )
+    else:
+        st.success("No strategic concerns identified.")
+
+    # ---------------------------------------------------------------------
+    # PRIORITY BROWSER
+    # ---------------------------------------------------------------------
+    st.markdown("---")
+    st.subheader("Priority Browser")
+    st.markdown("Explore individual priorities and their mapped research topics.")
+
+    # Sector filter
+    selected_sector = st.selectbox(
+        "Filter by Sector",
+        options=["All Sectors"] + list(SECTOR_COLORS.keys()),
+        index=0,
+        key="priority_browser_sector"
+    )
+
+    # Get priorities with sector info
+    priorities_with_sector = priorities.join(
+        pl.DataFrame([
+            {'priority_id': pid, 'parent_sector': pdata.get('parent_sector', 'Unknown')}
+            for pid, pdata in priority_details.items()
+        ]),
+        on='priority_id',
+        how='left'
+    )
+
+    if selected_sector != "All Sectors":
+        priorities_with_sector = priorities_with_sector.filter(
+            pl.col('parent_sector') == selected_sector
+        )
+
+    # Sort by momentum (worst first to highlight concerns)
+    priorities_with_sector = priorities_with_sector.join(
+        priority_metrics.select(['priority_id', 'momentum_balance', 'uk_position']),
+        on='priority_id',
+        how='left'
+    ).sort('momentum_balance')
+
+    # Priority selector
+    priority_options = priorities_with_sector.select(['priority_id', 'priority_name']).to_dicts()
+    priority_names = {p['priority_id']: p['priority_name'] for p in priority_options}
+
+    if len(priority_names) == 0:
+        st.info("No priorities found for selected sector.")
+        return
+
+    # Use session state to preserve selection
+    priority_key = f"priority_select_{selected_sector}"
+    selected_priority_id = st.selectbox(
+        "Select Priority",
+        options=list(priority_names.keys()),
+        format_func=lambda x: priority_names[x],
+        index=0,
+        key=priority_key
+    )
+
+    # Display priority details
+    priority_row = priorities_with_sector.filter(
+        pl.col('priority_id') == selected_priority_id
+    ).row(0, named=True)
+
+    priority_detail = priority_details.get(selected_priority_id, {})
+
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        momentum = priority_row.get('momentum_balance', 0)
+        momentum_label = "Improving" if momentum > 0 else ("Declining" if momentum < 0 else "Stable")
+        st.metric("UK Momentum", momentum_label, delta=momentum)
+    with col2:
+        uk_pos = priority_row.get('uk_position', 0)
+        uk_pos_label = "Gaining" if uk_pos > 0 else ("Losing" if uk_pos < 0 else "Stable")
+        st.metric("UK Share Trend", uk_pos_label, delta=uk_pos)
+    with col3:
+        st.metric("Core Topics", priority_row.get('core_topic_count', 0))
+    with col4:
+        st.metric("UK Papers", format_number(priority_row.get('total_uk_papers', 0)))
+
+    st.caption("**UK Momentum** = is UK's trajectory improving or worsening? (recent vs early period). **UK Share Trend** = is UK's share increasing or decreasing overall? These can differ: e.g. positive momentum + negative trend = recovering from decline.")
+
+    # Show description
+    if priority_detail.get('description'):
+        st.markdown(f"**Description:** {priority_detail['description']}")
+
+    # Show mapped topics
+    st.markdown("#### Mapped Research Topics")
+    st.caption("**UK Momentum** compares UK's recent trajectory (2016-24) vs early period (2010-17). 🚀 Accelerating = UK improving faster. 🚨 Rapid Retreat = UK declining faster.")
+
+    priority_topics = mappings.filter(pl.col('priority_id') == selected_priority_id)
+
+    if priority_topics.height > 0:
+        # Format with icons to avoid Streamlit auto-styling and be more readable
+        topics_df = priority_topics.to_pandas()
+
+        # Map trajectory patterns to icons + text
+        momentum_map = {
+            'ACCELERATING': '🚀 Accelerating',
+            'CONSOLIDATING': '📊 Consolidating',
+            'RECOVERING': '📈 Recovering',
+            'STEADY': '➡️ Steady',
+            'STABILISING': '⏸️ Stabilising',
+            'DECELERATING': '📉 Decelerating',
+            'DECLINING': '⬇️ Declining',
+            'RAPID_RETREAT': '🚨 Rapid Retreat',
+        }
+        topics_df['UK Momentum'] = topics_df['trajectory_pattern'].map(
+            lambda x: momentum_map.get(x, x)
+        )
+
+        # Rename columns
+        topics_df = topics_df.rename(columns={
+            'topic_name': 'Topic',
+            'field_name': 'Field',
+            'current_uk_papers': 'UK Papers',
+            'current_uk_share': 'UK Share %'
+        })
+
+        # Select columns for display (dropping uk_trend as requested)
+        topics_display = topics_df[['Topic', 'Field', 'UK Momentum', 'UK Papers', 'UK Share %']]
+
+        st.dataframe(
+            topics_display,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Topic": st.column_config.TextColumn(width="large"),
+                "Field": st.column_config.TextColumn(width="medium"),
+                "UK Momentum": st.column_config.TextColumn(width="small", help="UK trajectory: comparing recent vs early period"),
+                "UK Papers": st.column_config.NumberColumn(format="%d"),
+                "UK Share %": st.column_config.NumberColumn(format="%.2f%%"),
+            }
+        )
+    else:
+        st.info("No topics mapped to this priority.")
+
+
+# =============================================================================
 # MAIN APP
 # =============================================================================
 
@@ -1601,7 +2294,7 @@ def main():
         initial_sidebar_state="expanded"
     )
 
-    # Custom CSS (fonts handled by .streamlit/config.toml)
+    # Custom CSS (font handled by .streamlit/config.toml)
     st.markdown("""
     <style>
         .block-container {padding-top: 2rem;}
@@ -1627,17 +2320,14 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
-    # Scroll to top on navigation
-    from streamlit_scroll_to_top import scroll_to_here
-    scroll_to_here(0, key='scroll_top')
-
     # View options
-    views = ["Topic Browser", "Topic Detail", "Bloc Comparison", "Country-by-Country Analysis", "UK Strengths Dashboard"]
+    views = ["Topic Browser", "Topic Detail", "Bloc Comparison", "Country-by-Country Analysis", "UK Strengths Dashboard", "Strategic Alignment"]
 
     # Handle navigation requests (must happen before widget is created)
     # Setting session state directly before widget creation works
     if '_navigate_to' in st.session_state:
         st.session_state['view_selector'] = st.session_state.pop('_navigate_to')
+        st.session_state['_should_scroll'] = True  # Mark that we should scroll
 
     # Sidebar navigation
     st.sidebar.title("UK Research Explorer")
@@ -1650,33 +2340,27 @@ def main():
         key="view_selector"
     )
 
+    # Scroll to top only on view change
+    from streamlit_scroll_to_top import scroll_to_here
+    if st.session_state.get('_should_scroll', False):
+        scroll_to_here(0, key='scroll_top')
+        st.session_state['_should_scroll'] = False
+    # Track current view for detecting changes
+    prev_view = st.session_state.get('_prev_view', None)
+    if prev_view != view:
+        st.session_state['_prev_view'] = view
+        if prev_view is not None:  # Don't scroll on initial load
+            scroll_to_here(0, key='scroll_top_view_change')
+
     # About section
     st.sidebar.markdown("---")
-    st.sidebar.markdown("### About")
-    st.sidebar.markdown("""
-    Analysis of UK research positioning across 4,516 topics using OpenAlex data (2010-2024).
+    st.sidebar.caption("""
+    UK research trends across 4,516 topics (OpenAlex 2010-24).
+    Mapped to Industrial Strategy priorities.
 
-    Compares UK trends against three major science blocs: **Europe** (EU27+EFTA+Israel), **USA**, and **China**.
+    **Ben Johnson**, University of Strathclyde
     """)
-
-    st.sidebar.markdown("### Key Findings")
-    st.sidebar.markdown("""
-    **UK Momentum:**
-    - 1,337 topics accelerating
-    - 1,136 topics in rapid retreat
-    - 1,438 topics steady
-
-    **Context matters:**
-    - 73% of topics show UK-specific patterns
-    - 9% reflect structural shifts (multiple blocs declining)
-    - 5% show China consolidating share
-
-    **Method:** Rolling 5-year windows comparing recent period (2016-24) vs early period (2010-17).
-    """)
-
-    st.sidebar.markdown("---")
-    st.sidebar.caption("Compiled by Ben Johnson, University of Strathclyde.")
-    st.sidebar.caption("Feedback welcome: ben.johnson \\[at\\] strath.ac.uk")
+    st.sidebar.caption("ben.johnson \\[at\\] strath.ac.uk")
 
     # Load data
     with st.spinner("Loading data..."):
@@ -1693,6 +2377,8 @@ def main():
         country_analysis(data)
     elif view == "UK Strengths Dashboard":
         uk_strengths_dashboard(data)
+    elif view == "Strategic Alignment":
+        strategic_alignment(data)
 
 
 if __name__ == "__main__":

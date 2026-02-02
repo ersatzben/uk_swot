@@ -4,14 +4,10 @@ backgroundColor = "#FFFFFF"
 secondaryBackgroundColor = "#F5F5F5"
 textColor = "#212121"
 
-# Typography - Roboto Mono throughout
-font = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap"
-headingFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap"
-codeFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap"
-
-# Font weights - 200 for body, 400 for headings
-baseFontWeight = 200
-headingFontWeights = [400, 400, 400, 400, 400, 400]
+# Typography - Roboto Mono throughout (Streamlit 1.50+ format with fallback)
+font = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap, monospace"
+headingFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap, monospace"
+codeFont = "'Roboto Mono':https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap, monospace"
 
 [server]
 maxUploadSize = 50
