@@ -702,7 +702,7 @@ def topic_detail(data):
         st.info(f"**{pattern_info['icon']} {pattern_info['description']}** {pattern_info['guidance']}")
 
     # Key metrics
-    st.markdown("### Key Metrics (2020-2024)")
+    st.markdown("### Key Metrics (2021-2025)")
 
     m1, m2, m3, m4 = st.columns(4)
 
@@ -721,10 +721,10 @@ def topic_detail(data):
     m5, m6, m7, m8 = st.columns(4)
     with m5:
         early_slope = topic_row.get('early_uk_share_slope', 0)
-        st.metric("Long-term Trend (2010-17)", f"{early_slope*100:+.3f}pp/window" if early_slope else "N/A")
+        st.metric("Long-term Trend (2010-20)", f"{early_slope*100:+.3f}pp/window" if early_slope else "N/A")
     with m6:
         recent_slope = topic_row.get('recent_uk_share_slope', 0)
-        st.metric("Short-term Trend (2016-24)", f"{recent_slope*100:+.3f}pp/window" if recent_slope else "N/A")
+        st.metric("Short-term Trend (2017-25)", f"{recent_slope*100:+.3f}pp/window" if recent_slope else "N/A")
     with m7:
         peak_share = topic_row.get('peak_uk_share', 0)
         st.metric("Peak UK Share", format_percent(peak_share * 100 if peak_share else None, include_sign=False))
@@ -734,7 +734,7 @@ def topic_detail(data):
 
     # Trajectory chart with early/recent shading
     st.markdown("---")
-    st.markdown("### UK Share Trajectory (2010-2024)")
+    st.markdown("### UK Share Trajectory (2010-2025)")
 
     topic_windows = windows.filter(pl.col("topic_id") == topic_id).sort("window_start")
 
@@ -748,9 +748,9 @@ def topic_detail(data):
         y_min = min(uk_shares) * 0.9 if uk_shares else 0
         y_max = max(uk_shares) * 1.1 if uk_shares else 10
 
-        # Early period shading (windows 0-5)
+        # Early period shading (windows 0-6: 2010-14 through 2016-20)
         fig.add_vrect(
-            x0=-0.5, x1=5.5,
+            x0=-0.5, x1=6.5,
             fillcolor="rgba(33, 150, 243, 0.1)",
             layer="below",
             line_width=0,
@@ -760,9 +760,9 @@ def topic_detail(data):
             annotation_font_color="rgba(33, 150, 243, 0.7)"
         )
 
-        # Recent period shading (windows 6-10)
+        # Recent period shading (windows 7-11: 2017-21 through 2021-25)
         fig.add_vrect(
-            x0=5.5, x1=10.5,
+            x0=6.5, x1=11.5,
             fillcolor="rgba(76, 175, 80, 0.1)",
             layer="below",
             line_width=0,
@@ -804,7 +804,7 @@ def topic_detail(data):
     # Country comparison with trajectory patterns
     st.markdown("---")
     st.markdown("### Country Comparison")
-    st.caption("Momentum patterns based on early (2010-17) vs recent (2016-24) trajectory slopes")
+    st.caption("Momentum patterns based on early (2010-20) vs recent (2017-25) trajectory slopes")
 
     # Use the new country trajectory data
     country_traj = data['country_trajectories']
@@ -1227,7 +1227,7 @@ def uk_strengths_dashboard(data):
 
     # Summary metrics
     st.markdown("### UK Momentum Overview")
-    st.caption("Based on trajectory patterns comparing recent (2016-24) vs early (2010-17) rolling windows")
+    st.caption("Based on trajectory patterns comparing recent (2017-25) vs early (2010-20) rolling windows")
 
     # Count trajectory patterns
     pattern_counts = trajectories.group_by("trajectory_pattern").len()
@@ -1526,7 +1526,7 @@ def country_analysis(data):
     # Overview table
     st.markdown("### Country Overview")
     st.caption("Number of topics (out of ~4,500) where each country shows each trajectory pattern. "
-               "Patterns compare rolling 5-year windows: recent (2016-20 to 2020-24) vs early (2010-14 to 2015-19).")
+               "Patterns compare rolling 5-year windows: recent (2017-21 to 2021-25) vs early (2010-14 to 2016-20).")
 
     # Sort by momentum score
     summary_sorted = country_summary.sort("momentum_score", descending=True)
@@ -1769,7 +1769,7 @@ def strategic_alignment(data):
         **Both metrics are UK-specific** — they measure different aspects of UK research performance.
 
         **UK Momentum** measures whether UK's trajectory is improving or worsening:
-        - Compares UK's **recent** performance (2016-24) against its **early** performance (2010-17)
+        - Compares UK's **recent** performance (2017-25) against its **early** performance (2010-20)
         - Calculated as: (Accelerating + Consolidating topics) − (Declining + Rapid Retreat topics)
         - **Positive values** (e.g., +10) mean UK is performing better recently than it was historically
         - **Negative values** (e.g., −5) mean UK's trajectory has worsened — declining faster or growing slower than before
@@ -2232,7 +2232,7 @@ def strategic_alignment(data):
 
     # Show mapped topics
     st.markdown("#### Mapped Research Topics")
-    st.caption("**UK Momentum** compares UK's recent trajectory (2016-24) vs early period (2010-17). 🚀 Accelerating = UK improving faster. 🚨 Rapid Retreat = UK declining faster.")
+    st.caption("**UK Momentum** compares UK's recent trajectory (2017-25) vs early period (2010-20). 🚀 Accelerating = UK improving faster. 🚨 Rapid Retreat = UK declining faster.")
 
     priority_topics = mappings.filter(pl.col('priority_id') == selected_priority_id)
 
@@ -2355,7 +2355,7 @@ def main():
     # About section
     st.sidebar.markdown("---")
     st.sidebar.caption("""
-    UK research trends across 4,516 topics (OpenAlex 2010-24).
+    UK research trends across 4,516 topics (OpenAlex 2010-25).
     Mapped to Industrial Strategy priorities.
 
     **Ben Johnson**, University of Strathclyde
