@@ -1752,7 +1752,7 @@ def strategic_alignment(data):
         st.markdown("""
         **Source Documents**: 10 UK Industrial Strategy documents (main strategy + 8 sector plans)
 
-        **Priority Extraction**: An LLM extracted 209 unique policy priorities from the documents,
+        **Priority Extraction**: An LLM extracted 208 unique policy priorities from the documents,
         capturing priority names, descriptions, keywords, and source references.
 
         **Topic Matching**: Each priority was matched to OpenAlex research topics using:
@@ -1760,7 +1760,7 @@ def strategic_alignment(data):
         2. Top-75 candidate topics selected per priority by cosine similarity
         3. LLM validation classifying each candidate as Core, Peripheral, or Not Relevant
 
-        **Result**: 1,681 core topic mappings across 203 priorities, covering ~15% of the OpenAlex topic space.
+        **Result**: 1,699 core topic mappings across 207 priorities, covering ~15% of the OpenAlex topic space.
         """)
 
     # Explanation of metrics

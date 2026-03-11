@@ -4,13 +4,14 @@
     "source": "Industrial Strategy 2025 (Invest 2035)",
     "extraction_date": "2026-02-01",
     "total_raw_priorities": 226,
-    "total_unique_priorities": 209
+    "total_unique_priorities": 208
   },
   "summary": {
-    "total_priorities": 209,
+    "total_priorities": 208,
+    "unique_priority_ids": 208,
     "by_sector": {
       "Advanced Manufacturing": 18,
-      "Clean Energy Industries": 22,
+      "Clean Energy Industries": 21,
       "Creative Industries": 16,
       "Cross-cutting": 56,
       "Defence": 18,
@@ -19,8 +20,10 @@
       "Life Sciences": 26,
       "Professional and Business Services": 18
     },
-    "high_confidence": 174,
-    "merged_from_duplicates": 12
+    "high_confidence": 173,
+    "merged_from_duplicates": 13,
+    "rows_with_evidence_quote": 193,
+    "rows_with_funding_commitments": 79
   },
   "priorities": [
     {
@@ -48,6 +51,7 @@
         "GBP 20 million+ for Future of Flight 2025-26",
         "Six regulatory reforms agreed by Regulatory Innovation Office"
       ],
+      "evidence": "The Government will support the development of safe, secure, and sustainable advanced air mobility aircraft, such as drones and electric vertical take-off and landing (eVTOLs) aircraft, through the Future of Flight programme, which will deliver the regulation, technologies, and infrastructure required for routine use.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -70,6 +74,8 @@
       "source_chunks": [
         7
       ],
+      "evidence": "Double annual business investment in the sector from GBP 21 billion to GBP 39 billion in 2035.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
@@ -96,6 +102,12 @@
       "source_chunks": [
         10,
         28
+      ],
+      "evidence": "Advanced Materials \u2013 with the 2,700 active companies in the UK poised to seize opportunities created by growing demand from other sectors, from Clean Energy Industries to Digital and Technologies.",
+      "funding_commitments": [
+        "Support for National Composite Centre in Bristol",
+        "Support for Glass Futures in St Helens",
+        "Scaling up R&D in composites"
       ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
@@ -135,6 +147,7 @@
         "GBP 395 million EPSRC investment in Henry Royce Institute to 2027",
         "GBP 19.6 million for 3D Nanoscale Metamaterials Hub"
       ],
+      "evidence": "To address fragmentation in the sector and accelerate pull through of materials from R&D to manufacturing, the Government has dedicated an initial GBP 50 million to deliver Phase 1 of a new, ambitious National Materials Innovation Programme (NMIP).",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -162,6 +175,11 @@
         13,
         25,
         28
+      ],
+      "evidence": "Aerospace \u2013 with our expertise in jet engines, wings, and advanced systems for large commercial aircraft putting the sector in a strong position to capitalise on demand as the next generation of planes is developed.",
+      "funding_commitments": [
+        "10-year budget for Aerospace Technology Institute",
+        "Aerospace funding programmes available across UK"
       ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
@@ -200,6 +218,7 @@
         "GBP 35 billion private investment target to 2050",
         "GBP 63 million Advanced Fuels Fund for 2025-26"
       ],
+      "evidence": "To ensure long-term R&D funding is matched with aircraft development cycles, Government will extend the Aerospace Technology Institute (ATI) Programme with up to GBP 2.3 billion to 2035, continuing to partner and share innovation risk with the businesses it supports.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -237,6 +256,7 @@
         "GBP 20 billion sector turnover target by 2035",
         "Agri-Tech Export Accelerator Programme"
       ],
+      "evidence": "Government will allocate at least GBP 200 million for the Farming Innovation Programme (FIP) to 2030, offering targeted funding to drive innovation in agriculture. This long-term investment will support increasing productivity in the sector, progress towards net zero and reduce the sector's reliance on seasonal migrant labour in horticulture.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -274,6 +294,7 @@
         "GBP 680 million AESC Gigafactory finance (UKEF/NWF)",
         "Agratas multibillion pound gigafactory project"
       ],
+      "evidence": "Through government investment of GBP 452 million to 2030, the Battery Innovation Programme will build on this, encouraging cross-sector innovation in emerging and next generation technologies through technology transfer funding that will connect academic researchers with UK industry and investor partnership funding.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -308,6 +329,7 @@
         "GBP 600 million+ in R&D funding for CAM",
         "GBP 1.5 million for Formula Student AI"
       ],
+      "evidence": "This funding is underpinned by the world-leading Automated Vehicles Act 2024, which paves the way for self-driving vehicles to be used safely and securely on British roads by removing the need for a safety driver. Alongside full implementation of the act by 2027, the Government is also enabling commercial pilots by Spring 2026.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -340,6 +362,13 @@
         19,
         28
       ],
+      "evidence": "Automotive, with our record of innovation in propulsion, energy systems, and driverless technologies giving the UK a competitive edge in the transition to Zero Emission Vehicles and Connected and Autonomous Mobility.",
+      "funding_commitments": [
+        "DRIVE35 programme with 10-year R&D funding commitment",
+        "Exploring pilot EV manufacturing cluster initiatives in North East and West Midlands",
+        "\u00a3400 million for charging infrastructure roll-out",
+        "Bringing Automated Vehicles Act fully into force"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
@@ -370,6 +399,7 @@
         "GBP 1 billion+ HVMC investment in R&D facilities to date",
         "Continued HVMC Technology Strategy support"
       ],
+      "evidence": "HVMC helps UK businesses develop and adopt engineering and manufacturing technology solutions to transform their manufacturing processes, enhancing their productivity and profitability. Since its establishment, HVMC has invested more than GBP 1 billion in a nationwide network of R&D facilities and worked with more than 36,000 companies.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -404,6 +434,7 @@
         "GBP 29 million/year Made Smarter Innovation to 2030",
         "GBP 12 million UK Data Sharing Infrastructure from April 2026"
       ],
+      "evidence": "MSI delivers collaborative R&D projects and industry-focused research in the field of Industrial Digital Technologies (IDTs) - including AI, 3D printing, 'smart factories' and Robotics. Since 2020, this GBP 129 million programme has yielded GBP 202 million in private investment, and led to the development of over 350 industrial digital technology solutions for manufacturers.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -431,6 +462,12 @@
       "source_chunks": [
         14,
         28
+      ],
+      "evidence": "Accelerate the uptake of robotics and 'lean processes' through an expansion of our Made Smarter Adoption programme for SMEs and initial funding of \u00a340 million for a new network for Robotics Adoption Hubs across the UK.",
+      "funding_commitments": [
+        "\u00a340 million for Robotics Adoption Hubs network",
+        "Up to \u00a399 million for Made Smarter Adoption programme expansion",
+        "Made Smarter scheme for Professional and Business Services"
       ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
@@ -463,6 +500,7 @@
       "funding_commitments": [
         "GBP 40 million initial investment for Robotics Adoption Hubs"
       ],
+      "evidence": "To drive technology adoption, we are launching a new RAS programme, with an initial investment of GBP 40 million, which will create a new network of physical Robotics Adoption Hubs with the expertise, equipment, and connections to accelerate firms' take-up of robotics.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -492,6 +530,7 @@
         "GBP 250 million Vishay semiconductor investment (Newport)",
         "GBP 42 million UKRI Strength in Places Fund (Seagate photonics)"
       ],
+      "evidence": "The Government will support electronics and machinery, providing strategic support for semiconductor and microelectronics innovation, including through UKRI and improved access to finance via the National Wealth Fund and British Business Bank.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -515,6 +554,10 @@
       "confidence": "medium",
       "source_chunks": [
         28
+      ],
+      "evidence": "Space \u2013 with our leadership as a spacefaring nation and our international partnerships helping the UK secure advantages in areas critical to defence and growth.",
+      "funding_commitments": [
+        "Space Industry Advisory Group partnership"
       ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
@@ -553,6 +596,7 @@
         "GBP 75 million bilateral civil R&D funding over five years",
         "GBP 7 million for regulatory sandboxes"
       ],
+      "evidence": "To ensure the sector can progress from innovation through to industrialisation we will focus and increase funding on the 5 priorities in the Space Industrial Plan and Launch, including through a targeted funding package of up to GBP 80 million over five years.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -592,6 +636,7 @@
         "GBP 400 million charging infrastructure investment",
         "GBP 1.4 billion for EV uptake support"
       ],
+      "evidence": "The 'Driving Research and Investment in Vehicle Electrification' (DRIVE35) initiative will ensure the UK remains at the forefront of zero-emission vehicle manufacturing. This ambitious package of interventions will support the latest R&D in strategic vehicle technologies, accelerate their commercial scale-up, and unlock investment across all aspects of automotive electrification.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
@@ -599,70 +644,51 @@
       "sort_order": 17
     },
     {
-      "priority_name": "Carbon Capture Usage and Storage (CCUS)",
-      "parent_sector": "Clean Energy Industries",
-      "description": "Leveraging the UK's significant CO2 storage potential and transferable skills from oil and gas to become the CO2 storage hub of Europe.",
-      "keywords": [
-        "CCUS",
-        "carbon capture",
-        "CO2 storage",
-        "greenhouse gas removals",
-        "decarbonisation"
-      ],
-      "evidence_quote": "The Government announced up to \u00a321.7 billion of available funding over 25 years to launch the UK's ambitious CCUS industry. We have reached financial close with East Coast Cluster and Liverpool Bay CCS, securing around \u00a38 billion of private sector investment.",
-      "commitments": [
-        "Up to \u00a321.7 billion over 25 years for CCUS",
-        "\u00a39.4 billion in capital budgets over Spending Review period",
-        "Support for Acorn CCUS project in Scotland"
-      ],
-      "confidence": "high",
-      "source_chunks": [
-        1,
-        10,
-        25,
-        29
-      ],
-      "source_documents": [
-        "UK Industrial Strategy - Main Policy Paper (CP 1451)"
-      ],
-      "priority_id": "clean_energy_industries_carbon_capture_usage_and_storage_ccus",
-      "sort_order": 18
-    },
-    {
       "priority_name": "Carbon Capture, Usage and Storage (CCUS)",
       "parent_sector": "Clean Energy Industries",
       "description": "Critical infrastructure for decarbonising energy-intensive industries (cement, refining) and enabling net zero. UK has 78 billion tonnes CO2 storage capacity. Government committed up to GBP 21.7 billion over 25 years. East Coast Cluster and HyNet operational, Acorn and Viking clusters supported.",
       "keywords": [
+        "Acorn",
         "CCUS",
-        "carbon capture",
         "CO2 storage",
         "East Coast Cluster",
         "HyNet",
-        "Acorn",
         "Viking",
-        "industrial decarbonisation",
-        "greenhouse gas removals"
+        "carbon capture",
+        "decarbonisation",
+        "greenhouse gas removals",
+        "industrial decarbonisation"
       ],
-      "evidence_quote": "The Government is providing increased backing to CCUS by allocating GBP 9.4bn in capital budgets over the Spending Review period. This will maximise deployment to fill the storage capacity of the East Coast Cluster and HyNet Cluster.",
+      "evidence": "The Government announced up to \u00a321.7 billion of available funding over 25 years to launch the UK's ambitious CCUS industry. We have reached financial close with East Coast Cluster and Liverpool Bay CCS, securing around \u00a38 billion of private sector investment.",
+      "evidence_quote": "The Government announced up to \u00a321.7 billion of available funding over 25 years to launch the UK's ambitious CCUS industry. We have reached financial close with East Coast Cluster and Liverpool Bay CCS, securing around \u00a38 billion of private sector investment.",
+      "funding_commitments": [
+        "50% UK local content target from 2030 (industry-led)",
+        "GBP 8 billion private sector investment secured for ECC and Liverpool Bay",
+        "GBP 9.4 billion capital budgets over Spending Review period",
+        "Support announced for Acorn and Viking clusters",
+        "Support for Acorn CCUS project in Scotland",
+        "Two CCUS clusters online by 2029",
+        "Up to GBP 21.7 billion over 25 years",
+        "Up to \u00a321.7 billion over 25 years for CCUS",
+        "\u00a39.4 billion in capital budgets over Spending Review period"
+      ],
       "confidence": "high",
       "source_chunks": [
-        3,
-        13,
-        14
-      ],
-      "commitments": [
-        "Up to GBP 21.7 billion over 25 years",
-        "GBP 9.4 billion capital budgets over Spending Review period",
-        "GBP 8 billion private sector investment secured for ECC and Liverpool Bay",
-        "Support announced for Acorn and Viking clusters",
-        "50% UK local content target from 2030 (industry-led)",
-        "Two CCUS clusters online by 2029"
+        "1",
+        "10",
+        "13",
+        "14",
+        "25",
+        "29",
+        "3"
       ],
       "source_documents": [
-        "Clean Energy Industries sector plan"
+        "Clean Energy Industries sector plan",
+        "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
+      "merge_count": 2,
       "priority_id": "clean_energy_industries_carbon_capture_usage_and_storage_ccus",
-      "sort_order": 19
+      "sort_order": 18
     },
     {
       "priority_name": "Clean Energy Exports",
@@ -690,11 +716,20 @@
         "Backing domestic SMRs for European deployment",
         "New Trade Strategy published"
       ],
+      "evidence": "The UK's clean energy exports have grown by 158% since 2015. Our growing export industry serves diverse global markets, particularly the European Union and the United States. Supplying the goods and services to enable the global clean energy transition could be worth GBP 1 trillion to UK businesses to 2030.",
+      "funding_commitments": [
+        "GBP 80 billion UKEF finance capacity",
+        "GBP 10 billion clean growth finance target 2024-2029",
+        "GBP 13 billion UKEF direct lending available",
+        "New UKEF Critical Goods Guarantee product",
+        "Backing domestic SMRs for European deployment",
+        "New Trade Strategy published"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_clean_energy_exports",
-      "sort_order": 20
+      "sort_order": 19
     },
     {
       "priority_name": "Clean Energy Investment Target",
@@ -712,11 +747,13 @@
       "source_chunks": [
         7
       ],
+      "evidence": "At least a doubling of current investment levels across our frontier Clean Energy Industries to over GBP 30 billion per year by 2035.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "clean_energy_industries_clean_energy_investment_target",
-      "sort_order": 21
+      "sort_order": 20
     },
     {
       "priority_name": "Clean Energy Supply Chains",
@@ -745,11 +782,19 @@
         "70% UK content target for Sizewell C",
         "Circular Economy Roadmap for Clean Energy Industries by 2026"
       ],
+      "evidence": "Leveraging private investment into clean energy sectors via GBE, including to supply chains via a new GBP 1 billion Clean Energy Supply Chain fund aligned with the Clean Energy Industries Sector Plan. The Fund will offer support to companies who have significant potential to grow supply chains.",
+      "funding_commitments": [
+        "GBP 1 billion Clean Energy Supply Chain Fund",
+        "GBP 544 million Clean Industry Bonus allocated",
+        "50% UK content targets for CCUS and hydrogen from 2030",
+        "70% UK content target for Sizewell C",
+        "Circular Economy Roadmap for Clean Energy Industries by 2026"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_clean_energy_supply_chains",
-      "sort_order": 22
+      "sort_order": 21
     },
     {
       "priority_name": "Electricity Networks",
@@ -781,11 +826,20 @@
         "Advanced Procurement Mechanism via Ofgem",
         "GBP 10 billion per year investment in transmission networks to 2030"
       ],
+      "evidence": "Transforming the electricity network at a scale and pace not seen since the 1960s, so the grid can be an enabler not just for investment in clean power infrastructure but also across all sectors of the economy. This requires action to both build new grid capacity faster, investing strategically ahead of need.",
+      "funding_commitments": [
+        "Over GBP 60 billion proposed Transmission Owner investment 2026-2031",
+        "Connections Accelerator Service launching end of 2025",
+        "Industry Growth Plan development during 2025",
+        "Exploring Market Demand Guarantee for network equipment",
+        "Advanced Procurement Mechanism via Ofgem",
+        "GBP 10 billion per year investment in transmission networks to 2030"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_electricity_networks",
-      "sort_order": 23
+      "sort_order": 22
     },
     {
       "priority_name": "Floating Offshore Wind",
@@ -813,11 +867,18 @@
         "Up to GBP 80 million for Future Port Talbot project",
         "Celtic Sea Leasing Round 5 for FLOW"
       ],
+      "evidence": "The Floating Offshore Wind Taskforce estimates that the global market could be worth GBP 1 trillion by 2050. Key UK deployment zones in the North and Celtic Seas, alongside the UK's existing expertise in the fabrication of floating structures, also brings significant opportunities for the transition of skilled workers from carbon intensive sectors.",
+      "funding_commitments": [
+        "Reserved CIB funding for floating offshore wind supply chain",
+        "GBP 55 million for Port of Cromarty Firth",
+        "Up to GBP 80 million for Future Port Talbot project",
+        "Celtic Sea Leasing Round 5 for FLOW"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_floating_offshore_wind",
-      "sort_order": 24
+      "sort_order": 23
     },
     {
       "priority_name": "Fusion Energy",
@@ -846,11 +907,19 @@
         "UK Fusion Prospectus launch",
         "Starmaker One - GBP 100 million fusion investment leveraged"
       ],
+      "evidence": "Delivering record investment in R&D for fusion energy, investing over GBP 2.5 billion over 5 years, including progressing the Spherical Tokamak for Energy Production (STEP) programme - supporting thousands of jobs. STEP will design and build a prototype fusion power station at the site of an old coal fired power plant in West Burton.",
+      "funding_commitments": [
+        "Over GBP 2.5 billion R&D investment over 5 years",
+        "STEP prototype fusion power plant by 2040",
+        "Fusion-specific National Policy Statement",
+        "UK Fusion Prospectus launch",
+        "Starmaker One - GBP 100 million fusion investment leveraged"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_fusion_energy",
-      "sort_order": 25
+      "sort_order": 24
     },
     {
       "priority_name": "Great British Energy",
@@ -877,11 +946,19 @@
         "GBP 300 million announced for offshore wind",
         "GBP 700 million additional for IS-aligned sectors"
       ],
+      "evidence": "Establishing Great British Energy (GBE) to develop, invest in, build and operate clean energy projects and supply chains across the UK. Great British Energy and Great British Energy - Nuclear (GBE-N) will invest more than GBP 8.3 billion over this Parliament in homegrown clean power.",
+      "funding_commitments": [
+        "Over GBP 8.3 billion investment over Parliament",
+        "GBP 1 billion Clean Energy Supply Chain Fund",
+        "GBP 200 million for local and community energy projects",
+        "GBP 300 million announced for offshore wind",
+        "GBP 700 million additional for IS-aligned sectors"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_great_british_energy",
-      "sort_order": 26
+      "sort_order": 25
     },
     {
       "priority_name": "Greenhouse Gas Removals (GGRs)",
@@ -905,11 +982,16 @@
         "Consulting on bringing GGR technologies into UK Emissions Trading Scheme",
         "Consultation on Non-Pipeline Transport for CO2 in 2025"
       ],
+      "evidence": "Demand for Greenhouse Gas Removals (GGRs) will also rise rapidly, particularly as some sectors, such as aviation, are likely to retain some residual emissions. The National Infrastructure Commission (NIC) notes that GGRs could become 'a major new infrastructure sector for the UK worth billions per year by 2050'.",
+      "funding_commitments": [
+        "Consulting on bringing GGR technologies into UK Emissions Trading Scheme",
+        "Consultation on Non-Pipeline Transport for CO2 in 2025"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_greenhouse_gas_removals_ggrs",
-      "sort_order": 27
+      "sort_order": 26
     },
     {
       "priority_name": "Heat Pumps",
@@ -928,7 +1010,18 @@
         "heating",
         "installer training"
       ],
-      "evidence": "",
+      "evidence": "The Government recently announced GBP 13.2 billion of public investment for the Warm Homes Plan over the Spending Review Period, including GBP 5 billion of financial transactions. This investment will be allocated across schemes that support the roll out of heat pumps, alongside energy efficiency measures and other low-carbon technologies.",
+      "evidence_quote": "The Government recently announced GBP 13.2 billion of public investment for the Warm Homes Plan over the Spending Review Period, including GBP 5 billion of financial transactions. This investment will be allocated across schemes that support the roll out of heat pumps, alongside energy efficiency measures and other low-carbon technologies.",
+      "funding_commitments": [
+        "Clean Heat Market Mechanism from April 2025",
+        "Future Homes and Buildings Standard for zero-carbon ready buildings",
+        "GBP 13.2 billion for Warm Homes Plan",
+        "GBP 7,500 grant per home via Boiler Upgrade Scheme",
+        "Heat Pump Investment Accelerator Competition",
+        "Heat Training Grant extended - 5,500 heat pump professionals trained by March 2026",
+        "Reducing planning red-tape for heat pump installation",
+        "\u00a313.2 billion for Warm Homes Plan"
+      ],
       "confidence": "high",
       "source_chunks": [
         "14",
@@ -943,7 +1036,7 @@
       ],
       "merge_count": 2,
       "priority_id": "clean_energy_industries_heat_pumps",
-      "sort_order": 28
+      "sort_order": 27
     },
     {
       "priority_name": "Hydrogen",
@@ -961,7 +1054,19 @@
         "hydrogen to power",
         "industrial decarbonisation"
       ],
-      "evidence": "",
+      "evidence": "Establishing the UK's first regional hydrogen network from 2031, supported by over GBP 500 million of government support for hydrogen infrastructure. This network will facilitate the production, storage and transportation of low-carbon hydrogen to support its use in key sectors locally.",
+      "evidence_quote": "Establishing the UK's first regional hydrogen network from 2031, supported by over GBP 500 million of government support for hydrogen infrastructure. This network will facilitate the production, storage and transportation of low-carbon hydrogen to support its use in key sectors locally.",
+      "funding_commitments": [
+        "50% UK local content target from 2030 (industry-led)",
+        "Considering expansion of Clean Industry Bonus to hydrogen",
+        "DESNZ to shorten time to award support for hydrogen production projects",
+        "First regional hydrogen network from 2031",
+        "HAR3 launch by 2026, HAR4 from 2028",
+        "Hydrogen to Power business model launch 2026",
+        "Incentivising investment into Hydrogen",
+        "Over GBP 500 million for hydrogen infrastructure",
+        "Revised Hydrogen Strategy in 2025"
+      ],
       "confidence": "high",
       "source_chunks": [
         "10",
@@ -976,7 +1081,7 @@
       ],
       "merge_count": 2,
       "priority_id": "clean_energy_industries_hydrogen",
-      "sort_order": 29
+      "sort_order": 28
     },
     {
       "priority_name": "Hydrogen Propulsion Manufacturing",
@@ -1001,11 +1106,12 @@
         "Revised Hydrogen Strategy 2025",
         "ZeroAvia hydrogen-electric powertrain manufacturing facility"
       ],
+      "evidence": "The Hydrogen Propulsion Manufacturing Taskforce comprised of senior industry leaders which will help set out an ambitious industrial policy for the UK manufacturing of hydrogen propulsion technologies across all transport modes, attracting and maximising investment opportunities in UK-made hydrogen systems.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "clean_energy_industries_hydrogen_propulsion_manufacturing",
-      "sort_order": 30
+      "sort_order": 29
     },
     {
       "priority_name": "National Wealth Fund Clean Energy Investment",
@@ -1031,11 +1137,18 @@
         "Strategic Partnerships for regional delivery",
         "Concessional finance approaches"
       ],
+      "evidence": "Empowering the National Wealth Fund (NWF) with a total GBP 27.8 billion in capital, to enable it to take on higher-risk investments, including equity. It will invest in capital intensive projects, businesses, and assets, with at least GBP 5.8 billion targeting carbon capture, low carbon hydrogen, gigafactories, ports and green steel over this Parliament.",
+      "funding_commitments": [
+        "GBP 27.8 billion total capital",
+        "At least GBP 5.8 billion for priority clean energy sectors",
+        "Strategic Partnerships for regional delivery",
+        "Concessional finance approaches"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_national_wealth_fund_clean_energy_investment",
-      "sort_order": 31
+      "sort_order": 30
     },
     {
       "priority_name": "Nuclear Energy (Civil and Defence)",
@@ -1065,11 +1178,20 @@
         11,
         29
       ],
+      "evidence": "We are investing \u00a314.2 billion to build Sizewell C, which will be a jobs and growth engine, supporting 10,000 jobs at peak construction and working with 3,500 suppliers in all parts of the UK. We are also investing over \u00a32.5 billion to enable one of Europe's first Small Modular Reactor (SMR) programmes.",
+      "funding_commitments": [
+        "\u00a314.2 billion for Sizewell C",
+        "Over \u00a32.5 billion for Small Modular Reactors",
+        "\u00a32.5 billion investment in fusion over five years",
+        "\u00a320 billion over four years into civil nuclear",
+        "Over \u00a3100 billion projected through UK defence nuclear suppliers over 10 years",
+        "Supporting 120,000 jobs in nuclear sector by early 2030s"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "clean_energy_industries_nuclear_energy_civil_and_defence",
-      "sort_order": 32
+      "sort_order": 31
     },
     {
       "priority_name": "Nuclear Fission",
@@ -1101,11 +1223,20 @@
         "70% UK content target for Sizewell C",
         "New National Policy Statement EN-7 for nuclear"
       ],
+      "evidence": "Providing significant investment in the nuclear sector, with GBP 14.2 billion for Sizewell C, the first state-funded nuclear power station since Sizewell B began construction in 1988. Sizewell C will support around 10,000 jobs at peak construction and thousands more nationwide.",
+      "funding_commitments": [
+        "GBP 14.2 billion for Sizewell C",
+        "Over GBP 2.5 billion for SMR programme",
+        "Rolls-Royce SMR selected as preferred bidder",
+        "GBP 300 million for HALEU fuel programme",
+        "70% UK content target for Sizewell C",
+        "New National Policy Statement EN-7 for nuclear"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_nuclear_fission",
-      "sort_order": 33
+      "sort_order": 32
     },
     {
       "priority_name": "Offshore Wind",
@@ -1126,7 +1257,18 @@
         "turbine manufacturing",
         "wind turbines"
       ],
-      "evidence": "",
+      "evidence": "Setting out target capacity ranges via the Clean Power Action Plan, with 43-50 GW of offshore wind by 2030 and an aim of at least 12 GW of projects securing a CfD across AR7, AR8 and, depending on the speed at which projects deploy, AR9.",
+      "evidence_quote": "Setting out target capacity ranges via the Clean Power Action Plan, with 43-50 GW of offshore wind by 2030 and an aim of at least 12 GW of projects securing a CfD across AR7, AR8 and, depending on the speed at which projects deploy, AR9.",
+      "funding_commitments": [
+        "43-50 GW offshore wind by 2030",
+        "GBP 300 million Great British Energy supply chain funding for offshore wind",
+        "GBP 350 million Crown Estate Supply Chain Investment Programme",
+        "GBP 544 million Clean Industry Bonus allocated",
+        "Up to 20-30 GW new seabed rights by 2030 via Crown Estate",
+        "\u00a31 billion Clean Energy Supply Chain Fund",
+        "\u00a3300 million for offshore wind supply chains through Great British Energy",
+        "\u00a3544 million Clean Industry Bonus for offshore wind developers"
+      ],
       "confidence": "high",
       "source_chunks": [
         "1",
@@ -1143,7 +1285,7 @@
       ],
       "merge_count": 2,
       "priority_id": "clean_energy_industries_offshore_wind",
-      "sort_order": 34
+      "sort_order": 33
     },
     {
       "priority_name": "Onshore Wind",
@@ -1172,11 +1314,19 @@
         "Industry-led local content goal by end of 2025",
         "Considering expansion of Clean Industry Bonus to onshore wind"
       ],
+      "evidence": "Publishing our Onshore Wind Strategy, the first time the Government has published a strategy specifically for onshore wind. The Strategy will set out over 40 actions to unlock onshore wind deployment, tackling key barriers such as planning, aviation and defence. Government is committed to deploying 27-29GW of onshore wind by 2030 in GB.",
+      "funding_commitments": [
+        "27-29 GW onshore wind by 2030",
+        "First dedicated Onshore Wind Strategy",
+        "Reintroduction into NSIP regime",
+        "Industry-led local content goal by end of 2025",
+        "Considering expansion of Clean Industry Bonus to onshore wind"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_onshore_wind",
-      "sort_order": 35
+      "sort_order": 34
     },
     {
       "priority_name": "Port Infrastructure",
@@ -1194,11 +1344,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Port infrastructure is key to the growth of Clean Energy Industries.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "clean_energy_industries_port_infrastructure",
-      "sort_order": 36
+      "sort_order": 35
     },
     {
       "priority_name": "Ports Infrastructure for Clean Energy",
@@ -1223,11 +1375,17 @@
         "Up to GBP 80 million for Future Port Talbot project",
         "NWF priority sector commitment"
       ],
+      "evidence": "Mobilising investment into ports, a foundational industry for Clean Energy Industries, by working across government and Public Financial Institutions to develop bespoke solutions, including through innovative use of financing. As part of this, ports are one of the five sectors which the National Wealth Fund has committed at least GBP 5.8 billion of its capital to.",
+      "funding_commitments": [
+        "GBP 55 million awarded to Port of Cromarty Firth",
+        "Up to GBP 80 million for Future Port Talbot project",
+        "NWF priority sector commitment"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_ports_infrastructure_for_clean_energy",
-      "sort_order": 37
+      "sort_order": 36
     },
     {
       "priority_name": "Smart Energy Systems and Flexibility",
@@ -1252,11 +1410,17 @@
         "Energy smart data scheme exploration",
         "Automatic Asset Registration programme"
       ],
+      "evidence": "By 2050, the domestic market for smart systems and flexibility solutions, including EV smart chargers and smart network equipment, could contribute almost GBP 1.3 billion to the nation's economy, with exports adding a further GBP 2.7 billion.",
+      "funding_commitments": [
+        "Clean Flexibility Roadmap to be published",
+        "Energy smart data scheme exploration",
+        "Automatic Asset Registration programme"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "clean_energy_industries_smart_energy_systems_and_flexibility",
-      "sort_order": 38
+      "sort_order": 37
     },
     {
       "priority_name": "Sustainable Aviation Fuel (SAF) Production",
@@ -1281,11 +1445,12 @@
         "SAF Mandate launched January 2025",
         "Revenue certainty mechanism for SAF investment"
       ],
+      "evidence": "The use of Sustainable Aviation Fuel (SAF) presents a growth opportunity for the UK through their critical role in decarbonising aviation. In 2050, up to 15,000 UK jobs and GBP 5 billion GVA could be supported with future low-carbon fuel production, including SAF.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "clean_energy_industries_sustainable_aviation_fuel_saf_production",
-      "sort_order": 39
+      "sort_order": 38
     },
     {
       "priority_name": "Advertising and Marketing Growth",
@@ -1312,11 +1477,13 @@
         "Expanded GREAT campaign for UK advertising and AdTech",
         "Procurement reforms to help SME advertising agencies access public sector contracts"
       ],
+      "evidence": "Support adtech businesses with accelerator programs, to upskill founders towards international expansion and connect them with key investors... UK will build on its position as the second largest exporter of advertising and marketing services.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_advertising_and_marketing_growth",
-      "sort_order": 40
+      "sort_order": 39
     },
     {
       "priority_name": "Createch Innovation and Commercialisation",
@@ -1348,11 +1515,13 @@
         "UKRI to publish new Creative Industries R&D strategy in 2025",
         "Revised HMRC guidance for R&D tax reliefs to clarify eligibility of creative sector projects"
       ],
+      "evidence": "We will establish the UK as a global leader in the emerging 'createch' sector... Createch businesses have the same growth potential as other technology firms and are expected to generate GBP 18 billion in gross value added (GVA) and 160,000 jobs over the next decade.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_createch_innovation_and_commercialisation",
-      "sort_order": 41
+      "sort_order": 40
     },
     {
       "priority_name": "Creative Clusters and Regional Growth",
@@ -1383,11 +1552,13 @@
         "New Creative Places Group for policy coordination",
         "Local Innovation Partnerships Fund up to GBP 500 million"
       ],
+      "evidence": "The government has identified 12 creative clusters across the UK where we will work with local leaders and devolved governments to drive growth... A new GBP 150 million Creative Places Growth Fund devolved to six Mayoral Strategic Authorities.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_creative_clusters_and_regional_growth",
-      "sort_order": 42
+      "sort_order": 41
     },
     {
       "priority_name": "Creative Content Exchange and IP Protection",
@@ -1415,11 +1586,13 @@
         "Expert working groups on transparency, licensing and technical standards",
         "UK+ exhaustion of IP rights regime maintained"
       ],
+      "evidence": "We will establish a Creative Content Exchange (CCE) to be a trusted marketplace for selling, buying, licensing, and enabling permitted access to digitised cultural and creative assets... We will make UK IP rights the best protected in the world, setting a gold enforcement standard.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_creative_content_exchange_and_ip_protection",
-      "sort_order": 43
+      "sort_order": 42
     },
     {
       "priority_name": "Creative Content and IP",
@@ -1446,11 +1619,18 @@
         15,
         30
       ],
+      "evidence": "Establish a Creative Content Exchange (CCE) to be a trusted marketplace for selling, buying, licensing, and enabling permitted access to digitised cultural and creative assets. This new marketplace will open up new revenue streams and allow content owners to commercialise and financialise their assets.",
+      "funding_commitments": [
+        "Creative Content Exchange establishment",
+        "\u00a3100 million UKRI support for creative businesses over Spending Review",
+        "\u00a325 million Creative Futures programme",
+        "Five new CoSTAR R&D labs"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "creative_industries_creative_content_and_ip",
-      "sort_order": 44
+      "sort_order": 43
     },
     {
       "priority_name": "Creative Industries Investment Target",
@@ -1468,11 +1648,13 @@
       "source_chunks": [
         7
       ],
+      "evidence": "Increase annual business investment by the Creative Industries from GBP 17 billion to GBP 31 billion by 2035.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "creative_industries_creative_industries_investment_target",
-      "sort_order": 45
+      "sort_order": 44
     },
     {
       "priority_name": "Creative Skills and Workforce Development",
@@ -1506,11 +1688,13 @@
         "Creative Higher Technical Qualifications (HTQs) for animation and audio-visual production in September 2025",
         "Skills passports implementation beginning 2026"
       ],
+      "evidence": "We will unlock growth by reforming the skills system to address skills gaps and shortages in growth-driving sectors... Working with industry, DfE and Skills England we will refine and develop the growth and skills offer to deliver apprenticeships and skills training.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_creative_skills_and_workforce_development",
-      "sort_order": 46
+      "sort_order": 45
     },
     {
       "priority_name": "Creative Trade and Exports",
@@ -1543,11 +1727,13 @@
         "Investment in British Fashion Council NEWGEN programme",
         "Support for BFI Film Festival, London Games Festival, World Design Congress 2025"
       ],
+      "evidence": "UK Export Finance (UKEF) has GBP 80 billion in financing capacity to support UK exporters, across the IS-8 including the Creative Industries.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_creative_trade_and_exports",
-      "sort_order": 47
+      "sort_order": 46
     },
     {
       "priority_name": "Film and TV Growth",
@@ -1584,11 +1770,13 @@
         "BBC Charter Review to ensure sustainability",
         "Modernising co-production treaties with Canada, Australia and New Zealand"
       ],
+      "evidence": "A new GBP 75 million Screen Growth Package over three years to develop independent UK screen content, support inward investment, and showcase the best of UK and international film.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_film_and_tv_growth",
-      "sort_order": 48
+      "sort_order": 47
     },
     {
       "priority_name": "Film and TV Production",
@@ -1613,11 +1801,17 @@
         2,
         30
       ],
+      "evidence": "Film and TV \u2013 with our world-famous studio infrastructure and huge global demand for our content transforming the UK into the second largest exporter of unscripted TV programmes and ensuring that our films command over 20% of the global box office.",
+      "funding_commitments": [
+        "\u00a375 million for film and TV",
+        "\u00a311 million co-funding for National Film and Television School expansion",
+        "\u00a3150 million Creative Places Growth Fund"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "creative_industries_film_and_tv_production",
-      "sort_order": 49
+      "sort_order": 48
     },
     {
       "priority_name": "Growth Finance for Creative Start-ups and Scale-ups",
@@ -1648,11 +1842,13 @@
         "GBP 150 million Creative Places Growth Fund devolved to six Mayoral Strategic Authorities",
         "BBB Cluster Champion programme for ten city regions"
       ],
+      "evidence": "The British Business Bank (BBB) will significantly increase support for UK creative businesses with debt and equity finance. The BBB is committing an additional GBP 4 billion of Industrial Strategy Growth Capital to support investment and growth in the IS-8.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_growth_finance_for_creative_start_ups_and_scale_up",
-      "sort_order": 50
+      "sort_order": 49
     },
     {
       "priority_name": "Music Industry",
@@ -1675,11 +1871,16 @@
         7,
         30
       ],
+      "evidence": "Music, Performing and Visual Arts \u2013 with our artists, theatres, festivals, and grass-roots venues bringing millions of domestic and international tourists to towns and cities across the UK, and our position as the second largest global music exporter creating significant opportunities.",
+      "funding_commitments": [
+        "Up to \u00a330 million for music over three years",
+        "Liverpool MusicFutures R&D Cluster support"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "creative_industries_music_industry",
-      "sort_order": 51
+      "sort_order": 50
     },
     {
       "priority_name": "Music, Performing and Visual Arts Growth",
@@ -1714,11 +1915,13 @@
         "Continued Arts Council England investment (over GBP 440 million annually)",
         "Cultural tax reliefs for theatres, orchestras, museums and galleries"
       ],
+      "evidence": "Up to GBP 30 million for a new Music Growth package over the next three years to help more UK emerging artists break through on a domestic and international stage.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_music_performing_and_visual_arts_growth",
-      "sort_order": 52
+      "sort_order": 51
     },
     {
       "priority_name": "Public Service Broadcasting Sustainability",
@@ -1747,11 +1950,13 @@
         "Exploration of BBC Commercial's activity for wider growth",
         "CMA/Ofcom assessment of television and advertising market consolidation options"
       ],
+      "evidence": "The Charter Review will consider options for ensuring the BBC's sustainability for the long term to support its vital work and its role investing in the growth of the Creative Industries.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_public_service_broadcasting_sustainability",
-      "sort_order": 53
+      "sort_order": 52
     },
     {
       "priority_name": "Video Games",
@@ -1773,11 +1978,16 @@
         2,
         30
       ],
+      "evidence": "Video Games \u2013 with the UK's fusion of digital and creative skills positioning us as a world-leader in video game production.",
+      "funding_commitments": [
+        "\u00a330 million for video games",
+        "Dundee video games hub support"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "creative_industries_video_games",
-      "sort_order": 54
+      "sort_order": 53
     },
     {
       "priority_name": "Video Games Growth",
@@ -1810,11 +2020,13 @@
         "New industry-led video games skills strategy in 2025",
         "DSIT's UK-wide TechFirst programme"
       ],
+      "evidence": "A new GBP 30 million Games Growth Package over three years to back the next generation of start-up games studios and talent, and drive inward investment in the sector.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "creative_industries_video_games_growth",
-      "sort_order": 55
+      "sort_order": 54
     },
     {
       "priority_name": "Access to Finance and Public Finance Institutions",
@@ -1844,11 +2056,20 @@
         23,
         24
       ],
+      "evidence": "Increase the British Business Bank's (BBB) capacity and capability so that it can invest across the lifecycle of firms with high potential. At the Spending Review, the government announced the Bank's total financial capacity would rise to \u00a325.6 billion.",
+      "funding_commitments": [
+        "\u00a34 billion additional BBB capital for IS-8",
+        "BBB total capacity to \u00a325.6 billion",
+        "NWF \u00a327.8 billion capitalisation",
+        "\u00a33 billion additional UKEF Direct Lending capacity",
+        "\u00a3100 million BBB Nations and Regions Investment Funds expansion",
+        "\u00a3350 million NRIF expansion to South East and East of England"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_access_to_finance_and_public_finance_institutions",
-      "sort_order": 56
+      "sort_order": 55
     },
     {
       "priority_name": "Access to Finance for Tech Scale-ups",
@@ -1872,11 +2093,12 @@
         "digital_tech_002",
         "digital_tech_009"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_access_to_finance_for_tech_scale_ups",
-      "sort_order": 57
+      "sort_order": 56
     },
     {
       "priority_name": "British Business Bank IS-8 Investment",
@@ -1898,11 +2120,13 @@
         6,
         7
       ],
+      "evidence": "The government has announced GBP4 billion of additional capital lending to Industrial Strategy sectors by the British Business Bank (BBB), providing finance for start-ups and scale-ups to grow and provide innovative products that help consumers.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "crosscutting_british_business_bank_is_8_investment",
-      "sort_order": 58
+      "sort_order": 57
     },
     {
       "priority_name": "Chemicals Supply Chain",
@@ -1922,11 +2146,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Chemicals, such as polymers or resins and coatings, are key inputs to Advanced Manufacturing, Clean Energy Industries, and Life Sciences.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_chemicals_supply_chain",
-      "sort_order": 59
+      "sort_order": 58
     },
     {
       "priority_name": "City Region and Cluster Prioritisation",
@@ -1946,11 +2172,13 @@
         5,
         6
       ],
+      "evidence": "Across the eight Sector Plans, 37 unique city regions and clusters were prioritised.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_city_region_and_cluster_prioritisation",
-      "sort_order": 60
+      "sort_order": 59
     },
     {
       "priority_name": "Clean Energy Innovation and R&D",
@@ -1979,11 +2207,20 @@
         "Clean Energy AI Champion appointed",
         "Technology Adoption Review findings accepted"
       ],
+      "evidence": "Turbocharging our fastest growing sectors via a transformative GBP 86 million for R&D announced in the Spending Review. This will deliver the priorities set out in the Plan for Change, including the Clean Energy Superpower Mission.",
+      "funding_commitments": [
+        "GBP 86 million transformative R&D funding",
+        "GBP 500 million R&D Missions Accelerator Programme",
+        "Up to GBP 20 million UKRI Sustainable Industrial Futures programme",
+        "Up to GBP 12 million UK Data Sharing Infrastructure from April 2026",
+        "Clean Energy AI Champion appointed",
+        "Technology Adoption Review findings accepted"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "crosscutting_clean_energy_innovation_and_rd",
-      "sort_order": 61
+      "sort_order": 60
     },
     {
       "priority_name": "Clean Energy Workforce and Skills",
@@ -2013,11 +2250,20 @@
         "Regional Skills Pilots in Aberdeen, Cheshire, Lincolnshire, Pembrokeshire",
         "GBP 625 million for construction worker training including sustainable skills"
       ],
+      "evidence": "Providing investment of over GBP 100m over three years to support engineering skills in England, working with Skills England to determine how this can increase the pipeline of skills through further and higher education and apprenticeships.",
+      "funding_commitments": [
+        "Clean Energy Workforce Strategy publication summer 2025",
+        "GBP 100 million over 3 years for engineering skills",
+        "Technical Excellence Colleges for engineering",
+        "Energy Skills Passport for oil and gas worker transition",
+        "Regional Skills Pilots in Aberdeen, Cheshire, Lincolnshire, Pembrokeshire",
+        "GBP 625 million for construction worker training including sustainable skills"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "crosscutting_clean_energy_workforce_and_skills",
-      "sort_order": 62
+      "sort_order": 61
     },
     {
       "priority_name": "Climate Transition and Net Zero Services",
@@ -2043,11 +2289,13 @@
         7,
         8
       ],
+      "evidence": "The PBS sector is central to driving climate transition and adaptation, in business and the public sector, through the advice they provide to their clients. The net zero transition is creating new demand for a wide range of climate, clean energy, and environmental services.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "crosscutting_climate_transition_and_net_zero_services",
-      "sort_order": 63
+      "sort_order": 62
     },
     {
       "priority_name": "Composites Materials",
@@ -2066,11 +2314,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Composites, such as carbon and glass fibre, are key inputs to Advanced Manufacturing and Clean Energy Industries.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_composites_materials",
-      "sort_order": 64
+      "sort_order": 63
     },
     {
       "priority_name": "Construction Materials and Ceramics",
@@ -2089,11 +2339,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Materials such as cement, ceramics, and glass are key inputs to Advanced Manufacturing and Clean Energy Industries.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_construction_materials_and_ceramics",
-      "sort_order": 65
+      "sort_order": 64
     },
     {
       "priority_name": "Construction Services",
@@ -2111,11 +2363,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "A range of construction services are key to the growth of Advanced Manufacturing, Clean Energy Industries, Defence, Digital and Technology, and Life Sciences.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_construction_services",
-      "sort_order": 66
+      "sort_order": 65
     },
     {
       "priority_name": "Critical Minerals",
@@ -2134,11 +2388,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Critical minerals, such as rare earth elements and nickel, are key inputs to Advanced Manufacturing, Clean Energy Industries, Defence, and Digital and Technologies.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_critical_minerals",
-      "sort_order": 67
+      "sort_order": 66
     },
     {
       "priority_name": "Critical Minerals and Supply Chain Resilience",
@@ -2159,7 +2415,16 @@
         "supply chain security",
         "supply chains"
       ],
-      "evidence": "",
+      "evidence": "To reinforce our supply chains for the long term and support green industries of the future, the Government is publishing an upcoming 2025 Critical Minerals Strategy. The Critical Minerals Strategy aims to secure a steady supply of minerals, optimising domestic resources and enhancing international collaboration.",
+      "evidence_quote": "To reinforce our supply chains for the long term and support green industries of the future, the Government is publishing an upcoming 2025 Critical Minerals Strategy. The Critical Minerals Strategy aims to secure a steady supply of minerals, optimising domestic resources and enhancing international collaboration.",
+      "funding_commitments": [
+        "2025 Critical Minerals Strategy",
+        "Critical Minerals Intelligence Centre enhancement",
+        "National Wealth Fund support for critical supply chains",
+        "New Supply Chain Centre",
+        "UKEF loan guarantee scheme for critical minerals",
+        "UKEF loan guarantee scheme for critical minerals suppliers"
+      ],
       "confidence": "high",
       "source_chunks": [
         "10",
@@ -2173,7 +2438,7 @@
       ],
       "merge_count": 2,
       "priority_id": "crosscutting_critical_minerals_and_supply_chain_resilience",
-      "sort_order": 68
+      "sort_order": 67
     },
     {
       "priority_name": "Critical Minerals for Clean Energy",
@@ -2198,11 +2463,18 @@
         "UKEF Critical Minerals Supply Finance",
         "New UKEF Critical Goods Guarantee"
       ],
+      "evidence": "Publishing the upcoming 2025 Critical Minerals Strategy, which aims to secure a steady supply of minerals, optimising domestic resources and enhancing international collaboration.",
+      "funding_commitments": [
+        "2025 Critical Minerals Strategy publication",
+        "Critical Minerals Intelligence Centre",
+        "UKEF Critical Minerals Supply Finance",
+        "New UKEF Critical Goods Guarantee"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "crosscutting_critical_minerals_for_clean_energy",
-      "sort_order": 69
+      "sort_order": 68
     },
     {
       "priority_name": "Data Infrastructure and Sharing",
@@ -2226,11 +2498,12 @@
         "digital_tech_003",
         "digital_tech_004"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_data_infrastructure_and_sharing",
-      "sort_order": 70
+      "sort_order": 69
     },
     {
       "priority_name": "Data as Economic Asset",
@@ -2256,11 +2529,18 @@
         14,
         15
       ],
+      "evidence": "Introduce the National Data Library, backed by over \u00a3100 million of government funding. This will bolster the UK's rapidly growing AI sector, provide the trusted data foundations for innovation and growth in the IS-8.",
+      "funding_commitments": [
+        "Over \u00a3100 million for National Data Library",
+        "\u00a336 million for Smart Data schemes",
+        "Up to \u00a312 million for UK Data Sharing Infrastructure Initiatives",
+        "Data valuation framework by April 2026"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_data_as_economic_asset",
-      "sort_order": 71
+      "sort_order": 70
     },
     {
       "priority_name": "Defence Exports",
@@ -2283,11 +2563,13 @@
         12,
         13
       ],
+      "evidence": "The new Office of Defence Exports means responsibility for defence exports has been unified under the control of the MOD. This creates a government-to-government exports offer which reflects what our allies and our industry need.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_defence_exports",
-      "sort_order": 72
+      "sort_order": 71
     },
     {
       "priority_name": "Defence Finance and Investment",
@@ -2308,7 +2590,9 @@
         "security",
         "venture capital"
       ],
-      "evidence": "",
+      "evidence": "A Defence Finance and Investment Strategy developed by early 2026. This will look at the entire spectrum of defence companies, from start-ups through to primes, and provide recommendations to the Defence Secretary on how barriers to investment in defence can be removed while making the sector more attractive for private investment, including venture capital, private equity and pension funds.",
+      "evidence_quote": "A Defence Finance and Investment Strategy developed by early 2026. This will look at the entire spectrum of defence companies, from start-ups through to primes, and provide recommendations to the Defence Secretary on how barriers to investment in defence can be removed while making the sector more attractive for private investment, including venture capital, private equity and pension funds.",
+      "funding_commitments": [],
       "confidence": "high",
       "source_chunks": [
         "2",
@@ -2323,7 +2607,7 @@
       ],
       "merge_count": 2,
       "priority_id": "crosscutting_defence_finance_and_investment",
-      "sort_order": 73
+      "sort_order": 72
     },
     {
       "priority_name": "Defence Growth Deals",
@@ -2345,11 +2629,13 @@
         7,
         8
       ],
+      "evidence": "Our new \u00a3250 million investment will generate new jobs and new opportunities and ensure the benefits of the defence dividend are shared across the UK... The first wave of Defence Growth Deals will be launched this year in Plymouth, South Yorkshire, Northern Ireland, Scotland and Wales.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_defence_growth_deals",
-      "sort_order": 74
+      "sort_order": 73
     },
     {
       "priority_name": "Defence Skills and Workforce Development",
@@ -2374,11 +2660,13 @@
         10,
         19
       ],
+      "evidence": "We will invest \u00a3182 million to strengthen the future skills of the workforce and equip our defence industry with the expertise and skills it needs... We will establish new Defence Technical Excellence Colleges, promote the benefits of a career in industry to school pupils and ensure more apprentices and graduates are taking up defence-related courses.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_defence_skills_and_workforce_development",
-      "sort_order": 75
+      "sort_order": 74
     },
     {
       "priority_name": "Digital Skills and Talent Pipeline",
@@ -2404,11 +2692,12 @@
         "digital_tech_009",
         "digital_tech_010"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_digital_skills_and_talent_pipeline",
-      "sort_order": 76
+      "sort_order": 75
     },
     {
       "priority_name": "Dual-Use Technology for Defence",
@@ -2433,11 +2722,12 @@
         "digital_tech_004",
         "digital_tech_005"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_dual_use_technology_for_defence",
-      "sort_order": 77
+      "sort_order": 76
     },
     {
       "priority_name": "Electricity Network Infrastructure",
@@ -2456,11 +2746,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Electricity networks, including cables, converter stations, and transformers are key inputs to Advanced Manufacturing, Clean Energy Industries, and Digital and Technology.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_electricity_network_infrastructure",
-      "sort_order": 78
+      "sort_order": 77
     },
     {
       "priority_name": "Energy Cost Competitiveness for Manufacturing",
@@ -2484,11 +2776,12 @@
         "GBP 35-40/MWh electricity cost reduction from 2027",
         "Network Charging Compensation uplift from 60% to 90%"
       ],
+      "evidence": "From 2027, a new British Industrial Competitiveness Scheme will reduce electricity costs by approximately GBP 35-40/MWh up to 2030 and support thousands of businesses. The scheme will benefit manufacturing electricity-intensive frontier industries in the IS-8.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "crosscutting_energy_cost_competitiveness_for_manufacturing",
-      "sort_order": 79
+      "sort_order": 78
     },
     {
       "priority_name": "Energy Innovation and Resilience",
@@ -2509,11 +2802,13 @@
         16,
         19
       ],
+      "evidence": "To accelerate innovation and adoption of dual use technologies, we will establish the Defence Energy and Capability Resilience Centre of Excellence (DECX). This will unite the Ministry of Defence, industry, academia and research to harness opportunities for operational advantage and resilience from emerging energy technologies and circular economy approaches.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_energy_innovation_and_resilience",
-      "sort_order": 80
+      "sort_order": 79
     },
     {
       "priority_name": "Frontier Industry Assessment Framework",
@@ -2534,11 +2829,13 @@
         2,
         3
       ],
+      "evidence": "Frontier industry choices were guided by a five-point assessment, under two key pillars: Economic potential; Policy opportunity.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_frontier_industry_assessment_framework",
-      "sort_order": 81
+      "sort_order": 80
     },
     {
       "priority_name": "Global Talent Attraction",
@@ -2564,11 +2861,19 @@
         1,
         17
       ],
+      "evidence": "Setting up a new Global Talent Taskforce, reporting to the Prime Minister's Office and the Treasury. This will provide a concierge service for top talent, using our international network and UK diaspora to connect with elite individuals.",
+      "funding_commitments": [
+        "Global Talent Taskforce establishment",
+        "\u00a354 million Global Talent Fund",
+        "\u00a325 million Turing AI Global Fellowships",
+        "High Potential Individual route expansion (doubling qualifying universities)",
+        "Global Talent visa reforms"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_global_talent_attraction",
-      "sort_order": 82
+      "sort_order": 81
     },
     {
       "priority_name": "Grid Connections and Energy Infrastructure",
@@ -2592,11 +2897,12 @@
         "digital_tech_003",
         "digital_tech_006"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_grid_connections_and_energy_infrastructure",
-      "sort_order": 83
+      "sort_order": 82
     },
     {
       "priority_name": "Industrial Electricity Cost Reduction",
@@ -2622,11 +2928,18 @@
         6,
         7
       ],
+      "evidence": "From 2027, a new British Industrial Competitiveness Scheme will reduce electricity costs by c.\u00a335-40/MWh up to 2030 and support thousands of businesses.",
+      "funding_commitments": [
+        "British Industrial Competitiveness Scheme from 2027",
+        "British Industry Supercharger uplift (60% to 90%)",
+        "Connections Accelerator Service",
+        "UK CBAM from January 2027"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_industrial_electricity_cost_reduction",
-      "sort_order": 84
+      "sort_order": 83
     },
     {
       "priority_name": "Industrial Energy Price Competitiveness",
@@ -2651,11 +2964,18 @@
         "Network Charging Compensation uplift from 60% to 90%",
         "Continued Energy Intensive Industries Compensation Scheme"
       ],
+      "evidence": "From 2027, a new British Industrial Competitiveness Scheme will reduce electricity costs by c.GBP 35-40/MWh up to 2030 and support thousands of businesses. The scheme will benefit manufacturing electricity-intensive frontier industries in the IS-8, and foundational manufacturing industries in their supply chains.",
+      "funding_commitments": [
+        "British Industrial Competitiveness Scheme from 2027",
+        "GBP 35-40/MWh cost reduction up to 2030",
+        "Network Charging Compensation uplift from 60% to 90%",
+        "Continued Energy Intensive Industries Compensation Scheme"
+      ],
       "source_documents": [
         "Clean Energy Industries sector plan"
       ],
       "priority_id": "crosscutting_industrial_energy_price_competitiveness",
-      "sort_order": 85
+      "sort_order": 84
     },
     {
       "priority_name": "International Collaboration and AUKUS",
@@ -2678,11 +2998,13 @@
         23,
         24
       ],
+      "evidence": "AUKUS is revolutionising how Australian, UK and US industrial bases work together by breaking down barriers to defence trade and cooperation. The AUKUS Nations' exemption from the US' International Traffic in Arms Regulations (ITAR) and UK and Australia's reciprocal agreements are a prime example.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_international_collaboration_and_aukus",
-      "sort_order": 86
+      "sort_order": 85
     },
     {
       "priority_name": "International Technology Partnerships",
@@ -2707,11 +3029,12 @@
         "digital_tech_005",
         "digital_tech_007"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_international_technology_partnerships",
-      "sort_order": 87
+      "sort_order": 86
     },
     {
       "priority_name": "Manufacturing Workforce Skills and Diversity",
@@ -2743,11 +3066,12 @@
         "Technical Excellence Colleges",
         "Upskilling and Reskilling Programme"
       ],
+      "evidence": "The Government will provide investment of over GBP 100 million over three years to support engineering skills in England, working with Skills England to determine how this can increase the pipeline of skills through further and higher education and apprenticeships.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "crosscutting_manufacturing_workforce_skills_and_diversity",
-      "sort_order": 88
+      "sort_order": 87
     },
     {
       "priority_name": "Net Zero and Sustainable Creative Industries",
@@ -2777,11 +3101,13 @@
         "Ad-Net Zero initiative promotion internationally",
         "Industry-led Creative Climate Charter next steps"
       ],
+      "evidence": "The Creative Industries will continue to play a key role in the net zero transition... The government will partner with the Creative Industries and other stakeholders to develop and deliver a net zero public participation strategy.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "crosscutting_net_zero_and_sustainable_creative_industries",
-      "sort_order": 89
+      "sort_order": 88
     },
     {
       "priority_name": "Northern Corridor Connectivity",
@@ -2800,11 +3126,13 @@
       "source_chunks": [
         5
       ],
+      "evidence": "The Industrial Strategy will complement the 10-Year Infrastructure Strategy with interventions that will further drive growth in places important for the IS-8 sectors... including the corridor across our Northern city regions.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_northern_corridor_connectivity",
-      "sort_order": 90
+      "sort_order": 89
     },
     {
       "priority_name": "Planning and Infrastructure Acceleration",
@@ -2831,11 +3159,20 @@
         19,
         20
       ],
+      "evidence": "Reducing the average pre-application period for major infrastructure projects from two years to 12 months by scrapping overly burdensome consultation requirements. This has the potential to save projects \u00a31 billion over the course of this Parliament.",
+      "funding_commitments": [
+        "Planning and Infrastructure Bill reforms",
+        "150 major infrastructure project decisions this Parliament",
+        "1.5 million new homes target",
+        "300 new planning officers",
+        "13-week target for called-in planning decisions",
+        "Gigafactories, labs, data centres can opt-in as NSIPs"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_planning_and_infrastructure_acceleration",
-      "sort_order": 91
+      "sort_order": 90
     },
     {
       "priority_name": "Planning and Regulatory Reform",
@@ -2864,11 +3201,13 @@
         "40% business rates reduction for eligible film studios until 2034",
         "Ticket resale consultation response summer 2025"
       ],
+      "evidence": "Our planning reforms will enable more and faster development of economic infrastructure such as film studios, music arenas and large-scale performing arts venues.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "crosscutting_planning_and_regulatory_reform",
-      "sort_order": 92
+      "sort_order": 91
     },
     {
       "priority_name": "Pro-Innovation Regulation",
@@ -2891,11 +3230,12 @@
         "digital_tech_003",
         "digital_tech_007"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_pro_innovation_regulation",
-      "sort_order": 93
+      "sort_order": 92
     },
     {
       "priority_name": "Procurement Reform and Segmented Approach",
@@ -2917,11 +3257,13 @@
         20,
         21
       ],
+      "evidence": "Our new segmented approach to procurement sets ambitious targets to drastically reduce the timescales to get new projects on contract... 1. Major platforms (such as tanks, frigates and aircraft) with a timescale target to go from an average of six to two years to contract. 2. Pace-setting modular upgrades... with a timescale target to go from an average of three to one year to contract; and 3. Rapid commercial exploitation... with a target of three-month cycles.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_procurement_reform_and_segmented_approach",
-      "sort_order": 94
+      "sort_order": 93
     },
     {
       "priority_name": "R&D Investment and Commercialisation",
@@ -2945,11 +3287,12 @@
         "digital_tech_000",
         "digital_tech_002"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_rd_investment_and_commercialisation",
-      "sort_order": 95
+      "sort_order": 94
     },
     {
       "priority_name": "R&D and Innovation Investment",
@@ -2977,11 +3320,19 @@
         13,
         14
       ],
+      "evidence": "Drive innovation in our frontier industries, underpinned by record public investment of \u00a320.4 billion in 2025/26 rising to \u00a322.6 billion in 2029/30, targeted at the IS-8, leveraging private investment in cutting-edge research, technologies, and commercial applications.",
+      "funding_commitments": [
+        "\u00a322.6 billion R&D investment by 2029/30",
+        "10-year R&D budget commitments",
+        "\u00a3500 million Local Innovation Partnerships Fund",
+        "\u00a3500 million R&D Missions Accelerator Programme",
+        "Up to \u00a34.3 billion for Advanced Manufacturing (including \u00a32.8 billion R&D)"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_rd_and_innovation_investment",
-      "sort_order": 96
+      "sort_order": 95
     },
     {
       "priority_name": "Regional Growth Corridors",
@@ -3014,11 +3365,22 @@
         26,
         27
       ],
+      "evidence": "We will connect and support a growth corridor across our Northern city regions, bringing together investments in transport with action to boost its strengths in the IS-8 and unlock transformative private investments.",
+      "funding_commitments": [
+        "Oxford-Cambridge Growth Corridor support",
+        "Northern city regions growth corridor",
+        "Edinburgh-Glasgow Central Belt support",
+        "At least \u00a3445 million Welsh rail enhancements",
+        "\u00a315.6 billion Transport for City Regions settlements",
+        "HS2 and East-West Rail delivery",
+        "TransPennine Route Upgrade",
+        "\u00a3500 million Mayoral Recyclable Growth Fund"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_regional_growth_corridors",
-      "sort_order": 97
+      "sort_order": 96
     },
     {
       "priority_name": "Regional Manufacturing Clusters and Investment Zones",
@@ -3045,11 +3407,12 @@
         "Strategic Sites Accelerator funding",
         "AI Growth Zones infrastructure investment"
       ],
+      "evidence": "Providing our Investment Zones with GBP 160 million each over 10 years, to stimulate growth in key manufacturing clusters. These include Advanced Manufacturing-focused zones in: Glasgow City Region, Greater Manchester, North East, South Yorkshire, West Midlands, East Midlands, Wrexham and Flintshire.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "crosscutting_regional_manufacturing_clusters_and_investment_zon",
-      "sort_order": 98
+      "sort_order": 97
     },
     {
       "priority_name": "Regulatory Reform and Innovation Office",
@@ -3074,11 +3437,18 @@
         18,
         19
       ],
+      "evidence": "Press ahead with root-and-branch reform of the system, including by reducing the administrative costs of regulation by 25% by the end of this Parliament.",
+      "funding_commitments": [
+        "25% reduction in administrative costs of regulation",
+        "Regulatory Innovation Office establishment",
+        "Streamlined regulator duties focused on growth",
+        "Consolidation of regulators where appropriate"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_regulatory_reform_and_innovation_office",
-      "sort_order": 99
+      "sort_order": 98
     },
     {
       "priority_name": "SME Support and Growth",
@@ -3101,11 +3471,13 @@
         11,
         12
       ],
+      "evidence": "We will also support our thriving ecosystem of defence small and medium sized enterprises (SMEs) through our new Defence Office for Small Business Growth and dedicated SME Commercial Pathway to boost opportunities and access, supported with greater investment by introducing a new target to increase our spending with SMEs by \u00a32.5 billion by May 2028.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_sme_support_and_growth",
-      "sort_order": 100
+      "sort_order": 99
     },
     {
       "priority_name": "Skills for Industrial Strategy",
@@ -3137,11 +3509,22 @@
         16,
         17
       ],
+      "evidence": "Enhance skills and increase access to talent by reforming the skills and employment support system to create a strong pipeline into the IS-8, with opportunities for good jobs across the country; an increase in technology training and boosts for engineering, digital, and defence skills.",
+      "funding_commitments": [
+        "\u00a31.2 billion additional skills investment per year by 2028-29",
+        "Skills England establishment",
+        "65,000 additional 16-19 year-old places by 2028-29",
+        "Technical Excellence Colleges for engineering, construction, defence",
+        "\u00a3200 million Skills Mission Fund for facilities",
+        "Over \u00a3100 million over three years for engineering skills",
+        "\u00a3600 million construction skills package",
+        "\u00a3187 million TechFirst package"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_skills_for_industrial_strategy",
-      "sort_order": 101
+      "sort_order": 100
     },
     {
       "priority_name": "Steel Industry Modernization",
@@ -3165,11 +3548,12 @@
         "Steel Strategy to be published",
         "NWF commitment to green steel"
       ],
+      "evidence": "A future Steel Strategy will outline a full suite of measures, including addressing how the domestic industry can meet demand from downstream industries.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "crosscutting_steel_industry_modernization",
-      "sort_order": 102
+      "sort_order": 101
     },
     {
       "priority_name": "Steel Production",
@@ -3188,11 +3572,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "Steel, including galvanised steel and electrical steel, is a key input to Advanced Manufacturing, Clean Energy Industries, Defence, Digital and Technology, and Life Sciences.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_steel_production",
-      "sort_order": 103
+      "sort_order": 102
     },
     {
       "priority_name": "Steel and Foundational Industries",
@@ -3218,11 +3604,19 @@
         5,
         10
       ],
+      "evidence": "Securing the domestic supply of steel by shielding our producers from distortive trade practices, better utilising our domestic supply of scrap metal, and identifying opportunities to stimulate domestic demand.",
+      "funding_commitments": [
+        "Steel Strategy publication",
+        "\u00a355 million for Port of Cromarty Firth",
+        "Up to \u00a380 million for Future Port Talbot project",
+        "NWF \u00a35.8 billion committed to ports",
+        "British Industry Supercharger for foundational industries"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_steel_and_foundational_industries",
-      "sort_order": 104
+      "sort_order": 103
     },
     {
       "priority_name": "Strategic Sites and Investment Zones",
@@ -3247,11 +3641,18 @@
         1,
         23
       ],
+      "evidence": "Launch a new Strategic Sites Accelerator with over \u00a3600 million to enable the Government to deploy a range of interventions to bring sites to market faster, such as land remediation, anticipatory grid capacity, transport improvements, and fast-tracked planning approval.",
+      "funding_commitments": [
+        "\u00a3600 million Strategic Sites Accelerator",
+        "Enhanced offer for Industrial Strategy Zones",
+        "\u00a3160 million over 10 years for Investment Zones",
+        "Enhanced Investment Zone in Northern Ireland"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "crosscutting_strategic_sites_and_investment_zones",
-      "sort_order": 105
+      "sort_order": 104
     },
     {
       "priority_name": "Supply Chain Centre",
@@ -3269,11 +3670,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "An initial list of key inputs to the IS-8 is set out below. A new Supply Chain Centre will test and iterate this with industry and experts in the future.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "crosscutting_supply_chain_centre",
-      "sort_order": 106
+      "sort_order": 105
     },
     {
       "priority_name": "Supply Chain Resilience",
@@ -3297,11 +3700,13 @@
         18,
         19
       ],
+      "evidence": "Supply chain priorities. The conflict in Ukraine has provided a stark reminder of the importance of resilient supply chains and security of supply... Areas where action is needed, in partnership with the sector, to strengthen UK and allied capability include: steel, construction, energetic material, batteries, semiconductors and rare-earth elements.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_supply_chain_resilience",
-      "sort_order": 107
+      "sort_order": 106
     },
     {
       "priority_name": "Technology Adoption and AI",
@@ -3330,11 +3735,13 @@
         "National Protective Security Authority and National Cyber Security Centre guidance for creative businesses",
         "Technology Adoption Review recommendations implementation"
       ],
+      "evidence": "UKRI will provide resources and support for technology adoption across its programmes under the 'Create Smarter' banner, as well as an online directory of facilities across the UK where creative businesses can access cutting-edge technology.",
+      "funding_commitments": [],
       "source_documents": [
         "Creative Industries Sector Plan"
       ],
       "priority_id": "crosscutting_technology_adoption_and_ai",
-      "sort_order": 108
+      "sort_order": 107
     },
     {
       "priority_name": "Technology Clusters and Regional Growth",
@@ -3358,11 +3765,12 @@
         "digital_tech_000",
         "digital_tech_009"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "crosscutting_technology_clusters_and_regional_growth",
-      "sort_order": 109
+      "sort_order": 108
     },
     {
       "priority_name": "Test and Evaluation Transformation",
@@ -3382,11 +3790,13 @@
         16,
         17
       ],
+      "evidence": "To modernise our T&E environment we are making investments through our T&E transformation programme that will enable the Defence enterprise, including companies of all sizes. To make it easier for everyone to find the T&E resources they need, we will launch an online Test and Evaluation marketplace in 2026.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "crosscutting_test_and_evaluation_transformation",
-      "sort_order": 110
+      "sort_order": 109
     },
     {
       "priority_name": "Transition Finance and Net Zero Investment",
@@ -3408,11 +3818,13 @@
       "source_chunks": [
         6
       ],
+      "evidence": "Working closely with the Transition Finance Council to drive momentum to expand the transition finance market. The Council has launched working groups on credibility, governance, and scaling finance, and will consult on industry-led guidelines for credible transition finance ahead of COP30.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "crosscutting_transition_finance_and_net_zero_investment",
-      "sort_order": 111
+      "sort_order": 110
     },
     {
       "priority_name": "Advanced Manufacturing",
@@ -3433,11 +3845,13 @@
         16,
         22
       ],
+      "evidence": "The Ministry of Defence has announced a new alliance with the High Value Manufacturing Catapult (HVM Catapult) to leverage its world-leading research and development capabilities and further accelerate industrial transformation in support of the UK's national security and economic growth objectives.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_advanced_manufacturing",
-      "sort_order": 112
+      "sort_order": 111
     },
     {
       "priority_name": "Artificial Intelligence and Autonomous Systems",
@@ -3463,11 +3877,13 @@
         16,
         17
       ],
+      "evidence": "A shift towards greater use of autonomy and artificial intelligence (AI) within the UK's conventional forces should be an immediate priority, providing the UK with greater accuracy, lethality, and cheaper capabilities and fundamentally changing the economics of Defence. MOD must begin the development of AI enabled capabilities by engaging and collaborating with the industrial base to identify game-changing solutions. MOD will spend \u00a34 billion on uncrewed and autonomous military systems over the course of this Parliament.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_artificial_intelligence_and_autonomous_systems",
-      "sort_order": 113
+      "sort_order": 112
     },
     {
       "priority_name": "Combat Air",
@@ -3488,11 +3904,15 @@
         30,
         31
       ],
+      "evidence": "Combat air \u2013 with aerospace making up more than half of UK defence export orders over the five years from 2019 to 2023, evidence of our global advantage and capability in areas such as sub systems.",
+      "funding_commitments": [
+        "New Office for Defence Exports"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "defence_combat_air",
-      "sort_order": 114
+      "sort_order": 113
     },
     {
       "priority_name": "Combat Air and Future Combat Air System (FCAS)",
@@ -3516,11 +3936,13 @@
         14,
         23
       ],
+      "evidence": "The UK's Future Combat Air System (FCAS), with the Global Combat Air Programme (GCAP) at its core, is accelerating the development of novel technologies and techniques to outmatch our adversaries for decades to come. A system-of-systems, FCAS will combine crewed and uncrewed platforms with cutting-edge effectors and a secure, seamless network across air, sea, land, and space.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_combat_air_and_future_combat_air_system_fcas",
-      "sort_order": 115
+      "sort_order": 114
     },
     {
       "priority_name": "Complex Weapons",
@@ -3542,11 +3964,15 @@
         30,
         31
       ],
+      "evidence": "Complex weapons \u2013 with our landmark \u00a34 billion air defence export deal with Poland demonstrating our comparative advantage in a growing global market.",
+      "funding_commitments": [
+        "\u00a31.6 billion contract for Thales Belfast (Lightweight Multirole Missiles)"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "defence_complex_weapons",
-      "sort_order": 116
+      "sort_order": 115
     },
     {
       "priority_name": "Complex Weapons and Munitions",
@@ -3571,11 +3997,13 @@
         22,
         23
       ],
+      "evidence": "We will also strengthen our supply chains, investing \u00a36 billion in munitions this Parliament, including \u00a31.5 billion in an 'always on' pipeline for munitions, and building at least six new energetics and munitions factories in the UK, generating over 1,000 jobs and boosting export potential.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_complex_weapons_and_munitions",
-      "sort_order": 117
+      "sort_order": 116
     },
     {
       "priority_name": "Cryptography",
@@ -3593,11 +4021,13 @@
       "source_chunks": [
         4
       ],
+      "evidence": "There are sub-sectors where strategic imperative requires full, or majority, industrial capability to be UK-based. These include nuclear deterrence capabilities, nuclear submarines, and cryptography.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_cryptography",
-      "sort_order": 118
+      "sort_order": 117
     },
     {
       "priority_name": "Defence Export and Investment Leadership",
@@ -3615,11 +4045,13 @@
       "source_chunks": [
         7
       ],
+      "evidence": "By 2035, the UK will be Europe's leading Defence exporter, will have closed the gap for venture capital investment into Defence with the US by half, and will have radically reduced the time to contract across all segments of defence procurements.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "defence_defence_export_and_investment_leadership",
-      "sort_order": 119
+      "sort_order": 118
     },
     {
       "priority_name": "Defence Industrial Base",
@@ -3652,11 +4084,21 @@
         30,
         31
       ],
+      "evidence": "Spending at least 10% of the Ministry of Defence's equipment budget on acquiring novel technologies, such as drones and AI enabled technology, pulling cutting-edge technology over the 'valley of death' from prototype to production.",
+      "funding_commitments": [
+        "Defence spending to increase to 2.6% of GDP in 2027, ambition of 3%",
+        "\u00a3400 million budget for UK Defence Innovation",
+        "Up to \u00a3330 million for National Security Strategic Investment Fund",
+        "\u00a32.5 billion increase in MOD spending with SMEs by May 2028",
+        "At least \u00a33 billion UKEF lending dedicated to Defence exports",
+        "10% of MoD equipment procurement on novel technologies",
+        "Defence Growth Deals in England, Scotland, Wales and Northern Ireland"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "defence_defence_industrial_base",
-      "sort_order": 120
+      "sort_order": 119
     },
     {
       "priority_name": "Defence Innovation and Dual-Use Technologies",
@@ -3682,11 +4124,12 @@
         "UK Defence Innovation launch July 2025",
         "GBP 42.5 million Defence Materials Centre of Excellence"
       ],
+      "evidence": "To ensure we remain at the forefront of strategic and dual-use technologies, the Government has developed an ambitious new approach to defence innovation. UK Defence Innovation which will launch on 1 July, will turbocharge the Government's ability to support the 'pull-through' of cutting edge innovative ideas and technologies into capabilities and commercial products.",
       "source_documents": [
         "Advanced Manufacturing Sector Plan"
       ],
       "priority_id": "defence_defence_innovation_and_dual_use_technologies",
-      "sort_order": 121
+      "sort_order": 120
     },
     {
       "priority_name": "Directed Energy Weapons",
@@ -3704,11 +4147,13 @@
       "source_chunks": [
         4
       ],
+      "evidence": "Economic Growth Priorities. For the first time, we are considering sub-sectors with high economic growth potential \u2013 our frontier industries... These include combat air, complex weapons, directed energy weapons and next-generation land and maritime capabilities.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_directed_energy_weapons",
-      "sort_order": 122
+      "sort_order": 121
     },
     {
       "priority_name": "Drones and Autonomous Systems",
@@ -3730,11 +4175,15 @@
         30,
         31
       ],
+      "evidence": "Drones and Autonomous Systems - with our strengths in robotics, drones, autonomy, and human-machine teaming.",
+      "funding_commitments": [
+        "Part of 10% novel technology procurement target"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "defence_drones_and_autonomous_systems",
-      "sort_order": 123
+      "sort_order": 122
     },
     {
       "priority_name": "Ground Combat Systems",
@@ -3755,11 +4204,13 @@
         4,
         7
       ],
+      "evidence": "Companies such as Space Forge are working in cutting-edge manufacturing, secure connectivity and cybersecurity, whilst General Dynamics produce the world-leading Ajax armoured vehicle.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_ground_combat_systems",
-      "sort_order": 124
+      "sort_order": 123
     },
     {
       "priority_name": "Maritime Capabilities",
@@ -3783,11 +4234,16 @@
         30,
         31
       ],
+      "evidence": "Maritime Capabilities \u2013 with our success in exporting ship designs such as the Arrowhead 140 and Type 26 Frigates and a growing market for next-generation autonomous maritime systems.",
+      "funding_commitments": [
+        "\u00a34.4 billion investment in HMNB Devonport over 10 years",
+        "Plymouth named National Centre for Marine Autonomy"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "defence_maritime_capabilities",
-      "sort_order": 125
+      "sort_order": 124
     },
     {
       "priority_name": "Nuclear Deterrence and Submarine Programme",
@@ -3814,11 +4270,13 @@
         20,
         24
       ],
+      "evidence": "This Government is steadfast in our commitment to the nuclear deterrent in the face of rising global threats and growing Russian aggression. This commitment is reinforced by our 'triple-lock' on the deterrent, guaranteeing (i) the building of the four Dreadnought nuclear submarines in Barrow-in-Furness; (ii) that we will maintain the UK's Continuous At-Sea Deterrent (CASD); and (iii) the delivery of all future upgrades.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_nuclear_deterrence_and_submarine_programme",
-      "sort_order": 126
+      "sort_order": 125
     },
     {
       "priority_name": "Shipbuilding and Maritime Capabilities",
@@ -3842,11 +4300,13 @@
         8,
         12
       ],
+      "evidence": "This has begun with the landmark Type 26 frigate export deal with Norway, our biggest ever warship export deal by value, which will boost the UK economy by \u00a310 billion and sustain 4,000 jobs across the UK.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_shipbuilding_and_maritime_capabilities",
-      "sort_order": 127
+      "sort_order": 126
     },
     {
       "priority_name": "Space Technologies",
@@ -3867,11 +4327,13 @@
         7,
         16
       ],
+      "evidence": "Cardiff based SME Space Forge is building the world's first returnable and reusable in-space manufacturing platform. This manufacturing work includes semiconductors, which are crucial components of radars and frontline battlefield communications systems.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_space_technologies",
-      "sort_order": 128
+      "sort_order": 127
     },
     {
       "priority_name": "UK Defence Innovation (UKDI)",
@@ -3895,11 +4357,13 @@
         15,
         16
       ],
+      "evidence": "The newly established UK Defence Innovation (UKDI) will ensure the Ministry of Defence puts into practice the lessons learned from Ukraine... Through UKDI, we will invest in our most innovative defence companies with a ringfenced annual UKDI budget of at least \u00a3400m. This will increase in future years, with a significant increase in the proportion of the Ministry of Defence's equipment procurement spent on novel technologies.",
+      "funding_commitments": [],
       "source_documents": [
         "Defence Industrial Strategy: Making Defence an Engine for Growth"
       ],
       "priority_id": "defence_uk_defence_innovation_ukdi",
-      "sort_order": 129
+      "sort_order": 128
     },
     {
       "priority_name": "AI Adoption and Assurance",
@@ -3924,11 +4388,12 @@
         "digital_tech_008",
         "digital_tech_011"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "digital__technologies_ai_adoption_and_assurance",
-      "sort_order": 130
+      "sort_order": 129
     },
     {
       "priority_name": "AI Compute Infrastructure",
@@ -3953,11 +4418,12 @@
         "digital_tech_006",
         "digital_tech_011"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "digital__technologies_ai_compute_infrastructure",
-      "sort_order": 131
+      "sort_order": 130
     },
     {
       "priority_name": "AI and Copyright Framework",
@@ -3980,11 +4446,12 @@
       "source_chunks": [
         "digital_tech_006"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "digital__technologies_ai_and_copyright_framework",
-      "sort_order": 132
+      "sort_order": 131
     },
     {
       "priority_name": "Advanced Connectivity Technologies",
@@ -4009,6 +4476,11 @@
         "wireless networks"
       ],
       "evidence": "Driving greater ACT development in the UK through a four-year targeted research programme, initially with \u00a3240 million of funding, that brings together industry and academia with an increased focus on commercialisation, leveraging UK strengths and priority applications, such as defence, transport and future telecoms networks, including satellites.",
+      "evidence_quote": "Driving greater ACT development in the UK through a four-year targeted research programme, initially with \u00a3240 million of funding, that brings together industry and academia with an increased focus on commercialisation, leveraging UK strengths and priority applications, such as defence, transport and future telecoms networks, including satellites.",
+      "funding_commitments": [
+        "Remove barriers to digital infrastructure deployment",
+        "\u00a341 million for low-earth-orbit satellite connectivity on mainline trains"
+      ],
       "confidence": "high",
       "source_chunks": [
         "14",
@@ -4029,7 +4501,7 @@
       ],
       "merge_count": 3,
       "priority_id": "digital__technologies_advanced_connectivity_technologies",
-      "sort_order": 133
+      "sort_order": 132
     },
     {
       "priority_name": "Artificial Intelligence",
@@ -4051,7 +4523,15 @@
         "machine learning",
         "supercomputing"
       ],
-      "evidence": "We are also expanding public compute capacity to address historic underinvestment and ensure the UK remains at the forefront of AI development and deployment. The UK's AI Research Resource will be fully operational this summer, with two powerful supercomputers - Isambard-AI in Bristol and Dawn in Cambridge.",
+      "evidence": "Establish our new Sovereign AI Unit, within government, with up to \u00a3500 million to maximise the UK's stake in frontier AI. The Unit will work with the British Business Bank to make investments alongside a wider offer on data, compute and talent to build UK AI capabilities in partnership with the private sector.",
+      "evidence_quote": "Establish our new Sovereign AI Unit, within government, with up to \u00a3500 million to maximise the UK's stake in frontier AI. The Unit will work with the British Business Bank to make investments alongside a wider offer on data, compute and talent to build UK AI capabilities in partnership with the private sector.",
+      "funding_commitments": [
+        "Establish AI Growth Zones across the UK",
+        "Expand AI Research Resource by at least 20x by 2030",
+        "New Turing AI Global Fellowships",
+        "Up to \u00a3500 million for Sovereign AI Unit",
+        "\u00a3187 million TechFirst technology skills package"
+      ],
       "confidence": "high",
       "source_chunks": [
         "0",
@@ -4075,7 +4555,7 @@
       ],
       "merge_count": 2,
       "priority_id": "digital__technologies_artificial_intelligence",
-      "sort_order": 134
+      "sort_order": 133
     },
     {
       "priority_name": "Artificial Intelligence Sector Interconnectedness",
@@ -4093,11 +4573,13 @@
       "source_chunks": [
         3
       ],
+      "evidence": "AI is expected to become increasingly critical not only to the IS-8 sectors, but all sectors of the economy, and so this scored highly.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "digital__technologies_artificial_intelligence_sector_interconnectedness",
-      "sort_order": 135
+      "sort_order": 134
     },
     {
       "priority_name": "Cyber Security",
@@ -4123,6 +4605,12 @@
         "threat detection"
       ],
       "evidence": "Publishing a Cyber Growth Action Plan in summer 2025 to provide a roadmap for future growth, based on independent advice from experts at Bristol University and Imperial College London... Promoting the adoption of technologies that are secure by design through an initial \u00a324 million to promote using the Capability Hardware Enhanced RISC Instructions (CHERI) blueprint for designing the next generation of secure chips.",
+      "evidence_quote": "Publishing a Cyber Growth Action Plan in summer 2025 to provide a roadmap for future growth, based on independent advice from experts at Bristol University and Imperial College London... Promoting the adoption of technologies that are secure by design through an initial \u00a324 million to promote using the Capability Hardware Enhanced RISC Instructions (CHERI) blueprint for designing the next generation of secure chips.",
+      "funding_commitments": [
+        "Cyber-AI Hub with Queen's University Belfast",
+        "Over \u00a3200 million industry co-investment in secure chips",
+        "\u00a380 million invested in secure chips"
+      ],
       "confidence": "high",
       "source_chunks": [
         "10",
@@ -4145,7 +4633,7 @@
       ],
       "merge_count": 3,
       "priority_id": "digital__technologies_cyber_security",
-      "sort_order": 136
+      "sort_order": 135
     },
     {
       "priority_name": "Digital and Technologies Global Leadership",
@@ -4163,11 +4651,13 @@
       "source_chunks": [
         7
       ],
+      "evidence": "By 2035, our vision is for the UK to be one of the top three places in the world to create, invest in, and scale-up a fast-growing technology business. We will aim to secure the UK's first trillion-dollar technology business.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "digital__technologies_digital_and_technologies_global_leadership",
-      "sort_order": 137
+      "sort_order": 136
     },
     {
       "priority_name": "Engineering Biology",
@@ -4190,6 +4680,10 @@
         "synthetic biology"
       ],
       "evidence": "Driving cross-economy innovation through R&D with an initial \u00a3196 million for a National Engineering Biology Programme to fund researcher-led projects... Partnering with the sector to enhance adoption and manufacturing capabilities through an initial \u00a3184 million for an Engineering Biology Scale-up Infrastructure Programme to build and upgrade pilot and scale-up facilities.",
+      "evidence_quote": "Driving cross-economy innovation through R&D with an initial \u00a3196 million for a National Engineering Biology Programme to fund researcher-led projects... Partnering with the sector to enhance adoption and manufacturing capabilities through an initial \u00a3184 million for an Engineering Biology Scale-up Infrastructure Programme to build and upgrade pilot and scale-up facilities.",
+      "funding_commitments": [
+        "Strategic long-term R&D investments"
+      ],
       "confidence": "high",
       "source_chunks": [
         "14",
@@ -4208,7 +4702,7 @@
       ],
       "merge_count": 3,
       "priority_id": "digital__technologies_engineering_biology",
-      "sort_order": 138
+      "sort_order": 137
     },
     {
       "priority_name": "National Cyber Innovation Centre",
@@ -4232,11 +4726,12 @@
         "digital_tech_006",
         "digital_tech_011"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "digital__technologies_national_cyber_innovation_centre",
-      "sort_order": 139
+      "sort_order": 138
     },
     {
       "priority_name": "Quantum Technologies",
@@ -4264,6 +4759,12 @@
         "quantum technologies"
       ],
       "evidence": "Progressing five National Quantum Missions to: deploy quantum navigation systems; maintain critical national infrastructure, ensure NHS trusts benefit from quantum sensing; deploy the world's most advanced quantum network at scale; and have UK-based quantum computers capable of significantly outperforming supercomputers by 2035. This includes \u00a3670 million to drive the development and adoption of quantum computers in the UK.",
+      "evidence_quote": "Progressing five National Quantum Missions to: deploy quantum navigation systems; maintain critical national infrastructure, ensure NHS trusts benefit from quantum sensing; deploy the world's most advanced quantum network at scale; and have UK-based quantum computers capable of significantly outperforming supercomputers by 2035. This includes \u00a3670 million to drive the development and adoption of quantum computers in the UK.",
+      "funding_commitments": [
+        "10-year budget for National Quantum Computing Centre",
+        "UK Quantum Hubs in Edinburgh and Glasgow",
+        "\u00a3670 million for quantum computer development and adoption"
+      ],
       "confidence": "high",
       "source_chunks": [
         "13",
@@ -4286,7 +4787,7 @@
       ],
       "merge_count": 3,
       "priority_id": "digital__technologies_quantum_technologies",
-      "sort_order": 140
+      "sort_order": 139
     },
     {
       "priority_name": "Secure Hardware Design (CHERI)",
@@ -4310,11 +4811,12 @@
         "digital_tech_006",
         "digital_tech_011"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "digital__technologies_secure_hardware_design_cheri",
-      "sort_order": 141
+      "sort_order": 140
     },
     {
       "priority_name": "Semiconductors",
@@ -4337,7 +4839,13 @@
         "semiconductors",
         "silicon"
       ],
-      "evidence": "Establishing a new UK Semiconductor Centre to bring together industry, academia and government, and provide cross-sector leadership on semiconductor innovation, alongside ecosystem building and business services. With funding of up to \u00a319 million, the Centre will also develop long-term R&D and infrastructure roadmaps to guide future investment in semiconductors.",
+      "evidence": "In September 2024, the Ministry of Defence acquired a semiconductor foundry in Newton Aycliffe, County Durham... This factory, renamed Octric Semiconductors UK, is the only secure facility in the UK with the skills and capability to manufacture gallium arsenide semiconductors. These types of specialist semiconductors are used in a number of military platforms, including fighter jet capabilities.",
+      "evidence_quote": "In September 2024, the Ministry of Defence acquired a semiconductor foundry in Newton Aycliffe, County Durham... This factory, renamed Octric Semiconductors UK, is the only secure facility in the UK with the skills and capability to manufacture gallium arsenide semiconductors. These types of specialist semiconductors are used in a number of military platforms, including fighter jet capabilities.",
+      "funding_commitments": [
+        "Centre for Integrative Semiconductor Materials at Swansea University",
+        "New Centre for Doctoral Training led by Swansea University",
+        "Support for compound semiconductor cluster in Newport (Vishay \u00a3250 million investment)"
+      ],
       "confidence": "high",
       "source_chunks": [
         "14",
@@ -4358,7 +4866,7 @@
       ],
       "merge_count": 3,
       "priority_id": "digital__technologies_semiconductors",
-      "sort_order": 142
+      "sort_order": 141
     },
     {
       "priority_name": "Sovereign AI",
@@ -4383,11 +4891,12 @@
         "digital_tech_003",
         "digital_tech_006"
       ],
+      "funding_commitments": [],
       "source_documents": [
         "digital_tech"
       ],
       "priority_id": "digital__technologies_sovereign_ai",
-      "sort_order": 143
+      "sort_order": 142
     },
     {
       "priority_name": "University of Edinburgh Supercomputer",
@@ -4408,11 +4917,15 @@
         1,
         27
       ],
+      "evidence": "Our investment of up to \u00a3750 million in a new supercomputer at the University of Edinburgh \u2013 largest in the UK \u2013 will also strengthen an already world-class Digital and Technology cluster.",
+      "funding_commitments": [
+        "Up to \u00a3750 million for Edinburgh supercomputer"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "digital__technologies_university_of_edinburgh_supercomputer",
-      "sort_order": 144
+      "sort_order": 143
     },
     {
       "priority_name": "Artificial Intelligence in Financial Services",
@@ -4437,11 +4950,13 @@
         8,
         9
       ],
+      "evidence": "Appointing an AI Champion in financial services. The Champion will be a catalyst for the adoption and innovation of AI in financial services, with a focus on asset management and wholesale services, insurance and re-insurance, and capital markets including retail investment.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_artificial_intelligence_in_financial_services",
-      "sort_order": 145
+      "sort_order": 144
     },
     {
       "priority_name": "Asset Management and Wholesale Services",
@@ -4464,11 +4979,13 @@
         3,
         4
       ],
+      "evidence": "Make the UK a world leader for managing private markets assets, leveraging the UK's position as a leading global venture capital, private equity and private debt centre, as well as the distinctive advantages of our homegrown investment companies sector.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_asset_management_and_wholesale_services",
-      "sort_order": 146
+      "sort_order": 145
     },
     {
       "priority_name": "Capital Framework Reform for Banks",
@@ -4491,11 +5008,13 @@
         2,
         3
       ],
+      "evidence": "The Bank of England will raise the assets threshold for MREL requirements to GBP25-40 billion, provide greater clarity and flexibility on when a transfer or bail-in resolution strategy is required, set MREL requirements no higher than minimum capital requirements for firms with a transfer resolution strategy.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_capital_framework_reform_for_banks",
-      "sort_order": 147
+      "sort_order": 146
     },
     {
       "priority_name": "Capital Markets Competitiveness",
@@ -4518,11 +5037,13 @@
         7,
         8
       ],
+      "evidence": "The Private Intermittent Securities and Capital Exchange System (PISCES), a new stock exchange for private company shares, which will support private companies to scale, list and grow. The FCA opened applications for new PISCES operators in June 2025.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_capital_markets_competitiveness",
-      "sort_order": 148
+      "sort_order": 147
     },
     {
       "priority_name": "Capital Markets and Pensions Reform",
@@ -4548,11 +5069,18 @@
         12,
         33
       ],
+      "evidence": "Together with the industry-led voluntary Mansion House Accord, these reforms will secure \u00a350 billion of investment for UK businesses and major infrastructure projects.",
+      "funding_commitments": [
+        "\u00a350 billion from pension megafunds",
+        "Pension Schemes Bill for megafund creation",
+        "PISCES private company exchange",
+        "Investment Accelerator for life insurers"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "financial_services_capital_markets_and_pensions_reform",
-      "sort_order": 149
+      "sort_order": 148
     },
     {
       "priority_name": "FinTech",
@@ -4576,11 +5104,17 @@
         2,
         33
       ],
+      "evidence": "Aim to make the UK the most technologically-advanced global financial centre with fully digitalised markets, and a leading jurisdiction for FinTechs to start up, scale, and eventually list.",
+      "funding_commitments": [
+        "Cutting red tape for FinTech firms",
+        "PISCES - new stock exchange for private companies",
+        "Consolidating Payment Systems Regulator within FCA"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "financial_services_fintech",
-      "sort_order": 150
+      "sort_order": 149
     },
     {
       "priority_name": "Financial Services Skills and Talent",
@@ -4602,11 +5136,13 @@
       "source_chunks": [
         9
       ],
+      "evidence": "The government will simplify and improve the Global Talent visa, making it easier for exceptional individuals to access and bring their skills and ideas to the UK. The government will expand the eligibility of the High Potential Individual visa.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_financial_services_skills_and_talent",
-      "sort_order": 151
+      "sort_order": 150
     },
     {
       "priority_name": "Fintech Scale-up and Innovation",
@@ -4629,11 +5165,13 @@
         6,
         7
       ],
+      "evidence": "The FCA and PRA launching a Scale-Up Unit to enhance engagement with fast-growing, innovative regulated firms. This will build on the FCA's and PRA's work to support early-stage innovative firms.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_fintech_scale_up_and_innovation",
-      "sort_order": 152
+      "sort_order": 151
     },
     {
       "priority_name": "Insurance and Reinsurance Markets",
@@ -4656,11 +5194,13 @@
         3,
         4
       ],
+      "evidence": "Consulting on a more flexible risk transformation regime: including reforming the UK's Insurance Linked Securities (ILS) offer to ensure that insurance for evolving risk - such as climate and cyber risks - can access funding through capital markets.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_insurance_and_reinsurance_markets",
-      "sort_order": 153
+      "sort_order": 152
     },
     {
       "priority_name": "International Trade and Market Access",
@@ -4683,11 +5223,13 @@
         5,
         6
       ],
+      "evidence": "The Berne Financial Services Agreement is a landmark approach and a symbol of what can be achieved through maintaining a strong financial relationship with our partners. The government hopes it will provide a blueprint for future mutual recognition agreements.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_international_trade_and_market_access",
-      "sort_order": 154
+      "sort_order": 153
     },
     {
       "priority_name": "Mutuals Sector Growth",
@@ -4707,11 +5249,13 @@
       "source_chunks": [
         10
       ],
+      "evidence": "In recognition of the role mutuals play, particularly in regional access to finance, the government has committed to doubling the size of the sector and is delivering changes to create a more supportive legislative environment.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_mutuals_sector_growth",
-      "sort_order": 155
+      "sort_order": 154
     },
     {
       "priority_name": "Office for Investment: Financial Services",
@@ -4733,11 +5277,13 @@
         5,
         6
       ],
+      "evidence": "Establishing the Office for Investment: Financial Services: a new, dedicated concierge service to guide and support international investors looking to establish or grow a presence in the UK's financial services sector.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_office_for_investment_financial_services",
-      "sort_order": 156
+      "sort_order": 155
     },
     {
       "priority_name": "Payments Modernisation and Digital Money",
@@ -4760,11 +5306,13 @@
         6,
         7
       ],
+      "evidence": "Creating a regulatory framework for stablecoins in recognition of their potential to transform retail and cross-border payments, as well as wholesale settlement. Enabling Distributed Ledger Technology (DLT) based settlement in central bank money on private platforms.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_payments_modernisation_and_digital_money",
-      "sort_order": 157
+      "sort_order": 156
     },
     {
       "priority_name": "Pensions Investment Reform",
@@ -4786,11 +5334,13 @@
       "source_chunks": [
         8
       ],
+      "evidence": "Minimum scale and investment sophistication requirements for DC schemes, and requirements for LGPS assets to be consolidated into pools. This will improve investment capabilities and free up more capital for investment in business and infrastructure.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_pensions_investment_reform",
-      "sort_order": 158
+      "sort_order": 157
     },
     {
       "priority_name": "Regional Financial Services Clusters",
@@ -4813,11 +5363,13 @@
         10,
         12
       ],
+      "evidence": "The government's GBP187 million TechFirst programme will support the development of financial services clusters across the UK. TechFirst will unlock opportunities for young people, graduates and researchers, accelerating innovation and adoption throughout the sector.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_regional_financial_services_clusters",
-      "sort_order": 159
+      "sort_order": 158
     },
     {
       "priority_name": "Regulatory Reform and Competitiveness",
@@ -4842,11 +5394,13 @@
         2,
         3
       ],
+      "evidence": "Set new, shorter deadlines for determining regulatory applications, to make it quicker and easier to do business in the UK. The government will shorten the statutory deadlines the FCA and PRA must meet for new firm authorisations, variations of permission, and the approval of senior managers.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_regulatory_reform_and_competitiveness",
-      "sort_order": 160
+      "sort_order": 159
     },
     {
       "priority_name": "Retail Investment Culture",
@@ -4869,11 +5423,13 @@
         7,
         8
       ],
+      "evidence": "Work with the FCA to roll out targeted support for consumers by ISA season 2026. This represents the biggest reform of the financial advice and guidance landscape in more than a decade and will represent a step change in the support that consumers receive to invest.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_retail_investment_culture",
-      "sort_order": 161
+      "sort_order": 160
     },
     {
       "priority_name": "Sustainable Finance",
@@ -4893,11 +5449,15 @@
       "source_chunks": [
         33
       ],
+      "evidence": "Sustainable Finance \u2013 with our international leadership giving the UK a stronger hand to capitalise on increasing demand for sustainable financial products.",
+      "funding_commitments": [
+        "Part of Financial Services Sector Plan"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "financial_services_sustainable_finance",
-      "sort_order": 162
+      "sort_order": 161
     },
     {
       "priority_name": "Sustainable Finance Leadership",
@@ -4922,11 +5482,13 @@
         5,
         6
       ],
+      "evidence": "The UK is the leading centre for sustainable finance, ranked first in the world for an eighth consecutive time in the Global Green Finance Index. There is increasing demand for sustainable finance products globally, and this represents an opportunity to build on the UK's existing leadership.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_sustainable_finance_leadership",
-      "sort_order": 163
+      "sort_order": 162
     },
     {
       "priority_name": "Wholesale Markets Digitalisation",
@@ -4948,11 +5510,13 @@
       "source_chunks": [
         8
       ],
+      "evidence": "Publishing a Wholesale Financial Markets Digital Strategy (WFMDS), which sets a vision for digitalising UK wholesale markets. Through the WFMDS, the government, working with industry, will use technology to optimise and transform our markets.",
+      "funding_commitments": [],
       "source_documents": [
         "Financial Services Growth and Competitiveness Strategy"
       ],
       "priority_id": "financial_services_wholesale_markets_digitalisation",
-      "sort_order": 164
+      "sort_order": 163
     },
     {
       "priority_name": "Access to Scale-up Finance",
@@ -4974,11 +5538,13 @@
         6,
         15
       ],
+      "evidence": "The Life Sciences sector will benefit as the BBB commits an additional 4 billion of Industrial Strategy Growth Capital to support investment and growth in the Government's Industrial Strategy growth-driving sectors (IS-8), crowding in 12 billion of private sector capital. This will include the Bank doubling its investment in new fund managers, cornerstone funds, and building the capacity to make direct investments of up to 60 million in strategically important companies.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_access_to_scale_up_finance",
-      "sort_order": 165
+      "sort_order": 164
     },
     {
       "priority_name": "Cancer Vaccines and Personalised Immunotherapies",
@@ -4999,11 +5565,13 @@
       "source_chunks": [
         6
       ],
+      "evidence": "In 2023, the Government and BioNTech - the pioneering company behind mRNA vaccines used to tackle COVID-19 - entered into a strategic partnership, which aims to provide personalised cancer therapies for up to 10,000 UK patients by 2030... BioNTech intends to set up two R&D hubs - the first one in Cambridge focused on genomics, oncology, structural biology, and regenerative medicine.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_cancer_vaccines_and_personalised_immunotherapies",
-      "sort_order": 166
+      "sort_order": 165
     },
     {
       "priority_name": "Commercial Clinical Trials Acceleration",
@@ -5027,11 +5595,13 @@
         12,
         13
       ],
+      "evidence": "Slashing trial set up times to under 150 days: By implementing the O'Shaughnessy reforms, updating the NIHR governance and placing a dual health and growth mandate on the NIHR, we will cut delays that deter investors and aim to double commercial interventional trial participants by 2026, and again by 2029.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_commercial_clinical_trials_acceleration",
-      "sort_order": 167
+      "sort_order": 166
     },
     {
       "priority_name": "Genomics Ecosystem Development",
@@ -5056,11 +5626,13 @@
         13,
         14
       ],
+      "evidence": "By 2030, Genomics England, supported by over 650 million of government funding, will host one of the largest genomic research databases globally with over 500,000 genomes... Our Future Health will become the largest longitudinal health research cohort and clinical trials resource in the world, with up to five million consented participants.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_genomics_ecosystem_development",
-      "sort_order": 168
+      "sort_order": 167
     },
     {
       "priority_name": "Health Data Research Service (HDRS)",
@@ -5086,11 +5658,13 @@
         12,
         13
       ],
+      "evidence": "Up to 600 million investment from Government alongside the Wellcome Trust, to create the world's most advanced, secure, and AI-ready health data platform. It will unite genomic, diagnostic, and clinical data at population scale, turning NHS and wider healthcare data into a magnet for global trials and AI investment.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_health_data_research_service_hdrs",
-      "sort_order": 169
+      "sort_order": 168
     },
     {
       "priority_name": "Health Data and Digital Health",
@@ -5119,11 +5693,20 @@
         15,
         34
       ],
+      "evidence": "Realising a Health Data Research Service with up to \u00a3600 million investment from Government, alongside the Wellcome Trust to create the world's most advanced, secure and AI-ready health data platform.",
+      "funding_commitments": [
+        "Up to \u00a3600 million for Health Data Research Service (with Wellcome Trust)",
+        "More than \u00a3650 million over 5 years for Genomics England",
+        "Up to \u00a3354 million for Our Future Health",
+        "Up to \u00a320 million for UK BioBank",
+        "At least \u00a330 million for preclinical infrastructure",
+        "Slashing trial set up time to under 150 days"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "life_sciences_health_data_and_digital_health",
-      "sort_order": 170
+      "sort_order": 169
     },
     {
       "priority_name": "HealthStore Digital Health Platform",
@@ -5143,11 +5726,13 @@
       "source_chunks": [
         9
       ],
+      "evidence": "For patients, we will build, test and iterate a 'HealthStore', which will enable access to approved health apps to manage or treat their condition. Areas with digital tools that show significant promise include dermatology, physiotherapy, and cognitive behaviour therapy for mental health conditions. The products will be funded from the centre and nationwide rollout will be piloted once the HealthStore is established.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_healthstore_digital_health_platform",
-      "sort_order": 171
+      "sort_order": 170
     },
     {
       "priority_name": "Healthcare Goals Programme",
@@ -5169,11 +5754,13 @@
         9,
         16
       ],
+      "evidence": "Deliver the ambitions of the Government's Healthcare Goals programme across Addiction, Cancer, Dementia, Mental Health, and Obesity, with continued significant government funding. Each Healthcare Goals programme is led by ministerially-appointed international experts operating as Chair(s).",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_healthcare_goals_programme",
-      "sort_order": 172
+      "sort_order": 171
     },
     {
       "priority_name": "International Regulatory Cooperation",
@@ -5193,11 +5780,13 @@
       "source_chunks": [
         10
       ],
+      "evidence": "Using all our international dialogues, partnerships, and agreements, we will champion strong international regulatory cooperation and harmonisation. We will use all levers, including our Mutual Recognition Agreements and bilateral engagement between regulators. The latter will be supported by the newly announced Ricardo Fund.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_international_regulatory_cooperation",
-      "sort_order": 173
+      "sort_order": 172
     },
     {
       "priority_name": "Life Sciences Innovative Manufacturing Fund (LSIMF)",
@@ -5223,11 +5812,13 @@
         11,
         15
       ],
+      "evidence": "Backing manufacturing with up to 520 million: The Life Sciences Innovative Manufacturing Fund (LSIMF) will bring globally mobile manufacturing investments to the UK. This will help build and maintain the UK's critical sovereign capability across the sector, creating high-value jobs nationwide, and strengthen domestic health resilience and supply chain security.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_life_sciences_innovative_manufacturing_fund_lsimf",
-      "sort_order": 174
+      "sort_order": 173
     },
     {
       "priority_name": "Life Sciences Manufacturing",
@@ -5253,11 +5844,18 @@
         25,
         34
       ],
+      "evidence": "Backing manufacturing with up to \u00a3520 million through the Life Sciences Innovative Manufacturing Fund, which will bring globally mobile manufacturing investments to the UK.",
+      "funding_commitments": [
+        "Up to \u00a3520 million Life Sciences Innovative Manufacturing Fund",
+        "Over \u00a32 billion government funding for Life Sciences over Spending Review",
+        "Bespoke approach for investments over \u00a3250 million",
+        "Low-friction Procurement pathway for MedTech"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "life_sciences_life_sciences_manufacturing",
-      "sort_order": 175
+      "sort_order": 174
     },
     {
       "priority_name": "Life Sciences R&D and Investment Leadership",
@@ -5276,11 +5874,13 @@
       "source_chunks": [
         7
       ],
+      "evidence": "The UK will have more investment in commercial R&D than any other European economy by 2030, and more than any other country globally (excluding the US and China) by 2035.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "life_sciences_life_sciences_rd_and_investment_leadership",
-      "sort_order": 176
+      "sort_order": 175
     },
     {
       "priority_name": "Life Sciences Skills and Workforce Development",
@@ -5305,11 +5905,13 @@
         12,
         15
       ],
+      "evidence": "Build a training and skills system that delivers a diverse and highly skilled Life Sciences workforce. Skills England will work with Life Sciences employers and gain insight from devolved governments to understand the skills needs of the sector... New Turing AI Pioneer Fellowships will improve AI skills across multiple scientific and research domains, including Life Sciences.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_life_sciences_skills_and_workforce_development",
-      "sort_order": 177
+      "sort_order": 176
     },
     {
       "priority_name": "Life Sciences Supply Chain Resilience",
@@ -5331,11 +5933,13 @@
         10,
         11
       ],
+      "evidence": "The Life Sciences sector depends on complex global supply chains, often reliant on a small number of international suppliers for critical components... Through our new Supply Chain Centre, we will identify strategic vulnerabilities and take targeted steps to build resilience - whether by supporting UK manufacturing capability, diversifying sources of key inputs, or improving access to resilience finance.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_life_sciences_supply_chain_resilience",
-      "sort_order": 178
+      "sort_order": 177
     },
     {
       "priority_name": "Low-Friction NHS Procurement for MedTech",
@@ -5360,11 +5964,13 @@
         15,
         16
       ],
+      "evidence": "Introducing low-friction procurement: Streamlining the route to procurement, ensuring it is clearer and less bureaucratic, giving industry low-friction access to the NHS through a Rules Based Pathway (RBP) for MedTech and an NHS 'Innovator Passport', enabling innovative MedTech products to reach patients more quickly.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_low_friction_nhs_procurement_for_medtech",
-      "sort_order": 179
+      "sort_order": 178
     },
     {
       "priority_name": "Medical Technologies (MedTech) Frontier Industry",
@@ -5385,11 +5991,13 @@
       "source_chunks": [
         10
       ],
+      "evidence": "The UK's MedTech frontier industry employed around 154,000 staff and generated 34 billion in turnover in 2021/22. The frontier industry encompasses medical devices, diagnostics (both in vivo and in vitro), and digital technologies... in 2024, 33% of MedTech firms reported removing products from the UK market due to a combination of regulatory and procurement barriers.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_medical_technologies_medtech_frontier_industry",
-      "sort_order": 180
+      "sort_order": 179
     },
     {
       "priority_name": "NHS Three Shifts Transformation",
@@ -5410,11 +6018,13 @@
         1,
         8
       ],
+      "evidence": "We will do so in a way that supports our National Health Service (NHS), not strains it - by embracing the three major health shifts this Government is determined to deliver: From hospital to community... From analogue to digital... From sickness to prevention.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_nhs_three_shifts_transformation",
-      "sort_order": 181
+      "sort_order": 180
     },
     {
       "priority_name": "NIHR Innovation Catalyst",
@@ -5437,11 +6047,13 @@
         12,
         13
       ],
+      "evidence": "Substantially enhance the NIHR offer to BioTech and MedTech SMEs to develop and evaluate high value innovation. Delivered through the introduction of a new NIHR R&D Innovation Catalyst, pulling through innovations developed by UKRI and other routes, and meeting the demands of the health and care system.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_nihr_innovation_catalyst",
-      "sort_order": 182
+      "sort_order": 181
     },
     {
       "priority_name": "Oxford to Cambridge Growth Corridor",
@@ -5460,7 +6072,9 @@
         "lab space",
         "multi-sector hub"
       ],
-      "evidence": "",
+      "evidence": "The Industrial Strategy is connecting city regions and high potential clusters across the Oxford to Cambridge Growth Corridor and a corridor across our Northern city regions, making them globally competitive engines of the IS-8. In many cases, this is anchored by flagship infrastructure investments such as East-West Rail.",
+      "evidence_quote": "The Industrial Strategy is connecting city regions and high potential clusters across the Oxford to Cambridge Growth Corridor and a corridor across our Northern city regions, making them globally competitive engines of the IS-8. In many cases, this is anchored by flagship infrastructure investments such as East-West Rail.",
+      "funding_commitments": [],
       "confidence": "high",
       "source_chunks": [
         "11",
@@ -5473,7 +6087,7 @@
       ],
       "merge_count": 2,
       "priority_id": "life_sciences_oxford_to_cambridge_growth_corridor",
-      "sort_order": 183
+      "sort_order": 182
     },
     {
       "priority_name": "Pharmaceutical Frontier Industry",
@@ -5494,11 +6108,13 @@
       "source_chunks": [
         10
       ],
+      "evidence": "The UK's pharmaceuticals frontier industry employed around 150,000 staff and generated 74 billion in turnover in 2021/22... Expenditure on pharmaceutical R&D totalled 9 billion in 2023, the largest contribution (17%) to total business R&D in the same year.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_pharmaceutical_frontier_industry",
-      "sort_order": 184
+      "sort_order": 183
     },
     {
       "priority_name": "Pre-clinical Translational Infrastructure",
@@ -5520,11 +6136,13 @@
         12,
         13
       ],
+      "evidence": "The Government will establish pre-clinical translational infrastructure to drive development of pre-clinical models as an alternative to animals, and will develop up to three fully integrated translational networks in key areas of health research... This infrastructure will be backed by at least 30 million of government funding.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_pre_clinical_translational_infrastructure",
-      "sort_order": 185
+      "sort_order": 184
     },
     {
       "priority_name": "Prevention and Multiple Long-Term Conditions Research",
@@ -5546,11 +6164,13 @@
         5,
         15
       ],
+      "evidence": "The Government will shift investment in health R&D with a focus on primary and secondary prevention and Multiple Long-Term Conditions (MLTCs). The Government's goal is to mobilise public and private investment into prevention that improves our health and prosperity, and to make this country a global leader in preventative healthcare products and services.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_prevention_and_multiple_long_term_conditions_resea",
-      "sort_order": 186
+      "sort_order": 185
     },
     {
       "priority_name": "Regional Health Innovation Zones",
@@ -5572,11 +6192,13 @@
         11,
         16
       ],
+      "evidence": "Establish Regional Health Innovation 'Zones' for large scale development and implementation of innovation, for scale-up across the health and care system... Empowered by devolutionary freedoms, the Zones will bring together existing entities - including Integrated Care Boards (ICBs), providers, mayors, and industry - to experiment, test, and generate evidence for complex interventions.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_regional_health_innovation_zones",
-      "sort_order": 187
+      "sort_order": 186
     },
     {
       "priority_name": "Regulatory Reform and Streamlined Market Access",
@@ -5602,11 +6224,13 @@
         15,
         16
       ],
+      "evidence": "Streamlining regulation and market access: Supporting the Medicines and Healthcare products Regulatory Agency (MHRA) to become a faster, more agile regulator, and giving industry a clearer route to market through joint advice and parallel approvals with the National Institute for Health and Care Excellence (NICE), alongside a route for international reliance for medicines and medical devices so patients benefit sooner from cutting-edge innovation.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_regulatory_reform_and_streamlined_market_access",
-      "sort_order": 188
+      "sort_order": 187
     },
     {
       "priority_name": "Strategic Industry Partnerships",
@@ -5630,11 +6254,13 @@
         11,
         15
       ],
+      "evidence": "Partnering with industry to drive growth and innovation: Building on our collaborative approach with the sector, we will continue to partner with industry throughout delivery, and working directly with individual companies, we will secure at least one major strategic partnership annually with leading Life Sciences companies. Additionally, a dedicated support service will be established to help 10-20 high-potential UK companies to scale, attract investment, and remain headquartered in the UK.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_strategic_industry_partnerships",
-      "sort_order": 189
+      "sort_order": 188
     },
     {
       "priority_name": "TechBio and AI in Life Sciences",
@@ -5657,11 +6283,13 @@
         8,
         12
       ],
+      "evidence": "The Government is committed to making the UK a global leader in AI-driven Life Sciences through the AI Opportunities Action Plan and the aligned Digital and Technologies Sector Plan... One of the most dynamic areas of growth is TechBio, which fuses biotechnology with data science. TechBio companies are pioneering AI-driven applications in drug discovery.",
+      "funding_commitments": [],
       "source_documents": [
         "Life Sciences Sector Plan"
       ],
       "priority_id": "life_sciences_techbio_and_ai_in_life_sciences",
-      "sort_order": 190
+      "sort_order": 189
     },
     {
       "priority_name": "AI Assurance Technology (AIAT)",
@@ -5683,11 +6311,13 @@
       "source_chunks": [
         6
       ],
+      "evidence": "The emerging field of AI Assurance Technology (AIAT) has the potential to be a major growth engine for the UK's PBS sector. As AI becomes integral to operations, firms require robust mechanisms to validate, monitor, and certify AI systems... The UK's AI assurance market could grow from around 1 billion in GVA to as high as 6.5 billion by 2035.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_ai_assurance_technology_aiat",
-      "sort_order": 191
+      "sort_order": 190
     },
     {
       "priority_name": "AI and Digital Technology Adoption in PBS",
@@ -5715,11 +6345,13 @@
         10,
         11
       ],
+      "evidence": "We have a leadership opportunity for the UK to position PBS as the foremost adopter and most trusted deployer of AI in the world. We have done well so far, with AI adoption already relatively high in the sector (at 38% of businesses, 13 percentage points higher than the average across the economy).",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_ai_and_digital_technology_adoption_in_pbs",
-      "sort_order": 192
+      "sort_order": 191
     },
     {
       "priority_name": "Accountancy, Audit, and Tax Modernisation",
@@ -5745,11 +6377,13 @@
         11,
         12
       ],
+      "evidence": "The Accountancy, Audit, and Tax sector contributed 33.3 billion to the UK GVA in 2024... Enable Accountancy, Audit, and Tax companies to transition to the broader provision of business advice, incorporating real time management reporting and new service lines, such as ESG and climate transition reporting.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_accountancy_audit_and_tax_modernisation",
-      "sort_order": 193
+      "sort_order": 192
     },
     {
       "priority_name": "Cybersecurity for PBS",
@@ -5769,11 +6403,13 @@
       "source_chunks": [
         2
       ],
+      "evidence": "PBS businesses capture and retain confidential business and client information. Cyber Essentials is a government scheme that helps businesses to assure themselves, their customers, and investors, that they have the right basic cyber security controls in place.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_cybersecurity_for_pbs",
-      "sort_order": 194
+      "sort_order": 193
     },
     {
       "priority_name": "Data Sharing Infrastructure",
@@ -5794,11 +6430,13 @@
         2,
         11
       ],
+      "evidence": "Invest up to 12m in UK Data Sharing Infrastructure Initiatives from April 2026. Learning from international practices, including the Common European Data Spaces, these will promote effective and more coordinated approaches to governance, legal considerations, regulations, data interoperability, security, and trust.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_data_sharing_infrastructure",
-      "sort_order": 195
+      "sort_order": 194
     },
     {
       "priority_name": "Legal Services and Lawtech Growth",
@@ -5825,11 +6463,13 @@
         11,
         12
       ],
+      "evidence": "The UK also excels in lawtech, boasting over 350 companies and attracting more than 5.5 billion of investment in 2023. Our flexible Legal Services regulatory environment and 'tech-neutral' approach provide start-ups the space to innovate.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_legal_services_and_lawtech_growth",
-      "sort_order": 196
+      "sort_order": 195
     },
     {
       "priority_name": "Management Consultancy Global Leadership",
@@ -5853,11 +6493,13 @@
         8,
         12
       ],
+      "evidence": "Over the past five years the overall size of the consulting sector in terms of GVA has grown from 22.0 billion in 2019 to 26.4 billion in 2024... The UK consulting industry will be a global leader in new and emerging advisory services, covering climate transition and adaptation and digital transformation.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_management_consultancy_global_leadership",
-      "sort_order": 197
+      "sort_order": 196
     },
     {
       "priority_name": "Money Laundering Regulations Reform",
@@ -5880,11 +6522,13 @@
         11,
         12
       ],
+      "evidence": "The Government recognises the importance of ensuring the MLRs are clear and proportionate to the risks. Before the end of this year, HM Treasury will therefore bring forward a package of changes to the MLRs aimed at improving their effectiveness.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_money_laundering_regulations_reform",
-      "sort_order": 198
+      "sort_order": 197
     },
     {
       "priority_name": "Office for Professional and Business Services (OPBS)",
@@ -5904,11 +6548,13 @@
       "source_chunks": [
         10
       ],
+      "evidence": "Develop a proposal for the creation of an Office for Professional and Business Services (OPBS), to oversee implementation of the Plan and to develop the programme further. Reform of the PBSC to ensure it can act as a champion for the sector at home and abroad.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_office_for_professional_and_business_services_opbs",
-      "sort_order": 199
+      "sort_order": 198
     },
     {
       "priority_name": "PBS Access to Finance",
@@ -5932,11 +6578,13 @@
         10,
         11
       ],
+      "evidence": "The BBB's total financial capacity will increase to 25.6 billion. Its baseline activity each year is set to increase by around two-thirds... At the heart of these reforms is a new 4 billion ISGC initiative, which will include more flexible and customised approaches to support the needs of sectors, including PBS.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_pbs_access_to_finance",
-      "sort_order": 200
+      "sort_order": 199
     },
     {
       "priority_name": "PBS Export Growth and Market Access",
@@ -5964,11 +6612,13 @@
         8,
         11
       ],
+      "evidence": "The UK is the second-largest exporter of PBS in the world and our PBS exports have grown dramatically from 117 billion in 2019 to 183 billion in 2024... We will continue to tackle overseas barriers for UK PBS by delivering certainty and improving market access.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_pbs_export_growth_and_market_access",
-      "sort_order": 201
+      "sort_order": 200
     },
     {
       "priority_name": "PBS Workforce Skills and Training",
@@ -5995,11 +6645,13 @@
         9,
         11
       ],
+      "evidence": "We will expand the AI Skills Hub, launching in the summer of 2025, to include PBS. This will bring together industry stakeholders, training providers, and AI technology partners in an online portal to address AI skills-related barriers within PBS firms.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_pbs_workforce_skills_and_training",
-      "sort_order": 202
+      "sort_order": 201
     },
     {
       "priority_name": "Professional and Business Services Investment Target",
@@ -6017,11 +6669,13 @@
       "source_chunks": [
         7
       ],
+      "evidence": "Double annual business investment in the sector from GBP 35 billion to GBP 65 billion in 2035.",
+      "funding_commitments": [],
       "source_documents": [
         "Technical Annex to the UK Industrial Strategy"
       ],
       "priority_id": "professional__business_services_professional_and_business_services_investment_targ",
-      "sort_order": 203
+      "sort_order": 202
     },
     {
       "priority_name": "Professional and Business Services Tech Adoption",
@@ -6047,11 +6701,18 @@
         2,
         34
       ],
+      "evidence": "Increase tech adoption and AI integration in the Professional and Business Services sector, including adopting the Made Smarter scheme, as part of a package of \u00a3150 million to support the sector.",
+      "funding_commitments": [
+        "\u00a3150 million package for PBS sector",
+        "Made Smarter expansion to PBS",
+        "PBS Hubs in Liverpool, Greater Manchester, West Yorkshire, West Midlands, Edinburgh-Glasgow",
+        "Smart Data programme for property sector"
+      ],
       "source_documents": [
         "UK Industrial Strategy - Main Policy Paper (CP 1451)"
       ],
       "priority_id": "professional__business_services_professional_and_business_services_tech_adoption",
-      "sort_order": 204
+      "sort_order": 203
     },
     {
       "priority_name": "PropTech and Real Estate Technology",
@@ -6076,11 +6737,13 @@
         5,
         11
       ],
+      "evidence": "We will initially focus on PropTech, in light of our industry engagement highlighting the sector's readiness for innovation and the significant growth potential it holds. This includes areas where PropTech has the potential to transform the planning, housing, land, and infrastructure markets.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_proptech_and_real_estate_technology",
-      "sort_order": 205
+      "sort_order": 204
     },
     {
       "priority_name": "Regional PBS Hubs",
@@ -6108,11 +6771,13 @@
         10,
         11
       ],
+      "evidence": "We will co-create PBS Hubs in Liverpool City Region, Greater Manchester, West Yorkshire, West Midlands, and Edinburgh-Glasgow Central Belt, by working with the MSAs and the Scottish Government. Each Hub will be tailored to support both national and local PBS priorities.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_regional_pbs_hubs",
-      "sort_order": 206
+      "sort_order": 205
     },
     {
       "priority_name": "SME Access to Government Procurement",
@@ -6133,11 +6798,13 @@
         8,
         12
       ],
+      "evidence": "The Procurement Act 2023 came into force on 24 February 2025, making it simpler and more efficient for new entrants and smaller firms to bid for public procurement opportunities... government is now going further to ensure public procurement support for our Industrial Strategy priorities.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_sme_access_to_government_procurement",
-      "sort_order": 207
+      "sort_order": 206
     },
     {
       "priority_name": "Trade Digitalisation",
@@ -6159,11 +6826,13 @@
         4,
         11
       ],
+      "evidence": "Working with the PBSC and the sector, we will harness the productivity and growth benefits to PBS firms and their clients from the digitalisation of trade and investment. With representation from across the PBS sector, the Task Force will work with government and regulators to quantify the benefits and barriers to adoption of digital trade instruments.",
+      "funding_commitments": [],
       "source_documents": [
         "Professional and Business Services sector plan"
       ],
       "priority_id": "professional__business_services_trade_digitalisation",
-      "sort_order": 208
+      "sort_order": 207
     }
   ]
 }
