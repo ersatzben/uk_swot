@@ -1530,11 +1530,14 @@ def country_analysis(data):
     )
 
     # Calculate momentum score (positive - negative patterns) - cast to signed int
+    # Positive: ACCELERATING, CONSOLIDATING, RECOVERING (trajectory improving)
+    # Negative: DECLINING, RAPID_RETREAT (trajectory worsening)
+    # Neutral: STEADY, STABILISING, DECELERATING (transitional / holding)
     country_summary = country_summary.with_columns([
         (pl.col("accelerating").cast(pl.Int64) + pl.col("consolidating").cast(pl.Int64) + pl.col("recovering").cast(pl.Int64)
-         - pl.col("decelerating").cast(pl.Int64) - pl.col("declining").cast(pl.Int64) - pl.col("rapid_retreat").cast(pl.Int64)).alias("momentum_score"),
+         - pl.col("declining").cast(pl.Int64) - pl.col("rapid_retreat").cast(pl.Int64)).alias("momentum_score"),
         (pl.col("accelerating") + pl.col("consolidating") + pl.col("recovering")).alias("growing_topics"),
-        (pl.col("decelerating") + pl.col("declining") + pl.col("rapid_retreat")).alias("declining_topics"),
+        (pl.col("declining") + pl.col("rapid_retreat")).alias("declining_topics"),
         (pl.col("accelerating") + pl.col("consolidating") + pl.col("recovering") + pl.col("steady")
          + pl.col("stabilising") + pl.col("decelerating") + pl.col("declining") + pl.col("rapid_retreat")).alias("total_topics"),
     ])
@@ -1592,9 +1595,9 @@ def country_analysis(data):
     st.markdown("---")
     st.markdown("### Momentum Ranking")
     st.markdown("""
-    **Net score** = (accelerating + consolidating + recovering) − (decelerating + declining + rapid retreat)
+    **Net score** = (accelerating + consolidating + recovering) − (declining + rapid retreat)
 
-    Positive = more topics gaining momentum than losing it. Negative = more topics losing momentum.
+    Positive = more topics with improving trajectory than worsening. Decelerating, stabilising, and steady are treated as neutral.
     """)
 
     all_countries = summary_sorted
@@ -1914,16 +1917,17 @@ def strategic_alignment(data):
     )
 
     # Calculate momentum_balance and uk_position for each priority
+    # Formula: (ACC + CONS + REC) - (DECL + RR); DECELERATING is neutral
     priority_metrics = priorities.select([
         'priority_id',
         'accelerating_count', 'consolidating_count',
-        'declining_count', 'rapid_retreat_count',
+        'recovering_count', 'declining_count', 'rapid_retreat_count',
         'uk_increasing_count', 'uk_declining_count'
     ])
 
     priority_metrics = priority_metrics.with_columns([
-        (pl.col('accelerating_count') + pl.col('consolidating_count') -
-         pl.col('declining_count') - pl.col('rapid_retreat_count')).alias('momentum_balance'),
+        (pl.col('accelerating_count') + pl.col('consolidating_count') + pl.col('recovering_count')
+         - pl.col('declining_count') - pl.col('rapid_retreat_count')).alias('momentum_balance'),
         (pl.col('uk_increasing_count') - pl.col('uk_declining_count')).alias('uk_position')
     ])
 
