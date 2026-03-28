@@ -741,12 +741,11 @@ def topic_detail(data):
     if len(topic_windows) > 0:
         window_labels = topic_windows["time_window"].to_list()
         uk_shares = [s * 100 for s in topic_windows["uk_share_of_topic"].to_list()]
+        global_papers = topic_windows["global_papers"].to_list()
+        uk_papers = topic_windows["uk_papers"].to_list()
 
-        fig = go.Figure()
-
-        # Add shaded regions for early vs recent periods
-        y_min = min(uk_shares) * 0.9 if uk_shares else 0
-        y_max = max(uk_shares) * 1.1 if uk_shares else 10
+        from plotly.subplots import make_subplots
+        fig = make_subplots(specs=[[{"secondary_y": True}]])
 
         # Early period shading (windows 0-6: 2010-14 through 2016-20)
         fig.add_vrect(
@@ -772,30 +771,47 @@ def topic_detail(data):
             annotation_font_color="rgba(76, 175, 80, 0.7)"
         )
 
-        # UK share line
-        fig.add_trace(go.Scatter(
-            x=list(range(len(window_labels))),
-            y=uk_shares,
-            mode='lines+markers',
-            name='UK Share',
-            line=dict(color=COLORS['uk_accent'], width=3),
-            marker=dict(size=8),
-            text=window_labels,
-            hovertemplate='%{text}<br>UK Share: %{y:.2f}%<extra></extra>'
-        ))
+        # Global papers bars on secondary axis
+        fig.add_trace(
+            go.Bar(
+                x=list(range(len(window_labels))),
+                y=global_papers,
+                name='Global papers',
+                marker_color='rgba(176, 190, 197, 0.35)',
+                hovertemplate='%{x}<br>Global: %{y:,.0f} papers<extra></extra>',
+            ),
+            secondary_y=True,
+        )
+
+        # UK share line on primary axis
+        fig.add_trace(
+            go.Scatter(
+                x=list(range(len(window_labels))),
+                y=uk_shares,
+                mode='lines+markers',
+                name='UK Share',
+                line=dict(color=COLORS['uk_accent'], width=3),
+                marker=dict(size=8),
+                text=[f"{wl}<br>UK: {ukp:,} papers" for wl, ukp in zip(window_labels, uk_papers)],
+                hovertemplate='%{text}<br>UK Share: %{y:.2f}%<extra></extra>',
+            ),
+            secondary_y=False,
+        )
 
         fig.update_layout(
             xaxis=dict(
                 tickmode='array',
                 tickvals=list(range(len(window_labels))),
-                ticktext=[w[:4] for w in window_labels],
+                ticktext=window_labels,
                 title="5-Year Window"
             ),
-            yaxis_title="UK Share (%)",
-            height=350,
-            margin=dict(l=50, r=50, t=30, b=50),
-            showlegend=False
+            height=380,
+            margin=dict(l=50, r=60, t=30, b=50),
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
         )
+        fig.update_yaxes(title_text="UK Share (%)", rangemode="tozero", secondary_y=False)
+        fig.update_yaxes(title_text="Global Papers", rangemode="tozero", secondary_y=True,
+                         showgrid=False)
 
         st.plotly_chart(fig, use_container_width=True, key="trajectory_chart")
     else:
@@ -1581,28 +1597,29 @@ def country_analysis(data):
     Positive = more topics gaining momentum than losing it. Negative = more topics losing momentum.
     """)
 
-    top_25 = summary_sorted.head(25)
+    all_countries = summary_sorted
 
     fig = go.Figure()
 
     colors = ['#1976D2' if name == 'United Kingdom' else ('#4CAF50' if score > 0 else '#F44336')
-              for name, score in zip(top_25['country_name'].to_list(), top_25['momentum_score'].to_list())]
+              for name, score in zip(all_countries['country_name'].to_list(), all_countries['momentum_score'].to_list())]
 
     fig.add_trace(go.Bar(
-        y=top_25['country_name'].to_list()[::-1],
-        x=top_25['momentum_score'].to_list()[::-1],
+        y=all_countries['country_name'].to_list()[::-1],
+        x=all_countries['momentum_score'].to_list()[::-1],
         orientation='h',
         marker_color=colors[::-1],
-        text=[f"{s:+,d}" for s in top_25['momentum_score'].to_list()[::-1]],
+        text=[f"{s:+,d}" for s in all_countries['momentum_score'].to_list()[::-1]],
         textposition='outside'
     ))
 
     fig.add_vline(x=0, line_color="black", line_width=1)
 
+    n_countries = len(all_countries)
     fig.update_layout(
         xaxis_title="Net Score (topics gaining − topics losing momentum)",
         yaxis_title="",
-        height=600,
+        height=max(600, n_countries * 22),
         margin=dict(l=150, r=80, t=30, b=50)
     )
 
@@ -1768,20 +1785,24 @@ def strategic_alignment(data):
         st.markdown("""
         **Both metrics are UK-specific** — they measure different aspects of UK research performance.
 
-        **UK Momentum** measures whether UK's trajectory is improving or worsening:
-        - Compares UK's **recent** performance (2017-25) against its **early** performance (2010-20)
-        - Calculated as: (Accelerating + Consolidating topics) − (Declining + Rapid Retreat topics)
-        - **Positive values** (e.g., +10) mean UK is performing better recently than it was historically
-        - **Negative values** (e.g., −5) mean UK's trajectory has worsened — declining faster or growing slower than before
-        - ACCELERATING = UK improving faster recently; RAPID_RETREAT = UK declining faster recently
+        **UK Momentum** measures whether UK's trajectory is *changing direction* — improving or worsening:
+        - Compares UK's **recent** share slope (2017-25) against its **early** slope (2010-20)
+        - Weighted score per topic: ACCELERATING (+2), CONSOLIDATING (+1), RECOVERING (+1),
+          STEADY (0), STABILISING (0), DECELERATING (−1), DECLINING (−1), RAPID_RETREAT (−2)
+        - Averaged across core topics for each priority/sector
+        - **Positive** = UK is gaining momentum (more topics where trajectory is improving than worsening)
+        - **Negative** = UK is losing momentum (more topics where trajectory is worsening)
 
-        **UK Share Trend** measures the overall direction of UK's share:
-        - Calculated as: (Topics where UK share is increasing) − (Topics where UK share is declining)
-        - **Positive values** mean UK is gaining share in more topics than it's losing
-        - **Negative values** mean UK is losing share in more topics than it's gaining
-        - INCREASING/STABLE/DECLINING based on the slope of UK's share over time
+        **UK Share Trend** measures the *current direction* of UK's share:
+        - Based on the recent slope of UK share: INCREASING (+1), STABLE (0), DECLINING (−1)
+        - Counts topics where UK share is rising vs falling right now
+        - **Positive** = UK is gaining share in more topics than it's losing
+        - **Negative** = UK is losing share in more topics than it's gaining
 
-        **Strategic Concern** flags priorities where *both* metrics are negative — UK's trajectory is worsening *and* UK is losing share overall.
+        **In short:** Momentum asks "is it getting better or worse?" Share Trend asks "is UK share going up or down right now?"
+        A topic can have negative Share Trend (UK share declining) but positive Momentum (the decline is slowing — i.e., stabilising or recovering).
+
+        **Strategic Concern** flags priorities where *both* metrics are negative — UK is losing share *and* the trajectory is worsening.
         """)
 
     sectors = data['ind_strat_sectors']
